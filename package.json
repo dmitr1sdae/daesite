@@ -1,7 +1,10 @@
 {
   "name": "@daesite/monorepo",
-  "private": true,
-  "repository": "git@github.com:dmitr1sdae/daesite.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:dmitr1sdae/daesite.git"
+  },
+  "license": "AGPL-3.0",
   "author": "Dmitriy Chukhno <me@dmitr1sdae.com>",
   "workspaces": [
     "applications/*",
