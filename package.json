@@ -1,0 +1,22 @@
+{
+  "name": "@daesite/monorepo",
+  "private": true,
+  "repository": "git@github.com:dmitr1sdae/daesite.git",
+  "author": "Dmitriy Chukhno <me@dmitr1sdae.com>",
+  "workspaces": [
+    "applications/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "husky": "^9.0.11",
+    "lerna": "^8.1.2",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.3"
+  },
+  "packageManager": "yarn@4.2.2",
+  "engines": {
+    "node": ">= v20.9.0"
+  }
+}
