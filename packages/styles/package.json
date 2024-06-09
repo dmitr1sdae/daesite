@@ -1,0 +1,17 @@
+{
+  "name": "@daesite/styles",
+  "version": "0.1.0",
+  "description": "daesite's Design system",
+  "license": "ISC",
+  "author": "Dmitriy Chukhno <me@dmitr1sdae.com>",
+  "type": "module",
+  "files": [
+    "*"
+  ],
+  "dependencies": {
+    "inter-ui": "^4.0.2"
+  },
+  "devDependencies": {
+    "include-media": "^2.0.0"
+  }
+}
