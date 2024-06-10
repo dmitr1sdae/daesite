@@ -1,0 +1,37 @@
+@use "inter-ui/default" with (
+	$inter-font-display: swap,
+	$inter-font-path: "inter-ui/web"
+);
+
+@use "inter-ui/variable" with (
+	$inter-font-display: swap,
+	$inter-font-path: "inter-ui/variable"
+);
+
+//  Only include font faces that we need.
+//  Only used by outdated browsers/os
+//  Minimises the number of font requests made which is then duplicated by the challenge script. This can be removed when the challenge script no longer makes style requests.
+@include default.weight-400-normal;
+@include default.weight-600-normal;
+@include default.weight-700-normal;
+
+@include variable.all;
+
+:root {
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+}
+
+html,
+.apply-font {
+  font-family: "Inter", "system-ui";
+}
+
+@supports (font-variation-settings: normal) {
+  html,
+  .apply-font {
+    font-family: "InterVariable", "system-ui";
+  }
+}

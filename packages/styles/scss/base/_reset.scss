@@ -1,0 +1,231 @@
+article,
+aside,
+details,
+dialog,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+abbr,
+mark,
+meter,
+time,
+output {
+  display: inline;
+}
+
+/* reset minimum */
+html,
+body,
+blockquote,
+ul,
+ol,
+form,
+input,
+button,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+progress {
+  border: 0;
+}
+
+p,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+menu,
+td,
+th {
+  font-size: 1em;
+  line-height: inherit;
+  margin-block: $base-line-height * 1em;
+  margin-inline: 0;
+}
+
+@if $use-reset-button==true {
+  input,
+  select,
+  textarea,
+  optgroup,
+  button {
+    background: transparent;
+    border: 0;
+    font: inherit;
+    color: inherit;
+    -webkit-appearance: none;
+  }
+
+  input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+  }
+
+  input[type="radio"] {
+    -webkit-appearance: radio;
+  }
+} @else {
+  input,
+  select,
+  textarea,
+  optgroup,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+}
+
+label,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  cursor: pointer;
+}
+
+button[disabled],
+input[type="submit"][disabled],
+input[type="button"][disabled],
+input[type="reset"][disabled] {
+  cursor: default;
+  pointer-events: none;
+}
+
+textarea {
+  resize: vertical;
+  cursor: auto;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+label,
+button,
+input,
+select {
+  color: currentcolor;
+  vertical-align: middle;
+}
+
+@if $use-reset-button==false {
+  input,
+  select,
+  textarea,
+  optgroup,
+  button {
+    font: inherit;
+  }
+}
+
+@if $use-vertical-align-img-iframe==true {
+  img,
+  iframe {
+    vertical-align: middle;
+  }
+}
+
+iframe,
+dialog {
+  border: 0;
+}
+
+ul,
+ol,
+menu {
+  padding-inline-start: 2em;
+}
+
+dd {
+  margin-inline-start: 2em;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+/* harmonization between Chrome/Firefox */
+pre,
+code,
+kbd,
+samp {
+  font-family: $font-family-monospace;
+  font-size: 1em;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+small {
+  font-size: 80%;
+}
+
+a {
+  &:link,
+  &:visited {
+    img {
+      border-style: none;
+    }
+  }
+}
+
+img {
+  border-style: none;
+}
+
+audio:not([controls]) {
+  display: none;
+  block-size: 0;
+}
+
+abbr[title] {
+  border-block-end: dotted 1px;
+  cursor: help;
+  text-decoration: none;
+}
+
+code,
+pre,
+samp {
+  white-space: pre-wrap;
+}
+
+code {
+  line-height: 1;
+}
+
+dfn {
+  font-style: italic;
+}
+
+blockquote,
+q {
+  &::before {
+    content: open-quote;
+  }
+
+  &::after {
+    content: close-quote;
+  }
+}
