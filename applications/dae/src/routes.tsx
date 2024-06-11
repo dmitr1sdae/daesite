@@ -1,15 +1,14 @@
 import {RouteObject} from "react-router-dom";
 import {App} from "./app";
 
-export const routes: RouteObject[]  = [
+export const routes: RouteObject[] = [
   {
     path: "/",
     element: <App />,
-    children: [
-    ]
+    children: [],
   },
   {
     path: "*",
-    element: (<>NOT EXISTS</>)
-  }
+    element: <>NOT EXISTS</>,
+  },
 ];

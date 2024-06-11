@@ -1,11 +1,7 @@
 import "./app.scss";
 
 const App = () => {
-  return (
-    <>
-      dae app
-    </>
-  );
+  return <>dae app</>;
 };
 
 export default App;

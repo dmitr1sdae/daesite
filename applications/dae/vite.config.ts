@@ -3,9 +3,7 @@ import {defineConfig} from "vite";
 import {resolve} from "path";
 
 export default defineConfig({
-  plugins: [
-    react(),
-  ],
+  plugins: [react()],
   build: {
     minify: "terser",
     sourcemap: "hidden",

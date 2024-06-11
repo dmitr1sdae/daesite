@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "pretty": "prettier --check $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o -print)",
+    "pretty:fix": "prettier --write $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o -print)"
   },
   "dependencies": {
     "@daesite/styles": "workspace:packages/styles",

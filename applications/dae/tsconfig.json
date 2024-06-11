@@ -2,28 +2,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/app/components/*"
-      ],
-      "@components": [
-        "src/app/components/index.ts"
-      ],
-      "@containers/*": [
-        "src/app/containers/*"
-      ],
-      "@containers": [
-        "src/app/containers/index.ts"
-      ],
-      "@pages/*": [
-        "src/app/pages/*"
-      ],
-      "@helpers/*": [
-        "src/helpers/*"
-      ],
-      "@helpers": [
-        "src/helpers/index.ts"
-      ],
-    },
+      "@components/*": ["src/app/components/*"],
+      "@components": ["src/app/components/index.ts"],
+      "@containers/*": ["src/app/containers/*"],
+      "@containers": ["src/app/containers/index.ts"],
+      "@pages/*": ["src/app/pages/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@helpers": ["src/helpers/index.ts"]
+    }
   },
   "extends": "../../tsconfig.base.json"
 }
