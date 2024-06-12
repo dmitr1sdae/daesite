@@ -1,0 +1,38 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--background-weak);
+}
+
+a {
+  color: var(--link-norm);
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: var(--link-hover);
+    text-decoration: none;
+  }
+
+  &:active {
+    color: var(--link-active);
+    text-decoration: none;
+  }
+}
+
+b,
+strong {
+  font-weight: var(--font-weight-bold);
+}
