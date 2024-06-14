@@ -1,0 +1,32 @@
+{
+  "name": "@daesite/utils",
+  "version": "0.1.0",
+  "description": "Generic business-agnostic utils",
+  "license": "AGPL-3.0",
+  "author": "Dmitriy Chukhno <me@dmitr1sdae.com>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsc && vite build",
+    "pretty": "prettier --check $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o \\( -type f -name '*.js' -o -name '*.ts' -o -name '*.tsx' \\) -print)",
+    "pretty:fix": "prettier --write $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o \\( -type f -name '*.js' -o -name '*.ts' -o -name '*.tsx' \\) -print)",
+    "test": "vitest run --passWithNoTests"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.8",
+    "vite-plugin-dts": "^3.8.1",
+    "vitest": "^1.4.0"
+  }
+}
