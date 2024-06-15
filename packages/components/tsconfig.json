@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "lib/components/*"
+      ],
+      "@containers/*": [
+        "lib/containers/*"
+      ],
+      "@hooks/*": [
+        "lib/hooks/*"
+      ],
+      "@hooks": [
+        "lib/hooks/index.ts"
+      ],
+    },
+    "types": [
+      "vitest/globals"
+    ]
+  },
+  "extends": "../../tsconfig.base.json"
+}
