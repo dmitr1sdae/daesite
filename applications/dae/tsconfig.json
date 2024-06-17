@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "types": ["vite/client"],
     "paths": {
-      "@components/*": ["src/app/components/*"],
       "@components": ["src/app/components/index.ts"],
-      "@containers/*": ["src/app/containers/*"],
       "@containers": ["src/app/containers/index.ts"],
-      "@pages/*": ["src/app/pages/*"],
+      "@pages/*": ["src/pages/*"],
       "@helpers/*": ["src/helpers/*"],
       "@helpers": ["src/helpers/index.ts"]
     }

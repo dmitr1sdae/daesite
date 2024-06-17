@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"json-server db.json\" \"vite\"",
     "pretty": "prettier --check $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o -print)",
-    "pretty:fix": "prettier --write $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o -print)"
+    "pretty:fix": "prettier --write $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o -print)",
+    "json-serve": "json-server db.json"
   },
   "dependencies": {
     "@daesite/styles": "workspace:packages/styles",
@@ -23,7 +24,9 @@
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",
     "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
+    "json-server": "^1.0.0-beta.1",
     "prettier": "^3.2.5",
     "sass": "^1.72.0",
     "terser": "^5.30.3",
