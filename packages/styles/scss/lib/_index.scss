@@ -5,4 +5,7 @@
 @import "include-media";
 
 // Functions
-@import "im-to-em";
+@import "em", "rem", "im-to-em", "logical", "str-replace", "easing", "dash-join";
+
+// Mixins
+@import "vendor-prefix", "responsive-classes";
