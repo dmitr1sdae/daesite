@@ -1,7 +1,12 @@
+import {Outlet} from "react-router-dom";
 import "./app.scss";
 
 const App = () => {
-  return <>dae app</>;
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };
 
 export default App;
