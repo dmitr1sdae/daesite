@@ -1,0 +1,36 @@
+@use "sass:math";
+@import "@daesite/styles/scss/lib";
+
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+
+  @supports selector(:focus-visible:has(a, b)) {
+    // had to do this because of Safari
+    outline: unset;
+  }
+
+  &,
+  &:hover,
+  &:focus,
+  &:focus-within,
+  &:active {
+    text-decoration: none;
+  }
+
+  @supports not selector(:focus-visible:has(a, b)) {
+    &:focus,
+    &:focus-within {
+      box-shadow: 0 0 0 #{$focus-ring-size} var(--focus-ring);
+    }
+  }
+
+  @supports selector(:focus-visible:has(a, b)) {
+    &:focus-visible,
+    &:has(*:focus-visible) {
+      box-shadow: 0 0 0 #{$focus-ring-size} var(--focus-ring);
+    }
+  }
+}

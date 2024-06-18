@@ -40,6 +40,7 @@ export default defineConfig({
         "@remix-run/router",
         "@daesite/utils",
         "@daesite/styles",
+        "@daesite/react-polymorphic-types",
       ],
     },
   },

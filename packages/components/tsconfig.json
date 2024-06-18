@@ -16,7 +16,8 @@
       ],
     },
     "types": [
-      "vitest/globals"
+      "vitest/globals",
+      "vite/client"
     ]
   },
   "extends": "../../tsconfig.base.json"
