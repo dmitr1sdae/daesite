@@ -1,0 +1,93 @@
+// Variables specific overrides
+:root,
+.ui-standard {
+  --primary-minor-2: #0a0b0b;
+  --primary-minor-1: #111213;
+  --primary: #222326;
+  --primary-major-1: #38393c;
+  --primary-major-2: #4e4f51;
+  --primary-major-3: #646567;
+  --primary-contrast: #bebebe;
+  --secondary-minor-2: #161617;
+  --secondary-minor-1: #242526;
+  --secondary: #484a4b;
+  --secondary-major-1: #5a5c5d;
+  --secondary-major-2: #6d6e6f;
+  --secondary-major-3: #7f8081;
+  --secondary-contrast: #ffffff;
+  --danger-minor-2: #310b12;
+  --danger-minor-1: #4a111b;
+  --danger: #f5385a;
+  --danger-major-1: #f64c6b;
+  --danger-major-2: #f7607b;
+  --danger-major-3: #f8748c;
+  --danger-contrast: #ffffff;
+  --warning-minor-2: #331200;
+  --warning-minor-1: #4d1b00;
+  --warning: #ff9900;
+  --warning-major-1: #ffa31a;
+  --warning-major-2: #ffad33;
+  --warning-major-3: #ffb84d;
+  --warning-contrast: #000000;
+  --success-minor-2: #06221b;
+  --success-minor-1: #093228;
+  --success: #1ea885;
+  --success-major-1: #35b191;
+  --success-major-2: #4bb99d;
+  --success-major-3: #62c2aa;
+  --success-contrast: #ffffff;
+  --info-minor-2: #072029;
+  --info-minor-1: #0b2f3e;
+  --info: #239ece;
+  --info-major-1: #39a8d3;
+  --info-major-2: #4fb1d8;
+  --info-major-3: #65bbdd;
+  --info-contrast: #ffffff;
+  --norm-minor-2: #1e0e33;
+  --norm-minor-1: #2d154d;
+  --norm: #9747ff;
+  --norm-major-1: #a159ff;
+  --norm-major-2: #ac6cff;
+  --norm-major-3: #b67eff;
+  --norm-contrast: #ffffff;
+  --weak-minor-2: #16151a;
+  --weak-minor-1: #25232c;
+  --weak: #4a4658;
+  --weak-major-1: #5c5969;
+  --weak-major-2: #6e6b79;
+  --weak-major-3: #807e8a;
+  --weak-contrast: #ffffff;
+  --text-norm: white;
+  --text-weak: #a7a4b5;
+  --text-hint: #6d697d;
+  --text-disabled: #5b576b;
+  --text-invert: #1c1b24;
+  --field-norm: #5b576b;
+  --field-hover: #6d697d;
+  --field-disabled: #3f3b4c;
+  --focus-outline: #9747ff;
+  --focus-ring: rgba(151, 71, 255, 0.3);
+  --border-norm: #4a4658;
+  --border-weak: #343140;
+  --background-norm: #09090d;
+  --background-weak: #121216;
+  --background-strong: #1a1a1e;
+  --background-invert: white;
+  --interaction-default: transparent;
+  --interaction-default-hover: rgb(91 87 107 / 0.2);
+  --interaction-default-active: rgb(91 87 107 / 0.4);
+  --shadow-norm-opacity: 0.5;
+  --shadow-lifted-opacity: 0.75;
+  --backdrop-norm: rgb(0 0 0 / 0.48);
+  --optional-scrollbar-thumb-color: #4a4658;
+  --optional-scrollbar-thumb-hover-color: #5b576b;
+}
+
+// Configuration
+@import "lib/index";
+
+// Initialisation
+@import "base/index";
+
+// Helpers
+@import "utilities/index";
