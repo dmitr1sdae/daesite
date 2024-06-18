@@ -1,0 +1,43 @@
+@import "@daesite/styles/scss/lib";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 6666;
+  display: flex;
+  backdrop-filter: blur(5px);
+}
+
+.navbar {
+  display: flex;
+  flex: 1 0 auto;
+  margin: 0 auto;
+  padding: 0 rem(40);
+  height: rem(80);
+  align-items: center;
+  max-width: rem(1280);
+  justify-content: space-between;
+}
+
+.buttons {
+  display: flex;
+  gap: rem(16);
+}
+
+.header1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 rem(24);
+  max-width: rem(1280);
+  min-height: rem(80);
+}
+
+.links {
+  @media (max-width: rem(600)) {
+    display: none;
+  }
+}

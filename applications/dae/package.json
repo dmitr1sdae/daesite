@@ -10,6 +10,7 @@
     "json-serve": "json-server db.json"
   },
   "dependencies": {
+    "@daesite/components": "workspace:packages/components",
     "@daesite/styles": "workspace:packages/styles",
     "axios": "^1.7.2",
     "react": "^18.2.0",

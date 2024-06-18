@@ -1,5 +1,5 @@
 import "./Home.scss";
-import {EpicTitle} from "@components";
+import {Header} from "@components";
 import {Fullscreen} from "@containers";
 import {typeStringSequence} from "@helpers";
 import background from "@daesite/styles/assets/img/brand/background.png";
@@ -23,6 +23,7 @@ const Home = () => {
   return (
     <>
       <Fullscreen background={background}>
+        <Header />
         <div className="text">
           <h1 className="title">Dadaya&apos;s Blog</h1>
           <h2 className="subtitle">
