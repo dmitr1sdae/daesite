@@ -1,0 +1,20 @@
+@include responsive-classes(
+  (
+    static: (
+      position: static,
+    ),
+
+    relative: (
+      position: relative,
+    ),
+
+    absolute: (
+      position: absolute,
+      z-index: 1,
+    ),
+
+    fixed: (
+      position: fixed,
+    ),
+  )
+);
