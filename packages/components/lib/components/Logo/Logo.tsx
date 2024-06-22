@@ -1,7 +1,6 @@
 import "./Logo.scss";
 
 import {PolymorphicPropsWithRef} from "@daesite/react-polymorphic-types";
-import logo from "@daesite/styles/assets/img/brand/logo.webp";
 import {ElementType, forwardRef, Ref} from "react";
 
 interface LogoOwnProps {
@@ -32,7 +31,7 @@ const Logo = <E extends ElementType = typeof defaultElement>(
       data-testid={dataTestId}
       {...restProps}
     >
-      <img src={logo} alt="dmitr1sdae" height="48" width="48" />
+      <img src="https://avatars.githubusercontent.com/u/169852179" alt="dmitr1sdae" height="48" width="48" />
     </Element>
   );
 };
