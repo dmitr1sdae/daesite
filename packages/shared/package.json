@@ -1,0 +1,39 @@
+{
+  "name": "@daesite/shared",
+  "version": "0.1.0",
+  "description": "dae shared",
+  "license": "AGPL-3.0",
+  "author": "Dmitriy Chukhno <me@dmitr1sdae.com>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsc && vite build",
+    "pretty": "prettier --check $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o \\( -type f -name '*.js' -o -name '*.ts' -o -name '*.tsx' \\) -print)",
+    "pretty:fix": "prettier --write $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o \\( -type f -name '*.js' -o -name '*.ts' -o -name '*.tsx' \\) -print)"
+  },
+  "dependencies": {
+    "@daesite/crypto": "workspace:packages/crypto",
+    "@daesite/utils": "workspace:packages/utils",
+    "jsbi": "^4.3.0",
+    "lodash": "^4.17.21",
+    "ua-parser-js": "^1.0.38"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.0",
+    "@types/node": "^20.12.3",
+    "@types/ua-parser-js": "^0.7.39",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.8",
+    "vite-plugin-dts": "^3.8.1"
+  }
+}
