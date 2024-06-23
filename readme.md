@@ -1,6 +1,6 @@
 ## Contributors
 
-[![contributors](https://contrib.rocks/image?repo=arcnightgames/ragnarok)](https://github.com/arcnightgames/ragnarok/graphs/contributors)
+[![contributors](https://contrib.rocks/image?repo=dmitr1sdae/daesite)](https://github.com/dmitr1sdae/daesite/graphs/contributors)
 
 ## License
 
