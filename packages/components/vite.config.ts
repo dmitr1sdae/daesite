@@ -27,6 +27,10 @@ export default defineConfig({
       fileName: () => "index.js",
       formats: ["es"],
     },
+    watch: {
+      buildDelay: 400,
+      skipWrite: true
+    },
     rollupOptions: {
       external: [
         "ttag",
@@ -46,6 +50,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      "~": resolve(__dirname, "./lib"),
       "@components": resolve(__dirname, "./lib/components"),
       "@containers": resolve(__dirname, "./lib/containers"),
       "@hooks": resolve(__dirname, "./lib/hooks"),

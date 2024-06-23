@@ -2,23 +2,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "lib/components/*"
-      ],
-      "@containers/*": [
-        "lib/containers/*"
-      ],
-      "@hooks/*": [
-        "lib/hooks/*"
-      ],
-      "@hooks": [
-        "lib/hooks/index.ts"
-      ],
+      "~/*": ["lib/*"],
+      "@components/*": ["lib/components/*"],
+      "@containers/*": ["lib/containers/*"],
+      "@hooks/*": ["lib/hooks/*"],
+      "@hooks": ["lib/hooks/index.ts"]
     },
-    "types": [
-      "vitest/globals",
-      "vite/client"
-    ]
+    "types": ["vitest/globals", "vite/client"]
   },
   "extends": "../../tsconfig.base.json"
 }
