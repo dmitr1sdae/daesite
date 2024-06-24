@@ -27,10 +27,6 @@ export default defineConfig({
       fileName: () => "index.js",
       formats: ["es"],
     },
-    watch: {
-      buildDelay: 400,
-      skipWrite: true
-    },
     rollupOptions: {
       external: [
         "ttag",
