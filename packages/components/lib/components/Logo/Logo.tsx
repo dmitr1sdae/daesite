@@ -1,39 +1,55 @@
 import "./Logo.scss";
 
-import {PolymorphicPropsWithRef} from "@daesite/react-polymorphic-types";
-import {ElementType, forwardRef, Ref} from "react";
+import {forwardRef, Ref} from "react";
+import {AppLink, Button} from "~/components";
 
-interface LogoOwnProps {
+export interface LogoProps {
+  to?: string;
+  application?: string;
   "data-testid"?: string;
 }
 
-export type LogoProps<E extends ElementType> = PolymorphicPropsWithRef<
-  LogoOwnProps,
-  E
->;
+const Logo = forwardRef(
+  (
+    {application, to, "data-testid": dataTestId, ...restProps}: LogoProps,
+    ref: Ref<HTMLDivElement>,
+  ) => {
+    return (
+      <div
+        className="rounded-full flex items-center gap-2"
+        ref={ref}
+        data-testid={dataTestId}
+        {...restProps}
+      >
+        <AppLink
+          to="/"
+          className="glyph rounded-full overflow-hidden"
+          tabIndex={0}
+        >
+          <img
+            src="https://avatars.githubusercontent.com/u/169852179"
+            alt="dmitr1sdae"
+            height="48"
+            width="48"
+          />
+        </AppLink>
+        {application && to && (
+          <div className="flex items-center gap-1">
+            <span className="text-4xl">/</span>
+            <Button
+              as={AppLink}
+              to={to}
+              className="pt-0.5 pr-1 pb-0.5 pl-1 text-xl"
+              shape="ghost"
+              tabIndex={0}
+            >
+              {application}
+            </Button>
+          </div>
+        )}
+      </div>
+    );
+  },
+);
 
-const defaultElement = "div";
-
-const Logo = <E extends ElementType = typeof defaultElement>(
-  {
-    as,
-    "data-testid": dataTestId,
-    ...restProps
-  }: LogoProps<E>,
-  ref: Ref<Element>,
-) => {
-  const Element: ElementType = as || defaultElement;
-
-  return (
-    <Element
-      className="logo"
-      ref={ref}
-      data-testid={dataTestId}
-      {...restProps}
-    >
-      <img src="https://avatars.githubusercontent.com/u/169852179" alt="dmitr1sdae" height="48" width="48" />
-    </Element>
-  );
-};
-
-export default forwardRef(Logo);
+export default Logo;

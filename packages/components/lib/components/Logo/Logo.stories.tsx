@@ -7,4 +7,23 @@ export default {
   title: "components/Logo",
 } as Meta<typeof Logo>;
 
-export const Playground = () => <Logo as="button" />;
+export const Playground = ({...args}) => <Logo {...args} to="#" />;
+
+Playground.argTypes = {
+  application: {
+    options: [
+      "apps",
+      "account",
+      "search",
+      "language",
+      "gist",
+      "experiments",
+      "projects",
+      "close",
+      "settings",
+    ],
+    control: {
+      type: "select",
+    },
+  },
+};

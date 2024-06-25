@@ -1,11 +1,8 @@
-@use "sass:math";
 @import "@daesite/styles/scss/lib";
 
-.logo {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--border-radius-full);
-  overflow: hidden;
+.glyph {
+  width: rem(48);
+  height: rem(48);
 
   @supports selector(:focus-visible:has(a, b)) {
     // had to do this because of Safari
