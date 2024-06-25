@@ -12,7 +12,17 @@ export const Playground = ({...args}) => <Icon {...args} />;
 
 Playground.argTypes = {
   name: {
-    options: ["apps", "search", "settings"],
+    options: [
+      "apps",
+      "account",
+      "search",
+      "language",
+      "gist",
+      "experiments",
+      "projects",
+      "close",
+      "settings",
+    ],
     control: {
       type: "select",
       defaultValue: "search",
@@ -20,6 +30,5 @@ Playground.argTypes = {
   },
   size: {
     options: [20, 22, 24],
-  }
+  },
 };
-

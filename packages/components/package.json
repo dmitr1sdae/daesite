@@ -22,13 +22,12 @@
     "storybook": "storybook dev --no-open -p 6006"
   },
   "dependencies": {
+    "@daesite/shared": "workspace:packages/shared",
     "@daesite/styles": "workspace:packages/styles",
     "@daesite/utils": "workspace:packages/utils",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.22.3",
-    "react-router-dom": "^6.22.3",
-    "tabbable": "^6.2.0",
     "ttag": "^1.8.6"
   },
   "devDependencies": {

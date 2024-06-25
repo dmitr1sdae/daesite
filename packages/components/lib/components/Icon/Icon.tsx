@@ -25,7 +25,16 @@ export type IconSize =
   | 100
   | 110;
 
-export type IconName = "apps" | "search" | "settings";
+export type IconName =
+  | "apps"
+  | "account"
+  | "search"
+  | "language"
+  | "gist"
+  | "experiments"
+  | "projects"
+  | "close"
+  | "settings";
 
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, "ref"> {
   /**
