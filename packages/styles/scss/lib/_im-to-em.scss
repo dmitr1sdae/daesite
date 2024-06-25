@@ -15,7 +15,7 @@
     $new-breakpoints: map-merge(
       $new-breakpoints,
       (
-        $name: $em-value,
+        $name: $em-value
       )
     );
   }

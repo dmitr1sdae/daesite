@@ -1,54 +1,54 @@
 @import "@daesite/styles/scss/lib";
 
 .tabs {
-	&-list {
-		&-link {
-			transition: 0.15s easing(ease-out-quint);
+  &-list {
+    &-link {
+      transition: 0.15s easing(ease-out-quint);
 
-			&[disabled] {
-				opacity: 0.4;
-				cursor: default;
-				pointer-events: none;
-			}
-		}
+      &[disabled] {
+        opacity: 0.4;
+        cursor: default;
+        pointer-events: none;
+      }
+    }
 
-		&--fullWidth {
-			inline-size: 100%;
-		}
+    &--fullWidth {
+      inline-size: 100%;
+    }
 
-		&--fullWidth &-item {
-			flex: 1 1 0;
-		}
+    &--fullWidth &-item {
+      flex: 1 1 0;
+    }
 
-		&--fullWidth &-link {
-			inline-size: 100%;
-		}
-	}
+    &--fullWidth &-link {
+      inline-size: 100%;
+    }
+  }
 
-	&-list-item {
-		min-inline-size: auto;
-	}
+  &-list-item {
+    min-inline-size: auto;
+  }
 
   &-list-link {
-		padding-block: var(--space-2);
-		padding-inline: var(--space-3);
-		inset-block-start: 1px;
-		border-block-end: 2px solid transparent;
+    padding-block: var(--space-2);
+    padding-inline: var(--space-3);
+    inset-block-start: 1px;
+    border-block-end: 2px solid transparent;
 
-		&:hover,
-		&:focus {
-			border-block-end-color: var(--border-norm);
-		}
+    &:hover,
+    &:focus {
+      border-block-end-color: var(--border-norm);
+    }
 
-		&[aria-selected='true'] {
-			border-block-end-color: var(--norm);
-		}
+    &[aria-selected="true"] {
+      border-block-end-color: var(--norm);
+    }
 
     @supports selector(:focus-visible:has(a, b)) {
       // had to do this because of Safari
       outline: unset;
     }
-  
+
     &,
     &:hover,
     &:focus,
@@ -56,36 +56,36 @@
     &:active {
       text-decoration: none;
     }
-  
+
     @supports not selector(:focus-visible:has(a, b)) {
       &:focus,
       &:focus-within {
         border-block-end-color: var(--border-norm);
       }
     }
-  
+
     @supports selector(:focus-visible:has(a, b)) {
       &:focus-visible,
       &:has(*:focus-visible) {
         border-block-end-color: var(--border-norm);
       }
     }
-	}
+  }
 
-	&-indicator {
-		position: absolute;
-		inset-block-end: -1px;
-		inset-inline: 0;
-		block-size: 0;
-		transform-origin: left center;
-		@at-root {
-			[dir='rtl'] & {
-				transform-origin: right center;
-			}
-		}
+  &-indicator {
+    position: absolute;
+    inset-block-end: -1px;
+    inset-inline: 0;
+    block-size: 0;
+    transform-origin: left center;
+    @at-root {
+      [dir="rtl"] & {
+        transform-origin: right center;
+      }
+    }
 
-		transform: translateX(var(--translate)) scaleX(var(--scale));
-		border-block-end: 2px solid var(--norm);
-		transition: transform 0.15s easing(ease-out-quad);
-	}
+    transform: translateX(var(--translate)) scaleX(var(--scale));
+    border-block-end: 2px solid var(--norm);
+    transition: transform 0.15s easing(ease-out-quad);
+  }
 }

@@ -95,7 +95,13 @@
 @each $color in (primary, secondary, danger, warning, success, info) {
   // Solid shape
   .button-solid-#{$color} {
-    $solid-text-color: var(--#{if($color == "primary" or $color == "secondary", "text-norm", dash-join($color, "contrast"))});
+    $solid-text-color: var(
+      --#{if(
+          $color == "primary" or $color == "secondary",
+          "text-norm",
+          dash-join($color, "contrast")
+        )}
+    );
 
     --button-default-background-color: var(--#{$color});
     --button-hover-background-color: var(--#{dash-join($color, "major-1")});
@@ -118,13 +124,25 @@
     --button-hover-border-color: var(--#{dash-join($color, "major-2")});
     --button-active-border-color: var(--#{dash-join($color, "major-3")});
     --button-default-text-color: var(
-      --#{if($color == "primary" or $color == "secondary", "text-norm", dash-join($color, "major-1"))}
+      --#{if(
+          $color == "primary" or $color == "secondary",
+          "text-norm",
+          dash-join($color, "major-1")
+        )}
     );
     --button-hover-text-color: var(
-      --#{if($color == "primary" or $color == "secondary", "text-norm", dash-join($color, "major-2"))}
+      --#{if(
+          $color == "primary" or $color == "secondary",
+          "text-norm",
+          dash-join($color, "major-2")
+        )}
     );
     --button-active-text-color: var(
-      --#{if($color == "primary" or $color == "secondary", "text-norm", dash-join($color, "major-3"))}
+      --#{if(
+          $color == "primary" or $color == "secondary",
+          "text-norm",
+          dash-join($color, "major-3")
+        )}
     );
   }
 
@@ -133,9 +151,27 @@
     --button-default-background-color: var(--interaction-default);
     --button-hover-background-color: var(--interaction-default-hover);
     --button-active-background-color: var(--interaction-default-active);
-    --button-default-text-color: var(--#{if($color == "primary" or $color == "secondary", "text-norm", dash-join($color, "major-1"))});
-    --button-hover-text-color: var(--#{if($color == "primary" or $color == "secondary", "text-norm", dash-join($color, "major-2"))});
-    --button-active-text-color: var(--#{if($color == "primary" or $color == "secondary", "text-norm", dash-join($color, "major-3"))});
+    --button-default-text-color: var(
+      --#{if(
+          $color == "primary" or $color == "secondary",
+          "text-norm",
+          dash-join($color, "major-1")
+        )}
+    );
+    --button-hover-text-color: var(
+      --#{if(
+          $color == "primary" or $color == "secondary",
+          "text-norm",
+          dash-join($color, "major-2")
+        )}
+    );
+    --button-active-text-color: var(
+      --#{if(
+          $color == "primary" or $color == "secondary",
+          "text-norm",
+          dash-join($color, "major-3")
+        )}
+    );
   }
 }
 

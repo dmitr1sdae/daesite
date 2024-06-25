@@ -18,10 +18,18 @@ $queries: (
   $classstack: "";
   @each $classname in $classnames {
     // Remove dot (.) if there is one
-    $classname: if(string.slice($classname, 1, 1) == ".", string.slice($classname, 2, -1), $classname);
+    $classname: if(
+      string.slice($classname, 1, 1) == ".",
+      string.slice($classname, 2, -1),
+      $classname
+    );
 
     // Stack classe with dot, comma and responsive prefix
-    $classstack: if($classstack == "", "." + $prefix + $classname, $classstack + ", ." + $prefix + $classname);
+    $classstack: if(
+      $classstack == "",
+      "." + $prefix + $classname,
+      $classstack + ", ." + $prefix + $classname
+    );
   }
   @return $classstack;
 }
@@ -59,7 +67,11 @@ $queries: (
               // Search in the $value string if we need the breakpoint name, e.g. for custom sizing css variables
               $value: if(
                 string.index(#{$value}, "[BPN]"),
-                str-replace($value, "[BPN]", if($breakpointname == "default", "", $breakpointname + "-")),
+                str-replace(
+                  $value,
+                  "[BPN]",
+                  if($breakpointname == "default", "", $breakpointname + "-")
+                ),
                 $value
               );
 

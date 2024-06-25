@@ -20,7 +20,7 @@ $spacings: (
   "12": 48,
   "14": 56,
   "16": 64,
-  "auto": "auto",
+  "auto": "auto"
 );
 
 // generate css custom props
@@ -37,7 +37,7 @@ $dummy-map: ();
 // generate `margin` and `padding` classes
 $properties: (
   m: "margin",
-  p: "padding",
+  p: "padding"
 );
 $placements: (
   default: "",
@@ -46,7 +46,7 @@ $placements: (
   b: "block-end",
   x: "inline",
   l: "inline-start",
-  r: "inline-end",
+  r: "inline-end"
 );
 
 @each $propertyname, $property in $properties {
@@ -61,8 +61,8 @@ $placements: (
           $dummy-map,
           (
             $classname: (
-              #{$cssproperty}: #{$value},
-            ),
+              #{$cssproperty}: #{$value}
+            )
           )
         );
       }
@@ -74,8 +74,8 @@ $placements: (
       $dummy-map,
       (
         $classname: (
-          #{$cssproperty}: #{$value},
-        ),
+          #{$cssproperty}: #{$value}
+        )
       )
     );
   }
@@ -85,7 +85,7 @@ $placements: (
 $placements: (
   default: "",
   x: "column",
-  y: "row",
+  y: "row"
 );
 
 @each $placementname, $placement in $placements {
@@ -99,8 +99,8 @@ $placements: (
         $dummy-map,
         (
           $classname: (
-            #{$cssproperty}: #{$value},
-          ),
+            #{$cssproperty}: #{$value}
+          )
         )
       );
     }
@@ -112,8 +112,8 @@ $placements: (
     $dummy-map,
     (
       $classname: (
-        #{$cssproperty}: #{$value},
-      ),
+        #{$cssproperty}: #{$value}
+      )
     )
   );
 }

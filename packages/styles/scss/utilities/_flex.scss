@@ -18,24 +18,26 @@ $dummy-map: ();
     $dummy-map,
     (
       flex-#{$direction}:
-      (
-        flex-direction: $direction,
-      )
+        (
+          flex-direction: $direction,
+        )
     )
   );
 }
 
 // Add `justify` utilities to the map
-@each $justify in (start, center, end, space-between, space-around, space-evenly) {
+@each $justify
+  in (start, center, end, space-between, space-around, space-evenly)
+{
   // Remove prefix when 'start' and 'end' will be recognized by browsers
   $prefix: if($justify == start or $justify == end, "flex", "");
   $dummy-map: map.merge(
     $dummy-map,
     (
       justify-#{$justify}:
-      (
-        justify-content: #{dash-join($prefix, $justify)},
-      )
+        (
+          justify-content: #{dash-join($prefix, $justify)},
+        )
     )
   );
 }
@@ -46,9 +48,9 @@ $dummy-map: ();
     $dummy-map,
     (
       flex-#{$wrap}:
-      (
-        flex-wrap: #{$wrap},
-      )
+        (
+          flex-wrap: #{$wrap},
+        )
     )
   );
 }
@@ -60,9 +62,9 @@ $dummy-map: ();
     $dummy-map,
     (
       order-#{$i}:
-      (
-        order: #{$i},
-      )
+        (
+          order: #{$i},
+        )
     )
   );
 }
@@ -75,13 +77,13 @@ $dummy-map: ();
     $dummy-map,
     (
       items-#{$align}:
-      (
-        align-items: #{dash-join($prefix, $align)},
-      ),
+        (
+          align-items: #{dash-join($prefix, $align)},
+        ),
       self-#{$align}:
-      (
-        align-self: #{dash-join($prefix, $align)},
-      )
+        (
+          align-self: #{dash-join($prefix, $align)},
+        )
     )
   );
 }

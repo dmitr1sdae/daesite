@@ -2,10 +2,7 @@
 @use "im-to-em" as *;
 
 $base-font-size: 14 !default; // if "14" then 1em = 14px
-$base-line-height: math.div(
-  20,
-  $base-font-size
-) !default; // Design specs says 20px
+$base-line-height: math.div(20, $base-font-size) !default; // Design specs says 20px
 
 $title-sizes: (
   h1: 36,
@@ -13,7 +10,7 @@ $title-sizes: (
   h3: 20,
   h4: 18,
   h5: 17,
-  h6: 16,
+  h6: 16
 ) !default;
 
 // Use typo helpers on demand
@@ -22,8 +19,8 @@ $use-other-line-height-helpers: true !default;
 
 // fonts
 /* stylelint-disable-next-line value-keyword-case */
-$font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-  "Liberation Mono", "Courier New", monospace !default;
+$font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+  monospace !default;
 
 // Breakpoints for include-media
 $breakpoints: im-to-em(
@@ -32,7 +29,7 @@ $breakpoints: im-to-em(
     "large": 1100px,
     "medium": 910px,
     "small": 680px,
-    "xsmall": 450px,
+    "xsmall": 450px
   )
 ) !default;
 
@@ -44,7 +41,7 @@ $media-expressions: (
   "touch": "(hover: hover) and (pointer: coarse), (hover: none)",
   "landscape": "(orientation: landscape)",
   "portrait": "(orientation: portrait)",
-  "reduced-motion": "(prefers-reduced-motion: reduce)",
+  "reduced-motion": "(prefers-reduced-motion: reduce)"
 ) !default;
 
 // Custom scrollbar everywhere

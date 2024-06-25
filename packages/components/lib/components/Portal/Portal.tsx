@@ -6,7 +6,7 @@ interface PortalProps {
 }
 
 const Portal = ({children}: PortalProps) => {
-  return createPortal(children, document.getElementById("__portalRoot")!) ;
+  return createPortal(children, document.getElementById("__portalRoot")!);
 };
 
 export default Portal;

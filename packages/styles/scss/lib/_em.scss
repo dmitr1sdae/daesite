@@ -9,6 +9,10 @@
  */
 @function em($px, $base: $base-font-size) {
   // Remove "px" unit if present
-  $value: if(string.slice($px * 0 + "", 2, -1) == "px", math.div($px, 1px), $px);
+  $value: if(
+    string.slice($px * 0 + "", 2, -1) == "px",
+    math.div($px, 1px),
+    $px
+  );
   @return (math.div($value, $base)) * 1em;
 }

@@ -5,34 +5,34 @@
 @include responsive-classes(
   (
     block: (
-      display: block,
+      display: block
     ),
 
     inline: (
-      display: inline,
+      display: inline
     ),
 
     inline-block: (
-      display: inline-block,
+      display: inline-block
     ),
 
     flex: (
       display: flex,
-      flex-wrap: wrap,
+      flex-wrap: wrap
     ),
 
     inline-flex: (
       display: inline-flex,
-      flex-wrap: wrap,
+      flex-wrap: wrap
     ),
 
     hidden: (
-      display: none,
+      display: none
     ),
 
     table-cell: (
-      display: table-cell,
-    ),
+      display: table-cell
+    )
   )
 );
 

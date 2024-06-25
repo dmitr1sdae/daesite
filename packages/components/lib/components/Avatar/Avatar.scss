@@ -9,7 +9,8 @@
     border: em(1);
     width: em(64);
     height: em(64);
-    transition: 0.15s easing(ease-out-quint),
+    transition:
+      0.15s easing(ease-out-quint),
       background-position 0s;
 
     @supports selector(:focus-visible:has(a, b)) {
@@ -59,7 +60,7 @@
 /*
  * Modifiers
  */
- .avatar-small {
+.avatar-small {
   width: em(32);
   height: em(32);
 
