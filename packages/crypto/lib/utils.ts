@@ -92,3 +92,25 @@ export const arrayToHexString = (bytes: Uint8Array) => {
   }
   return res.join("");
 };
+
+/**
+ * Convert a native javascript string to a Uint8Array of utf8 bytes
+ * @param str - The string to convert
+ * @returns A valid squence of utf8 bytes.
+ */
+export function stringToUtf8Array(str: string): Uint8Array {
+  const encoder = new TextEncoder();
+
+  return encoder.encode(str);
+}
+
+/**
+* Convert a Uint8Array of utf8 bytes to a native javascript string
+* @param utf8 - A valid squence of utf8 bytes
+* @returns A native javascript string.
+*/
+export function utf8ArrayToString(utf8: Uint8Array): string {
+  const decoder = new TextDecoder();
+
+  return decoder.decode(utf8);
+}
