@@ -5,7 +5,7 @@ import {
   ForwardedRef,
   forwardRef,
   useContext,
-  useLayoutEffect,
+  useEffect,
   useState,
 } from "react";
 
@@ -35,7 +35,7 @@ const useImageLoadingStatus = (src?: string) => {
   const [loadingStatus, setLoadingStatus] =
     useState<ImageLoadingStatus>("idle");
 
-  useLayoutEffect(() => {
+    useEffect(() => {
     if (!src) {
       setLoadingStatus("error");
       return;
@@ -72,7 +72,7 @@ const AvatarImage = (
   const {onImageLoadingStatusChange} = useContext(AvatarContext);
   const imageLoadingStatus = useImageLoadingStatus(src);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (imageLoadingStatus !== "idle") {
       onImageLoadingStatusChange(imageLoadingStatus);
     }

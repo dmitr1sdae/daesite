@@ -1,5 +1,5 @@
 import {AnchorHTMLAttributes, forwardRef, Ref} from "react";
-import {Link as ReactRouterLink} from "react-router-dom";
+import {default as NextLink} from "next/link";
 
 type AppLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "color"> & {
   /**
@@ -25,9 +25,9 @@ const AppLink = (
   }
 
   return (
-    <ReactRouterLink ref={ref} to={to} {...rest}>
+    <NextLink ref={ref} href={to} {...rest}>
       {children}
-    </ReactRouterLink>
+    </NextLink>
   );
 };
 

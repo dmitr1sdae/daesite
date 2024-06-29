@@ -1,7 +1,10 @@
 import "./Logo.scss";
 
+import logo from "../../../../styles/assets/img/brand/dmitr1sdae.webp?url";
 import {forwardRef, Ref} from "react";
-import {AppLink, Button} from "~/components";
+import {AppLink} from "~/components/Link";
+import {Button} from "~/components/Button";
+import Image from "next/image";
 
 export interface LogoProps {
   to?: string;
@@ -26,8 +29,8 @@ const Logo = forwardRef(
           className="glyph rounded-full overflow-hidden"
           tabIndex={0}
         >
-          <img
-            src="https://avatars.githubusercontent.com/u/169852179"
+          <Image
+            src={logo}
             alt="dmitr1sdae"
             height="48"
             width="48"

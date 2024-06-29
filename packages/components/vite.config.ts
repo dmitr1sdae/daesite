@@ -3,7 +3,7 @@ import {resolve} from "node:path";
 import react from "@vitejs/plugin-react";
 import {defineConfig} from "vite";
 import dts from "vite-plugin-dts";
-import {libInjectCss} from "vite-plugin-lib-inject-css";
+import libAssetsPlugin from "@laynezh/vite-plugin-lib-assets";
 
 export default defineConfig({
   plugins: [
@@ -18,7 +18,7 @@ export default defineConfig({
       rollupTypes: true,
       clearPureImport: true,
     }),
-    libInjectCss(),
+    libAssetsPlugin(),
     react(),
   ],
   build: {
@@ -29,18 +29,20 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [
+        "next",
         "ttag",
         "react",
         "react-is",
+        "next/link",
         "react-dom",
-        "react-router",
+        "next/image",
+        "next/navigation",
         "react-hook-form",
         "react/jsx-runtime",
         "@remix-run/router",
         "@daesite/utils",
         "@daesite/shared",
         "@daesite/styles",
-        "@daesite/react-polymorphic-types",
       ],
     },
   },

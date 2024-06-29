@@ -1,9 +1,11 @@
-import {useSearchParams} from "react-router-dom";
+import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {useState, useCallback} from "react";
 import {Tab} from "~/components/Tabs/Tabs";
 
 const useTabQuery = (quetyName: string, tabs: Tab[]) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [index, setIndex] = useState(() => {
     const tabTitle = searchParams.get(quetyName);
     const tabIndex = tabs.findIndex(
@@ -14,14 +16,12 @@ const useTabQuery = (quetyName: string, tabs: Tab[]) => {
 
   const handleTabChange = useCallback(
     (id: number) => {
-      setSearchParams((prev) => {
-        const params = new URLSearchParams(prev);
-        params.set(quetyName, tabs[id].title.toLowerCase());
-        return params;
-      });
+      const params = new URLSearchParams();
+      params.set(quetyName, tabs[id].title.toLowerCase());
+      router.push(pathname + "?" + params.toString())
       setIndex(id);
     },
-    [setSearchParams, tabs],
+    [tabs],
   );
 
   return [index, handleTabChange];

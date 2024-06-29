@@ -1,11 +1,11 @@
 @use "inter-ui/default" with (
   $inter-font-display: swap,
-  $inter-font-path: "inter-ui/web"
+  $inter-font-path: "web"
 );
 
 @use "inter-ui/variable" with (
   $inter-font-display: swap,
-  $inter-font-path: "inter-ui/variable"
+  $inter-font-path: "variable"
 );
 
 //  Only include font faces that we need.
