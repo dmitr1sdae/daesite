@@ -1,0 +1,27 @@
+{
+  "name": "@daesite/accounts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@daesite/components": "workspace:packages/components",
+    "@daesite/styles": "workspace:packages/styles",
+    "axios": "^1.7.2",
+    "next": "14.2.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "sass": "^1.77.6",
+    "typescript": "^5.5.2"
+  }
+}

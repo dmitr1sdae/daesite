@@ -49,6 +49,7 @@ lerna-debug.log*
 node_modules
 
 ### Build output ###
+.next
 dist
 build
 release

@@ -1,0 +1,30 @@
+.epic-title {
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  font-size: 4rem;
+  background-size: 400%;
+  background-clip: text;
+  background-position: 0 0;
+  background-image: linear-gradient(
+    -45deg,
+    hsla(194, 80%, 49%, 1),
+    hsla(194, 80%, 49%, 1),
+    hsla(194, 80%, 49%, 1),
+    hsla(287, 67%, 65%, 1),
+    hsla(287, 67%, 65%, 1)
+  );
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: gradient 3.6s ease infinite;
+  }
+}
+
+@keyframes gradient {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+  45% {
+    background-position: 50% 50%;
+  }
+}
