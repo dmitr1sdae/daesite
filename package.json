@@ -11,6 +11,7 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "lerna run build",
     "pretty": "lerna run pretty --parallel",
     "pretty:fix": "lerna run pretty:fix --parallel"
   },
