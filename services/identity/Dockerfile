@@ -1,6 +1,6 @@
 ARG TAG=latest
 
-FROM daesite/base:${TAG} AS builder
+FROM daesite/packages:${TAG} AS builder
 
 WORKDIR /app/services/identity
 
@@ -11,6 +11,7 @@ RUN apt-get update \
   libssl-dev
 
 COPY . .
+ARG SQLX_OFFLINE=true
 
 RUN RUSTFLAGS="-C target-feature=+crt-static" cargo build --target x86_64-unknown-linux-gnu --release
 
@@ -20,5 +21,6 @@ WORKDIR /app
 EXPOSE 8080 8081
 
 COPY --from=builder --chown=nonroot:nonroot /app/services/identity/target/x86_64-unknown-linux-gnu/release/identity /app
+COPY --from=builder  /app/services/identity/migrations/* /app/migrations
 
 ENTRYPOINT ["/app/identity"]
