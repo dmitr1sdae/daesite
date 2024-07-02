@@ -1,5 +1,5 @@
 import {PublicUser} from "@daesite/shared";
-import "./Profile.scss";
+import "../Profile.scss";
 import axios from "axios";
 import {Avatar} from "@daesite/components";
 import {notFound} from "next/navigation";
@@ -12,6 +12,20 @@ interface ProfileProps {
     [key: string]: string | undefined;
   };
 }
+
+export const generateMetadata = async ({params}: ProfileProps) => {
+  const user = await getUserData(params.username);
+
+  if (!user) {
+    return {
+      title: "Page Not Found | dadaya",
+    };
+  }
+
+  return {
+    title: `${user.username} | dadaya`,
+  };
+};
 
 const getUserData = async (username: string) => {
   try {
