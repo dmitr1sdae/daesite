@@ -3,7 +3,7 @@ import {resolve} from "node:path";
 import react from "@vitejs/plugin-react";
 import {defineConfig} from "vite";
 import dts from "vite-plugin-dts";
-import libAssetsPlugin from "@laynezh/vite-plugin-lib-assets";
+import {redaePluginLibAssets} from "@redae/vite-plugin-lib-assets";
 
 export default defineConfig({
   plugins: [
@@ -18,7 +18,7 @@ export default defineConfig({
       rollupTypes: true,
       clearPureImport: true,
     }),
-    libAssetsPlugin(),
+    redaePluginLibAssets(),
     react(),
   ],
   build: {

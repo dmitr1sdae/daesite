@@ -1,6 +1,6 @@
 import "./Logo.scss";
 
-import logo from "../../../../styles/assets/img/brand/dmitr1sdae.webp?url";
+import logo from "@daesite/styles/assets/img/brand/dmitr1sdae.webp?url";
 import {forwardRef, Ref} from "react";
 import {AppLink} from "~/components/Link";
 import {Button} from "~/components/Button";
