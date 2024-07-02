@@ -1783,38 +1783,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@daesite/accounts-bak@workspace:applications/accounts-bak":
-  version: 0.0.0-use.local
-  resolution: "@daesite/accounts-bak@workspace:applications/accounts-bak"
-  dependencies:
-    "@daesite/components": "workspace:packages/components"
-    "@daesite/styles": "workspace:packages/styles"
-    "@types/compression": "npm:^1.7.5"
-    "@types/express": "npm:^4.17.21"
-    "@types/node": "npm:^20.14.9"
-    "@types/react": "npm:^18.3.3"
-    "@types/react-dom": "npm:^18.3.0"
-    "@vitejs/plugin-react": "npm:^4.2.1"
-    axios: "npm:^1.7.2"
-    compression: "npm:^1.7.4"
-    concurrently: "npm:^8.2.2"
-    eslint: "npm:^8.57.0"
-    express: "npm:^4.19.2"
-    json-server: "npm:^1.0.0-beta.1"
-    prettier: "npm:^3.3.2"
-    react: "npm:^18.3.1"
-    react-dom: "npm:^18.3.1"
-    react-router: "npm:^6.24.0"
-    react-router-dom: "npm:^6.24.0"
-    sass: "npm:^1.77.6"
-    terser: "npm:^5.30.3"
-    ttag: "npm:^1.8.6"
-    typescript: "npm:^5.4.3"
-    typewriter-effect: "npm:^2.21.0"
-    vite: "npm:^5.3.2"
-  languageName: unknown
-  linkType: soft
-
 "@daesite/accounts@workspace:applications/accounts":
   version: 0.0.0-use.local
   resolution: "@daesite/accounts@workspace:applications/accounts"
@@ -1825,6 +1793,8 @@ __metadata:
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
     axios: "npm:^1.7.2"
+    concurrently: "npm:^8.2.2"
+    json-server: "npm:^1.0.0-beta.1"
     next: "npm:14.2.4"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
@@ -1850,7 +1820,6 @@ __metadata:
     "@daesite/shared": "workspace:packages/shared"
     "@daesite/styles": "workspace:packages/styles"
     "@daesite/utils": "workspace:packages/utils"
-    "@laynezh/vite-plugin-lib-assets": "npm:^0.5.23"
     "@redae/vite-plugin-lib-assets": "npm:^1.0.0"
     "@storybook/addon-docs": "npm:^8.1.11"
     "@storybook/addon-essentials": "npm:^8.1.11"
@@ -2711,20 +2680,6 @@ __metadata:
     "@jridgewell/resolve-uri": "npm:^3.1.0"
     "@jridgewell/sourcemap-codec": "npm:^1.4.14"
   checksum: 10c0/3d1ce6ebc69df9682a5a8896b414c6537e428a1d68b02fcc8363b04284a8ca0df04d0ee3013132252ab14f2527bc13bea6526a912ecb5658f0e39fd2860b4df4
-  languageName: node
-  linkType: hard
-
-"@laynezh/vite-plugin-lib-assets@npm:^0.5.23":
-  version: 0.5.23
-  resolution: "@laynezh/vite-plugin-lib-assets@npm:0.5.23"
-  dependencies:
-    escape-string-regexp: "npm:^4.0.0"
-    loader-utils: "npm:^3.2.1"
-    mrmime: "npm:^1.0.1"
-    semver: "npm:^7.6.0"
-  peerDependencies:
-    vite: ^3.0.0 || ^4.0.0 || ^5.0.0
-  checksum: 10c0/0781246e87eda329d2c1cd5183864a078a2a8ead0aeb274250433485f02174ebf63c1e39a121196a4ee7d1df9a697b99e92f177b6a5cf05d45c534ea41ba7bd9
   languageName: node
   linkType: hard
 
@@ -5264,15 +5219,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/compression@npm:^1.7.5":
-  version: 1.7.5
-  resolution: "@types/compression@npm:1.7.5"
-  dependencies:
-    "@types/express": "npm:*"
-  checksum: 10c0/3818f3d10cede38a835b40b80c341eae162aef1691f2e8f81178a77dbc109f04234cf760b6066eaa06ecbb1da143433c00db2fd9999198b76cd5a193e1d09675
-  languageName: node
-  linkType: hard
-
 "@types/connect@npm:*":
   version: 3.4.38
   resolution: "@types/connect@npm:3.4.38"
@@ -5375,7 +5321,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express@npm:*, @types/express@npm:^4.17.21, @types/express@npm:^4.7.0":
+"@types/express@npm:^4.7.0":
   version: 4.17.21
   resolution: "@types/express@npm:4.17.21"
   dependencies:
@@ -8368,7 +8314,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express@npm:^4.17.3, express@npm:^4.19.2":
+"express@npm:^4.17.3":
   version: 4.19.2
   resolution: "express@npm:4.19.2"
   dependencies:
@@ -10533,7 +10479,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loader-utils@npm:^3.2.1, loader-utils@npm:^3.3.1":
+"loader-utils@npm:^3.3.1":
   version: 3.3.1
   resolution: "loader-utils@npm:3.3.1"
   checksum: 10c0/f2af4eb185ac5bf7e56e1337b666f90744e9f443861ac521b48f093fb9e8347f191c8960b4388a3365147d218913bc23421234e7788db69f385bacfefa0b4758
@@ -11235,13 +11181,6 @@ __metadata:
   version: 1.0.1
   resolution: "modify-values@npm:1.0.1"
   checksum: 10c0/6acb1b82aaf7a02f9f7b554b20cbfc159f223a79c66b0a257511c5933d50b85e12ea1220b0a90a2af6f80bc29ff784f929a52a51881867a93ae6a12ce87a729a
-  languageName: node
-  linkType: hard
-
-"mrmime@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "mrmime@npm:1.0.1"
-  checksum: 10c0/ab071441da76fd23b3b0d1823d77aacf8679d379a4a94cacd83e487d3d906763b277f3203a594c613602e31ab5209c26a8119b0477c4541ef8555b293a9db6d3
   languageName: node
   linkType: hard
 
