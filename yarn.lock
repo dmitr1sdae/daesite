@@ -1881,22 +1881,16 @@ __metadata:
     "@types/node": "npm:^20.14.9"
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
-    "@vitejs/plugin-react": "npm:^4.2.1"
     axios: "npm:^1.7.2"
     concurrently: "npm:^8.2.2"
-    eslint: "npm:^8.57.0"
     json-server: "npm:^1.0.0-beta.1"
-    prettier: "npm:^3.3.2"
+    next: "npm:14.2.4"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
-    react-router: "npm:^6.24.0"
-    react-router-dom: "npm:^6.24.0"
     sass: "npm:^1.77.6"
-    terser: "npm:^5.30.3"
-    ttag: "npm:^1.8.6"
-    typescript: "npm:^5.4.3"
+    sharp: "npm:^0.33.4"
+    typescript: "npm:^5.5.2"
     typewriter-effect: "npm:^2.21.0"
-    vite: "npm:^5.3.2"
   languageName: unknown
   linkType: soft
 
@@ -2653,16 +2647,6 @@ __metadata:
   version: 1.2.1
   resolution: "@jridgewell/set-array@npm:1.2.1"
   checksum: 10c0/2a5aa7b4b5c3464c895c802d8ae3f3d2b92fcbe84ad12f8d0bfbb1f5ad006717e7577ee1fd2eac00c088abe486c7adb27976f45d2941ff6b0b92b2c3302c60f4
-  languageName: node
-  linkType: hard
-
-"@jridgewell/source-map@npm:^0.3.3":
-  version: 0.3.6
-  resolution: "@jridgewell/source-map@npm:0.3.6"
-  dependencies:
-    "@jridgewell/gen-mapping": "npm:^0.3.5"
-    "@jridgewell/trace-mapping": "npm:^0.3.25"
-  checksum: 10c0/6a4ecc713ed246ff8e5bdcc1ef7c49aaa93f7463d948ba5054dda18b02dcc6a055e2828c577bcceee058f302ce1fc95595713d44f5c45e43d459f88d267f2f04
   languageName: node
   linkType: hard
 
@@ -3693,13 +3677,6 @@ __metadata:
   peerDependencies:
     vite: ^3.0.0 || ^4.0.0 || ^5.0.0
   checksum: 10c0/d1d0c12f48de82bfe6cfcb70ccfc9bee40728f8b83eac7a20930daa5ae2b3ceefbd526bd1e02840d0b4216c2d8e74fd9fe91f66cb1cd93b9c8f85bd0cd42c47c
-  languageName: node
-  linkType: hard
-
-"@remix-run/router@npm:1.17.0":
-  version: 1.17.0
-  resolution: "@remix-run/router@npm:1.17.0"
-  checksum: 10c0/6f39cb81c5dec3d3cb901cfc05ef1c745d23192def7d83e6d1a53c43cbb5d7ff488055fd1418ac72f904ff41b3d3ca339d223677994150f276c648123ce166f7
   languageName: node
   linkType: hard
 
@@ -5944,7 +5921,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:^8.8.2, acorn@npm:^8.9.0":
+"acorn@npm:^8.9.0":
   version: 8.11.3
   resolution: "acorn@npm:8.11.3"
   bin:
@@ -6915,13 +6892,6 @@ __metadata:
   dependencies:
     delayed-stream: "npm:~1.0.0"
   checksum: 10c0/0dbb829577e1b1e839fa82b40c07ffaf7de8a09b935cadd355a73652ae70a88b4320db322f6634a4ad93424292fa80973ac6480986247f1734a1137debf271d5
-  languageName: node
-  linkType: hard
-
-"commander@npm:^2.20.0":
-  version: 2.20.3
-  resolution: "commander@npm:2.20.3"
-  checksum: 10c0/74c781a5248c2402a0a3e966a0a2bba3c054aad144f5c023364be83265e796b20565aa9feff624132ff629aa64e16999fa40a743c10c12f7c61e96a794b99288
   languageName: node
   linkType: hard
 
@@ -12828,30 +12798,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^6.24.0":
-  version: 6.24.0
-  resolution: "react-router-dom@npm:6.24.0"
-  dependencies:
-    "@remix-run/router": "npm:1.17.0"
-    react-router: "npm:6.24.0"
-  peerDependencies:
-    react: ">=16.8"
-    react-dom: ">=16.8"
-  checksum: 10c0/2cb41120c1ff58fd1e187807214cf581e78e2845e5f411aa6a04f4748bd100431fd1ac5f8a45db281ea03d0d2354b66896b938c0b77adf7b343a6c1be52411de
-  languageName: node
-  linkType: hard
-
-"react-router@npm:6.24.0, react-router@npm:^6.24.0":
-  version: 6.24.0
-  resolution: "react-router@npm:6.24.0"
-  dependencies:
-    "@remix-run/router": "npm:1.17.0"
-  peerDependencies:
-    react: ">=16.8"
-  checksum: 10c0/ad9c924d16dc4f5c90dff588e9a69d37488d2ad537de1ddbdf3b68561658c6e3fd1b8b12d16d50f19177f6547748c54e948d477e921f9230799ac71acfec24cf
-  languageName: node
-  linkType: hard
-
 "react-style-singleton@npm:^2.2.1":
   version: 2.2.1
   resolution: "react-style-singleton@npm:2.2.1"
@@ -13739,7 +13685,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map-support@npm:^0.5.16, source-map-support@npm:~0.5.20":
+"source-map-support@npm:^0.5.16":
   version: 0.5.21
   resolution: "source-map-support@npm:0.5.21"
   dependencies:
@@ -14224,20 +14170,6 @@ __metadata:
     type-fest: "npm:^2.12.2"
     unique-string: "npm:^3.0.0"
   checksum: 10c0/b88e70baa8d935ba8f0e0372b59ad1a961121f098da5fb4a6e05bec98ec32a49026b553532fb75c1c102ec782fd4c6a6bde0d46cbe87013fa324451ce476fb76
-  languageName: node
-  linkType: hard
-
-"terser@npm:^5.30.3":
-  version: 5.31.1
-  resolution: "terser@npm:5.31.1"
-  dependencies:
-    "@jridgewell/source-map": "npm:^0.3.3"
-    acorn: "npm:^8.8.2"
-    commander: "npm:^2.20.0"
-    source-map-support: "npm:~0.5.20"
-  bin:
-    terser: bin/terser
-  checksum: 10c0/4d49a58f64c11f3742e779a0a03aff69972ca5739decb361d909d22c8f3f7d8e2ec982a928d987d56737ad50229e8ab3f62d8ba993e4b5f360a53ed487d3c06c
   languageName: node
   linkType: hard
 

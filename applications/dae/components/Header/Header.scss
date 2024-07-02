@@ -22,18 +22,10 @@
   justify-content: space-between;
 }
 
-.buttons {
-  display: flex;
-  gap: rem(16);
-}
-
-.header1 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 rem(24);
-  max-width: rem(1280);
-  min-height: rem(80);
+.icon-button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
 }
 
 .links {

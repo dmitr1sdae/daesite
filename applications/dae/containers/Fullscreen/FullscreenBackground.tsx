@@ -1,13 +1,14 @@
+import Image, {StaticImageData} from "next/image";
 import "./FullscreenBackground.scss";
 
 interface FullscreenBackgroundProps {
-  src: string;
+  src: StaticImageData;
 }
 
 const FullscreenBackground = ({src}: FullscreenBackgroundProps) => {
   return (
     <div className="background">
-      <img src={src} alt="" />
+      <Image src={src} alt="" />
     </div>
   );
 };

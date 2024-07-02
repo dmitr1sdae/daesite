@@ -4,34 +4,28 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"json-server db.json\" \"vite\"",
-    "pretty": "prettier --check $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o -print)",
-    "pretty:fix": "prettier --write $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o -print)",
-    "json-serve": "json-server db.json"
+    "build": "next build",
+    "dev": "concurrently \"json-server db.json\" \"next dev\"",
+    "lint": "next lint",
+    "start": "next start"
   },
   "dependencies": {
     "@daesite/components": "workspace:packages/components",
     "@daesite/styles": "workspace:packages/styles",
     "axios": "^1.7.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router": "^6.22.3",
-    "react-router-dom": "^6.22.3",
-    "ttag": "^1.8.6",
+    "next": "14.2.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.33.4",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
-    "@types/node": "^20.12.3",
-    "@types/react": "^18.2.74",
-    "@types/react-dom": "^18.2.23",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "concurrently": "^8.2.2",
-    "eslint": "^8.57.0",
     "json-server": "^1.0.0-beta.1",
-    "prettier": "^3.2.5",
-    "sass": "^1.72.0",
-    "terser": "^5.30.3",
-    "typescript": "^5.4.3",
-    "vite": "^5.2.8"
+    "sass": "^1.77.6",
+    "typescript": "^5.5.2"
   }
 }

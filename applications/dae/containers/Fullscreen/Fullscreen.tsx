@@ -3,10 +3,11 @@ import "./Fullscreen.scss";
 import {ReactNode} from "react";
 
 import FullscreenBackground from "./FullscreenBackground";
+import {StaticImageData} from "next/image";
 
 type FullscreenProps = {
-  children: ReactNode;
-  background?: string;
+  children?: ReactNode;
+  background?: StaticImageData;
 };
 
 const Fullscreen = ({children, background}: FullscreenProps) => {

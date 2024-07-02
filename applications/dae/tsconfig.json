@@ -1,14 +1,21 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "types": ["vite/client"],
     "paths": {
-      "@components": ["src/app/components/index.ts"],
-      "@containers": ["src/app/containers/index.ts"],
-      "@pages/*": ["src/pages/*"],
-      "@helpers/*": ["src/helpers/*"],
-      "@helpers": ["src/helpers/index.ts"]
-    }
+      "~/*": ["*"],
+      "@components/*": ["components/*"],
+      "@containers/*": ["containers/*"],
+      "@helpers/*": ["helpers/*"]
+    },
+    "incremental": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
-  "extends": "../../tsconfig.base.json"
+  "extends": "../../tsconfig.base.json",
+  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"]
 }
