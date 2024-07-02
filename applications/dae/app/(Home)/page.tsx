@@ -1,6 +1,5 @@
 import "./Home.scss";
 import {Fullscreen} from "@containers/Fullscreen";
-import {PageLayout} from "@containers/PageLayout";
 import background from "@daesite/styles/assets/img/brand/background.png";
 import power from "@daesite/styles/assets/img/brand/power.webp";
 import {Typewriter} from "@components/Typewriter";
@@ -21,7 +20,7 @@ const Home = async () => {
   const tags = await getTags();
 
   return (
-    <PageLayout>
+    <div>
       <Fullscreen background={background}>
         <div className="text">
           <h1 className="title">Dadaya&apos;s Blog</h1>
@@ -35,7 +34,7 @@ const Home = async () => {
       </Fullscreen>
       <Fullscreen />
       <Fullscreen />
-    </PageLayout>
+    </div>
   );
 };
 
