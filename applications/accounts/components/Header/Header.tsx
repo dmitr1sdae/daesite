@@ -1,7 +1,5 @@
 "use client";
 
-import "./Header.scss";
-
 import {Avatar, Logo, AppLink, Icon, Menu, Button} from "@daesite/components";
 import {HTMLAttributes, useState} from "react";
 
@@ -11,7 +9,7 @@ const Header = ({...restProps}: HeaderProps) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="header" {...restProps}>
+    <header className="top-0 right-0 left-0 w-full header" {...restProps}>
       <Menu open={open} onClose={() => setOpen(!open)}>
         <div className="flex flex-column items-center gap-4">
           <Avatar
@@ -41,6 +39,10 @@ const Header = ({...restProps}: HeaderProps) => {
           Your projects
         </Button>
         <Button fullWidth className="flex gap-2 justify-center items-center">
+          <Icon size={16} name="email" />
+          Email
+        </Button>
+        <Button fullWidth className="flex gap-2 justify-center items-center">
           <Icon size={16} name="experiments" />
           Experiments
         </Button>
@@ -53,7 +55,7 @@ const Header = ({...restProps}: HeaderProps) => {
           Settings
         </Button>
       </Menu>
-      <nav className="navbar">
+      <nav className="flex flex-auto justify-space-between items-center mx-auto px-10 navbar">
         <Logo application="accounts" to="/@me" />
         <div className="flex items-center gap-5">
           <div className="flex gap-4">

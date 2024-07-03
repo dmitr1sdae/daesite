@@ -1,0 +1,17 @@
+.header {
+  position: fixed;
+  z-index: 6666;
+  display: flex;
+  backdrop-filter: blur(5px);
+}
+
+.navbar {
+  height: rem(80);
+  max-width: rem(1280);
+}
+
+.icon-button {
+  width: rem(40);
+  height: rem(40);
+  padding: 0;
+}

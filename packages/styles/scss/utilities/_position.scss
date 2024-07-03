@@ -13,8 +13,51 @@
       z-index: 1
     ),
 
+    sticky: (
+      position: sticky,
+      z-index: 1
+    ),
+
     fixed: (
       position: fixed
     )
   )
 );
+
+.inset-0 {
+  inset: 0;
+}
+
+.inset-center {
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.inset-x-center {
+  inset-inline-start: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.inset-y-center {
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+}
+
+.top-0 {
+  inset-block-start: 0;
+}
+
+.bottom-0 {
+  inset-block-end: 0;
+}
+
+.left-0,
+.start-0 {
+  inset-inline-start: 0;
+}
+
+.right-0,
+.end-0 {
+  inset-inline-end: 0;
+}

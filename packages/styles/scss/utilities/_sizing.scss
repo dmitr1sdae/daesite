@@ -1,0 +1,48 @@
+@use "sass:math";
+@use "sass:map";
+
+.\*\:min-size-auto > * {
+  min-block-size: auto;
+  min-inline-size: auto;
+}
+
+// ----------------------------------------------------------------------------
+
+@function pixel-to-rem($value) {
+  @return if(type-of($value) == "number" and unitless($value), rem($value), $value);
+}
+
+$dummy-map: ();
+
+@each $direction, $property in (w: inline, h: block) {
+  @each $boundary in (min, "", max) {
+    // Common property name
+    $propname: dash-join($boundary, $property, "size");
+
+    // Framework
+    @each $sizingname, $size in ("0": 0, "px": "1px", "2": 8, "4": 16, "full": 100%, "auto": "auto", "none": "none") {
+      @if not(($sizingname == "auto" and $boundary != "") or ($sizingname == "none" and $boundary == "")) {
+        $classname: dash-join($boundary, $direction, $sizingname);
+        $value: pixel-to-rem($size);
+        $dummy-map: map.merge($dummy-map, (#{$classname}: (#{$propname}: #{$value})));
+      }
+    }
+
+    // Fractions
+    @if $direction == "w" {
+      @each $i in (2, 3, 4, 5, 6, 10) {
+        @for $j from 1 through $i - 1 {
+          $classname: dash-join($boundary, $direction, $j + "\\\/" + $i);
+          $value: math.div($j, $i) * 100%;
+          $dummy-map: map.merge($dummy-map, (#{$classname}: (#{$propname}: #{$value})));
+        }
+      }
+    }
+
+    $classname: dash-join($boundary, $direction, "custom");
+    $value: var(--#{"[BPN]" + $classname});
+    $dummy-map: map.merge($dummy-map, (#{$classname}: (#{$propname}: #{$value})));
+  }
+}
+
+@include responsive-classes($dummy-map);
