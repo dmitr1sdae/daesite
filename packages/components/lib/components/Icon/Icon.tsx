@@ -34,7 +34,8 @@ export type IconName =
   | "experiments"
   | "projects"
   | "close"
-  | "settings";
+  | "settings"
+  | "email";
 
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, "ref"> {
   /**
