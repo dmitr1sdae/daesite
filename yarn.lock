@@ -1789,6 +1789,7 @@ __metadata:
   dependencies:
     "@daesite/components": "workspace:packages/components"
     "@daesite/styles": "workspace:packages/styles"
+    "@redae/nextjs-combine-middleware": "npm:^1.0.0"
     "@types/node": "npm:^20.14.9"
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
@@ -3666,6 +3667,15 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10c0/13cd0c38395c5838bc9a18238020d3bcf67fb340039e6d1cbf438be1b91d64cf6900b78121f3dc9219faeb40dcc7b523ce0f17e4a41631655690e5a30a40886a
+  languageName: node
+  linkType: hard
+
+"@redae/nextjs-combine-middleware@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@redae/nextjs-combine-middleware@npm:1.0.0"
+  peerDependencies:
+    next: ^14.0.0
+  checksum: 10c0/7c6de5d3b3315ef81582db5b0b25ab9ada8f34e67bc09cc54ddd54b2e9f60392597539bf1187a57b33688b6b2150a52a468acf8bd13745ad69d51f816a22b326
   languageName: node
   linkType: hard
 
