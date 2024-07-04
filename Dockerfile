@@ -13,4 +13,6 @@ WORKDIR ${ROOT_DIR}
 
 COPY . .
 
-RUN yarn build
+RUN yarn install
+
+ENTRYPOINT [ "yarn", "build" ]

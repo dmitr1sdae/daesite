@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"json-server db.json\" \"next dev\"",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "concurrently \"json-server db.json\" \"next dev\"",
+    "lint": "next lint",
+    "start": "next start"
   },
   "dependencies": {
     "@daesite/components": "workspace:packages/components",

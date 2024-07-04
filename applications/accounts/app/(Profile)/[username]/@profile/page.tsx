@@ -47,7 +47,7 @@ export default async ({params, searchParams}: ProfileProps) => {
   }
 
   return (
-    <div className="page">
+    <div className="profile-page page">
       <h1>{user.username}</h1>
       <Avatar size="huge" src={user.avatar} fallback={user.username} />
     </div>

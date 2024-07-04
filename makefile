@@ -7,7 +7,7 @@ IMAGE_DIRS = $(wildcard services/* applications/*)
 
 all: ${IMAGE_DIRS} base proto packages
 
-${IMAGE_DIRS}: proto packages
+${IMAGE_DIRS}: base proto packages
 	$(eval IMAGE_NAME := $(word 2,$(subst /, ,$@)))
 	docker build -t daesite/${IMAGE_NAME}:${IMAGES_TAG} -t daesite/${IMAGE_NAME}:latest --build-arg TAG=${IMAGES_TAG} -- $@
 
