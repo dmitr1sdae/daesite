@@ -1,0 +1,5 @@
+### Protobuf ###
+*.rs
+
+### Rust Modules ###
+!mod.rs

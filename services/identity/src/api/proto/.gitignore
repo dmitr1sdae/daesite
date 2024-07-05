@@ -1,0 +1,9 @@
+### Protobuf ###
+*.rs
+
+### ignore files ###
+!.gitignore
+!.dockerignore
+
+### Rust Modules ###
+!mod.rs
