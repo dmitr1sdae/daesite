@@ -1,0 +1,22 @@
+@import "@daesite/styles/scss/lib";
+
+.popup-menu {
+  position: absolute;
+  scale: 0.75;
+  border: 1px solid var(--border-weak);
+  padding: rem(8);
+  width: fit-content;
+  border-radius: var(--border-radius-md);
+  background-color: var(--background-weak);
+  box-shadow:
+    2px 2px 24px 0px rgba(0, 0, 0, 0.15),
+    3px 6px 48px 16px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s, scale 0.3s;
+
+  &.active {
+    opacity: 1;
+    scale: 1;
+  }
+}
