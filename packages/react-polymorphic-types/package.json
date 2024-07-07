@@ -27,7 +27,7 @@
     "eslint": "^8.57.0",
     "prettier": "^3.3.2",
     "tsup": "^8.0.2",
-    "typescript": "^5.4.3"
+    "typescript": "5.4.3"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.52"

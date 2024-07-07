@@ -26,6 +26,6 @@
     "concurrently": "^8.2.2",
     "json-server": "^1.0.0-beta.1",
     "sass": "^1.77.6",
-    "typescript": "^5.5.2"
+    "typescript": "5.4.3"
   }
 }
