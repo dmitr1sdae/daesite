@@ -29,12 +29,7 @@ const Logo = forwardRef(
           className="glyph rounded-full overflow-hidden"
           tabIndex={0}
         >
-          <Image
-            src={logo}
-            alt="dmitr1sdae"
-            height="48"
-            width="48"
-          />
+          <Image src={logo} alt="dmitr1sdae" height="48" width="48" />
         </AppLink>
         {application && to && (
           <div className="flex items-center gap-1">

@@ -5,7 +5,7 @@ import {ThemeColor, ThemeColorUnion} from "@daesite/shared";
 import {clsx} from "@daesite/utils";
 import {ElementType, ForwardedRef, forwardRef} from "react";
 
-import {CircleLoader} from "~/components";
+import {CircleLoader} from "~/components/CircleLoader";
 
 export type ButtonShape = "ghost" | "solid" | "outline";
 
