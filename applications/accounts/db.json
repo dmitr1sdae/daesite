@@ -9,6 +9,11 @@
       "id": "plazyplay",
       "username": "PlazyPlay",
       "avatar": "https://avatars.githubusercontent.com/u/144049702"
+    },
+    {
+      "id": "test_no_avatar",
+      "username": "test_no_avatar",
+      "avatar": null
     }
   ]
 }
