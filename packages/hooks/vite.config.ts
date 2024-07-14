@@ -3,8 +3,6 @@ import {resolve} from "path";
 import {defineConfig} from "vite";
 import dts from "vite-plugin-dts";
 
-import preserveDirectives from "rollup-plugin-preserve-directives";
-
 export default defineConfig({
   plugins: [
     dts({
@@ -26,7 +24,6 @@ export default defineConfig({
       output: {
         preserveModules: true,
       },
-      plugins: [preserveDirectives()],
       external: [
         "react",
         "react-is",

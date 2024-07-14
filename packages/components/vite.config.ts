@@ -5,6 +5,87 @@ import dts from "vite-plugin-dts";
 import {redaePluginLibAssets} from "@redae/vite-plugin-lib-assets";
 import preserveDirectives from "rollup-plugin-preserve-directives";
 import {readFileSync, writeFileSync} from "node:fs";
+import fs from "fs";
+import path from "path";
+import {createHash} from "crypto";
+import {Plugin} from "vite";
+
+interface Asset {
+  count: number;
+  content: string;
+  ext: string;
+}
+
+function inlineAssetsPlugin(): Plugin {
+  const assetsDir = "assets";
+  const assetMap = new Map<string, Asset>();
+
+  function hashContent(content: string | Buffer): string {
+    return createHash("md5").update(content).digest("hex").slice(0, 8);
+  }
+
+  return {
+    name: "vite-plugin-inline-assets",
+    enforce: "pre",
+    async transform(code: string, id: string) {
+      if (!code.includes("?raw")) {
+        return;
+      }
+
+      const regex = /import\s+(\w+)\s+from\s+['"](.+?\?raw)['"]/g;
+      let result = code;
+      let match: RegExpExecArray | null;
+
+      while ((match = regex.exec(code)) !== null) {
+        const [importStatement, variableName, importPath] = match;
+        const rawPath = importPath.replace("?raw", "");
+        const resolved = await this.resolve(rawPath);
+
+        if (!resolved) {
+          throw new Error(`Could not resolve path: ${rawPath}`);
+        }
+
+        const filePath = resolved.id || "";
+        const ext = path.extname(filePath);
+
+        if (!fs.existsSync(filePath)) {
+          throw new Error(`File not found: ${filePath}`);
+        }
+
+        let fileContent: string;
+        if (ext === ".svg") {
+          fileContent = fs.readFileSync(filePath, "utf-8").replace(/\s/g, "");
+        } else {
+          const buffer = fs.readFileSync(filePath);
+          fileContent = buffer.toString("base64");
+        }
+
+        const contentHash = hashContent(fileContent);
+        const assetName = `${path.basename(filePath, ext)}.${contentHash}${ext}`;
+        const assetPath = path.join(assetsDir, assetName);
+
+        if (!assetMap.has(assetPath)) {
+          assetMap.set(assetPath, {
+            count: 1,
+            content: fileContent,
+            ext,
+          });
+        } else {
+          assetMap.get(assetPath)!.count++;
+        }
+
+        const replacement =
+          ext === ".svg"
+            ? `const ${variableName} = ${JSON.stringify(fileContent)};`
+            : `const ${variableName} = "data:image/${ext.slice(1)};base64,${fileContent}";`;
+
+        result = result.replace(importStatement, replacement);
+      }
+
+      return result;
+    },
+  };
+}
 
 export default defineConfig({
   plugins: [
@@ -21,6 +102,7 @@ export default defineConfig({
       clearPureImport: true,
     }),
     redaePluginLibAssets(),
+    inlineAssetsPlugin(),
     react(),
     {
       name: "vite-inject-css",
@@ -63,6 +145,7 @@ export default defineConfig({
         "@daesite/utils",
         "@daesite/shared",
         "@daesite/styles",
+        "@daesite/hooks",
       ],
     },
   },
