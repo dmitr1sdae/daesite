@@ -1,3 +1,5 @@
+"use client";
+
 import "./Avatar.scss";
 
 import {clsx} from "@daesite/utils";
@@ -21,7 +23,7 @@ interface AvatarFallbackProps extends HTMLProps<HTMLSpanElement> {
 }
 
 const AvatarFallback = (
-  {delayMs = 200, ...restProps}: AvatarFallbackProps,
+  {delayMs = 20, ...restProps}: AvatarFallbackProps,
   ref: ForwardedRef<HTMLSpanElement>,
 ) => {
   const {imageLoadingStatus} = useContext(AvatarContext);

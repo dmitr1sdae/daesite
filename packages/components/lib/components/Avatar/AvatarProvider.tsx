@@ -1,3 +1,5 @@
+"use client";
+
 import "./Avatar.scss";
 
 import {PolymorphicPropsWithRef} from "@daesite/react-polymorphic-types";

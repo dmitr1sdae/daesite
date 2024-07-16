@@ -6,9 +6,9 @@
     --focus-outline: var(--norm-major-2);
     overflow: hidden;
 
-    border: em(1);
-    width: em(64);
-    height: em(64);
+    border: rem(1);
+    width: rem(64);
+    height: rem(64);
     transition:
       0.15s easing(ease-out-quint),
       background-position 0s;
@@ -46,14 +46,14 @@
   }
 
   &-img {
-    width: em(64);
-    height: em(64);
+    width: rem(64);
+    height: rem(64);
   }
 
   &-fallback {
     text-transform: uppercase;
     color: var(--primary-contrast);
-    font-size: em(32);
+    font-size: rem(32);
   }
 }
 
@@ -61,28 +61,28 @@
  * Modifiers
  */
 .avatar-small {
-  width: em(32);
-  height: em(32);
+  width: rem(32);
+  height: rem(32);
 
   & .avatar-fallback {
-    font-size: em(16);
+    font-size: rem(16);
   }
 }
 
 .avatar-large {
-  width: em(128);
-  height: em(128);
+  width: rem(128);
+  height: rem(128);
 
   & .avatar-fallback {
-    font-size: em(64);
+    font-size: rem(64);
   }
 }
 
 .avatar-huge {
-  width: em(296);
-  height: em(296);
+  width: rem(296);
+  height: rem(296);
 
   & .avatar-fallback {
-    font-size: em(148);
+    font-size: rem(148);
   }
 }

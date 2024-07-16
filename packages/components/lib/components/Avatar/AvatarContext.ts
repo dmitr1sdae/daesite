@@ -1,3 +1,5 @@
+"use client";
+
 import {noop} from "@daesite/utils";
 import {createContext} from "react";
 

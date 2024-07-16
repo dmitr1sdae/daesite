@@ -1,16 +1,13 @@
+"use client";
+
 import "./Avatar.scss";
 
 import {clsx} from "@daesite/utils";
-import {
-  ForwardedRef,
-  forwardRef,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import {ForwardedRef, forwardRef, useContext, useState} from "react";
 
 import {AvatarSize} from "./Avatar";
 import AvatarContext, {ImageLoadingStatus} from "./AvatarContext";
+import {useCallbackRef, useSafeLayoutEffect} from "@daesite/hooks";
 
 interface AvatarImageProps {
   /**
@@ -31,11 +28,11 @@ interface AvatarImageProps {
   "data-testid"?: string;
 }
 
-const useImageLoadingStatus = (src?: string) => {
+const useImage = (src?: string) => {
   const [loadingStatus, setLoadingStatus] =
     useState<ImageLoadingStatus>("idle");
 
-    useEffect(() => {
+  useSafeLayoutEffect(() => {
     if (!src) {
       setLoadingStatus("error");
       return;
@@ -45,10 +42,7 @@ const useImageLoadingStatus = (src?: string) => {
     const image = new window.Image();
 
     const updateStatus = (status: ImageLoadingStatus) => () => {
-      if (!isMounted) {
-        return;
-      }
-
+      if (!isMounted) return;
       setLoadingStatus(status);
     };
 
@@ -70,13 +64,18 @@ const AvatarImage = (
   ref: ForwardedRef<HTMLImageElement>,
 ) => {
   const {onImageLoadingStatusChange} = useContext(AvatarContext);
-  const imageLoadingStatus = useImageLoadingStatus(src);
+  const imageStatus = useImage(src);
+  const handleLoadingStatusChange = useCallbackRef(
+    (status: ImageLoadingStatus) => {
+      onImageLoadingStatusChange(status);
+    },
+  );
 
-  useEffect(() => {
-    if (imageLoadingStatus !== "idle") {
-      onImageLoadingStatusChange(imageLoadingStatus);
+  useSafeLayoutEffect(() => {
+    if (imageStatus !== "idle") {
+      handleLoadingStatusChange(imageStatus);
     }
-  }, [imageLoadingStatus]);
+  }, [imageStatus, handleLoadingStatusChange]);
 
   const avatarClassName = clsx(
     "avatar-img",
@@ -84,7 +83,7 @@ const AvatarImage = (
     size !== "medium" && `avatar-${size}`,
   );
 
-  return imageLoadingStatus === "loaded" ? (
+  return imageStatus === "loaded" ? (
     <img
       className={avatarClassName}
       {...restProps}
