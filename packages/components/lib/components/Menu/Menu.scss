@@ -32,6 +32,7 @@
   overflow: hidden;
   transform: translate(rem(420));
   transition: transform 0.3s;
+  border-left: 1px solid var(--border-weak);
   background: var(--background-weak);
   padding: rem(24) rem(32);
   overflow-y: scroll;
