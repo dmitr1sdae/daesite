@@ -1,0 +1,11 @@
+@import "@daesite/styles/scss/lib";
+
+.items {
+  position: relative;
+}
+
+.popup-menu {
+  position: absolute;
+  top: rem(70);
+  right: rem(10);
+}

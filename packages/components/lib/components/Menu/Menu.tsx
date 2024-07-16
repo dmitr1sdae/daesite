@@ -1,3 +1,5 @@
+"use client";
+
 import {clsx} from "@daesite/utils";
 import "./Menu.scss";
 import {Button} from "~/components/Button";

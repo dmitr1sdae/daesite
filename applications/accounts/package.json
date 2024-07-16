@@ -10,8 +10,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@daesite/components": "workspace:packages/components",
-    "@daesite/styles": "workspace:packages/styles",
+    "@daesite/components": "workspace:^",
+    "@daesite/styles": "workspace:^",
     "axios": "^1.7.2",
     "next": "14.2.5",
     "react": "^18.3.1",

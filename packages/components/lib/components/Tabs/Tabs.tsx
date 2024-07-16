@@ -1,9 +1,10 @@
-import {CSSProperties, ReactNode, useEffect, useRef, useState} from "react";
-
-import {equivalentReducer} from "~/hooks/useElementRect";
-import {clamp, clsx, debounce} from "@daesite/utils";
+"use client";
 
 import "./Tabs.scss";
+
+import {CSSProperties, ReactNode, useEffect, useRef, useState} from "react";
+import {equivalentReducer} from "@daesite/hooks";
+import {clamp, clsx, debounce} from "@daesite/utils";
 
 const toKey = (index: number, prefix = "") => `${prefix}${index}`;
 

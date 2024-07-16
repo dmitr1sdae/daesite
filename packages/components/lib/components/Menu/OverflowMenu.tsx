@@ -1,6 +1,6 @@
-import {ReactNode} from "react";
 import "./OverflowMenu.scss";
 
+import {ReactNode} from "react";
 import {clsx} from "@daesite/utils";
 
 type OverflowMenuProps = {

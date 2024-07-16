@@ -1,4 +1,4 @@
-import {EpicTitle} from "@components/EpicTitle";
+import {EpicTitle} from "~/components/EpicTitle";
 import {AppLink} from "@daesite/components";
 import {Metadata} from "next/types";
 

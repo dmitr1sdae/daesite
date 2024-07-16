@@ -1,4 +1,3 @@
-import "@daesite/components/style";
 import "./global.scss";
 import {Icons} from "@daesite/components";
 import {ReactNode} from "react";
