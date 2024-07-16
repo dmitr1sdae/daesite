@@ -1,7 +1,7 @@
 "use client";
 
 import "./Header.scss";
-import {HTMLAttributes, useState} from "react";
+import {HTMLAttributes, useRef, useState} from "react";
 import {
   Avatar,
   OverflowMenu,
@@ -11,10 +11,12 @@ import {
   Logo,
   AppLink,
 } from "@daesite/components";
+import {useClickOutside} from "@daesite/hooks";
 
 export interface HeaderProps extends HTMLAttributes<HTMLElement> {}
 
 const Header = ({...restProps}: HeaderProps) => {
+  const menuToggleRef = useRef(null);
   const [menus, setMenus] = useState({
     menu: false,
     popup: false,
@@ -25,7 +27,7 @@ const Header = ({...restProps}: HeaderProps) => {
       <Menu
         open={menus.menu}
         onClose={() =>
-          setMenus((menues) => ({menu: !menues.menu, popup: menues.popup}))
+          setMenus(() => ({menu: false, popup: false}))
         }
       >
         <div className="flex flex-column items-center gap-4">
@@ -40,7 +42,7 @@ const Header = ({...restProps}: HeaderProps) => {
           as={AppLink}
           to="/@me"
           onClick={() =>
-            setMenus((menues) => ({menu: !menues.menu, popup: menues.popup}))
+            setMenus((menues) => ({menu: !menues.menu, popup: false}))
           }
           fullWidth
           className="flex gap-2 justify-center items-center"
@@ -85,11 +87,12 @@ const Header = ({...restProps}: HeaderProps) => {
               <Icon size={20} name="settings" />
             </Button>
             <Button
+              ref={menuToggleRef}
               shape="ghost"
               className="icon-button"
               onClick={() =>
                 setMenus((menues) => ({
-                  menu: menues.menu,
+                  menu: false,
                   popup: !menues.popup,
                 }))
               }
@@ -103,13 +106,19 @@ const Header = ({...restProps}: HeaderProps) => {
             size="small"
             as="button"
             onClick={() =>
-              setMenus((menues) => ({menu: !menues.menu, popup: menues.popup}))
+              setMenus((menues) => ({menu: !menues.menu, popup: false}))
             }
           />
           <OverflowMenu
+            ref={useClickOutside<HTMLDivElement>(() => {
+              setMenus(() => ({
+                menu: false,
+                popup: false,
+              }));
+            }, menuToggleRef)}
             open={menus.popup}
             onClose={() =>
-              setMenus((menues) => ({menu: menues.menu, popup: !menues.popup}))
+              setMenus(() => ({menu: false, popup: false}))
             }
           >
             <Avatar

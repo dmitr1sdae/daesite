@@ -1,6 +1,6 @@
 import "./OverflowMenu.scss";
 
-import {ReactNode} from "react";
+import {forwardRef, ReactNode, Ref} from "react";
 import {clsx} from "@daesite/utils";
 
 type OverflowMenuProps = {
@@ -16,12 +16,12 @@ type OverflowMenuProps = {
   onClose: () => void;
 };
 
-const OverflowMenu = ({open, onClose, children}: OverflowMenuProps) => {
+const OverflowMenu = ({open, onClose, children}: OverflowMenuProps, ref: Ref<HTMLDivElement>,) => {
   return (
-    <div className={clsx("popup-menu", open && "active")}>
+    <div ref={ref} className={clsx("popup-menu", open && "active")}>
       {children}
     </div>
   )
 };
 
-export default OverflowMenu;
+export default forwardRef(OverflowMenu);

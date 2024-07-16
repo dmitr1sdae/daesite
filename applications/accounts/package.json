@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@daesite/components": "workspace:^",
+    "@daesite/hooks": "workspace:^",
     "@daesite/styles": "workspace:^",
     "axios": "^1.7.2",
     "next": "14.2.5",
