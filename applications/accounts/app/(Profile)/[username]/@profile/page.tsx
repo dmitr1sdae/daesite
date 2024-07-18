@@ -18,12 +18,12 @@ export const generateMetadata = async ({params}: ProfileProps) => {
 
   if (!user) {
     return {
-      title: "Page Not Found | dadaya",
+      title: "Page Not Found - dadaya",
     };
   }
 
   return {
-    title: `${user.username} | dadaya`,
+    title: `${user.username} - dadaya`,
   };
 };
 

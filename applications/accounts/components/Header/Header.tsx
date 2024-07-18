@@ -11,12 +11,11 @@ import {
   Logo,
   AppLink,
 } from "@daesite/components";
-import {useClickOutside} from "@daesite/hooks";
 
 export interface HeaderProps extends HTMLAttributes<HTMLElement> {}
 
 const Header = ({...restProps}: HeaderProps) => {
-  const menuToggleRef = useRef(null);
+  const menuButtonRef = useRef(null);
   const [menus, setMenus] = useState({
     menu: false,
     popup: false,
@@ -26,9 +25,7 @@ const Header = ({...restProps}: HeaderProps) => {
     <header className="top-0 right-0 left-0 w-full header" {...restProps}>
       <Menu
         open={menus.menu}
-        onClose={() =>
-          setMenus(() => ({menu: false, popup: false}))
-        }
+        onClose={() => setMenus(() => ({menu: false, popup: false}))}
       >
         <div className="flex flex-column items-center gap-4">
           <Avatar
@@ -87,7 +84,7 @@ const Header = ({...restProps}: HeaderProps) => {
               <Icon size={20} name="settings" />
             </Button>
             <Button
-              ref={menuToggleRef}
+              ref={menuButtonRef}
               shape="ghost"
               className="icon-button"
               onClick={() =>
@@ -110,15 +107,13 @@ const Header = ({...restProps}: HeaderProps) => {
             }
           />
           <OverflowMenu
-            ref={useClickOutside<HTMLDivElement>(() => {
-              setMenus(() => ({
-                menu: false,
-                popup: false,
-              }));
-            }, menuToggleRef)}
+            buttonRef={menuButtonRef}
             open={menus.popup}
             onClose={() =>
-              setMenus(() => ({menu: false, popup: false}))
+              setMenus((menues) => ({
+                menu: menues.menu,
+                popup: false,
+              }))
             }
           >
             <Avatar

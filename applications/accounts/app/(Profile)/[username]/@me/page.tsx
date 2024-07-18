@@ -7,7 +7,7 @@ export const generateMetadata = async () => {
   const user = await getUserData();
 
   return {
-    title: `${user.username} | dadaya`,
+    title: `${user.username} - dadaya`,
   };
 };
 
