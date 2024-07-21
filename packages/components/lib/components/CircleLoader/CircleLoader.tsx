@@ -1,4 +1,5 @@
-import {clsx, generateUID} from "@daesite/utils";
+import {useId} from "@daesite/hooks";
+import {clsx} from "@daesite/utils";
 import {ComponentPropsWithoutRef} from "react";
 
 export type CircleLoaderSize = "small" | "medium" | "large";
@@ -20,7 +21,7 @@ const CircleLoader = ({
   "data-testid": dataTestId,
   ...rest
 }: CircleLoaderProps) => {
-  const uid = generateUID("circle_loader");
+  const uid = useId();
 
   const sizeClasses = {
     small: "text-loader-small",
