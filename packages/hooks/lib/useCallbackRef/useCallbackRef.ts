@@ -1,3 +1,5 @@
+"use client";
+
 import {useRef, useEffect, useMemo} from "react";
 
 /**
@@ -20,4 +22,4 @@ const useCallbackRef = <T extends (...args: any[]) => any>(
   );
 }
 
-export default useCallbackRef;
+export {useCallbackRef};

@@ -46,7 +46,7 @@ type RateLimiter = <A extends any[]>(
  *
  * ```
  */
-export const requestAnimationFrameRateLimiter: RateLimiter = <A extends any[]>(
+const requestAnimationFrameRateLimiter: RateLimiter = <A extends any[]>(
   func: (...args: A) => void,
 ) => {
   const cb = (...args: A) => requestAnimationFrame(() => func(...args));
@@ -54,11 +54,11 @@ export const requestAnimationFrameRateLimiter: RateLimiter = <A extends any[]>(
   return cb;
 };
 
-export const equivalentReducer = (oldRect?: DOMRect, newRect?: DOMRect) => {
+const equivalentReducer = (oldRect?: DOMRect, newRect?: DOMRect) => {
   return isEquivalent(oldRect, newRect) ? oldRect : newRect;
 };
 
-export const createObserver = (
+const createObserver = (
   target: HTMLElement,
   onResize: (rect: DOMRect) => void,
   maybeRateLimiter?: RateLimiter | null,
@@ -117,4 +117,9 @@ const useElementRect = <E extends HTMLElement>(
   return elementRect;
 };
 
-export default useElementRect;
+export {
+  requestAnimationFrameRateLimiter,
+  equivalentReducer,
+  createObserver,
+  useElementRect,
+};

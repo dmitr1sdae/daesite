@@ -14,4 +14,4 @@ const useSafeLayoutEffect = Boolean(globalThis?.document)
   ? useLayoutEffect
   : noop;
 
-export default useSafeLayoutEffect;
+export {useSafeLayoutEffect};

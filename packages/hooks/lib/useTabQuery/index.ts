@@ -1,1 +1,1 @@
-export {default as useTabQuery} from "./useTabQuery";
+export * from "./useTabQuery";

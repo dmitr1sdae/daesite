@@ -31,4 +31,4 @@ const useColor = (str?: string) => {
   return color;
 };
 
-export default useColor;
+export {useColor};

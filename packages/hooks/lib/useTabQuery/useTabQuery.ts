@@ -28,4 +28,4 @@ const useTabQuery = (quetyName: string, tabs: any[]) => {
   return [index, handleTabChange];
 };
 
-export default useTabQuery;
+export {useTabQuery};

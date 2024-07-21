@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import {resolve} from "path";
 import {defineConfig} from "vite";
 import dts from "vite-plugin-dts";
+import preserveDirectives from "rollup-plugin-preserve-directives";
 
 export default defineConfig({
   plugins: [
@@ -24,6 +25,7 @@ export default defineConfig({
       output: {
         preserveModules: true,
       },
+      plugins: [preserveDirectives()],
       external: [
         "react",
         "react-is",

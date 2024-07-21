@@ -1,1 +1,1 @@
-export {default as useColor} from "./useColor";
+export * from "./useColor";

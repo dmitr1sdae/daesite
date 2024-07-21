@@ -36,4 +36,4 @@ const useClickOutside = <T extends HTMLElement = HTMLElement>(
   return domNode;
 };
 
-export default useClickOutside;
+export {useClickOutside};

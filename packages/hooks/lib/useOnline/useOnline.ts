@@ -2,7 +2,7 @@
 
 import {useEffect, useState} from "react";
 
-export const getOnlineStatus = () => {
+const getOnlineStatus = () => {
   return typeof navigator !== "undefined" &&
     typeof navigator.onLine === "boolean"
     ? navigator.onLine
@@ -28,4 +28,4 @@ const useOnline = () => {
   return onlineStatus;
 };
 
-export default useOnline;
+export {getOnlineStatus, useOnline};

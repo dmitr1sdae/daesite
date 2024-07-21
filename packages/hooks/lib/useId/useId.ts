@@ -1,3 +1,5 @@
+"use client";
+
 import React, {useState} from "react";
 import {useSafeLayoutEffect} from "~/useSafeLayoutEffect";
 
@@ -14,4 +16,4 @@ const useId = (deterministicId?: string): string => {
   return deterministicId || (id ? `redae-${id}` : "");
 };
 
-export default useId;
+export {useId};

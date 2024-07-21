@@ -1,1 +1,1 @@
-export {default as useSafeLayoutEffect} from "./useSafeLayoutEffect";
+export * from "./useSafeLayoutEffect";
