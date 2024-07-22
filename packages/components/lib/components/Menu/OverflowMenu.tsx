@@ -1,7 +1,10 @@
+"use client";
+
 import "./OverflowMenu.scss";
 
-import {forwardRef, ReactNode, Ref} from "react";
+import {ReactNode, RefObject} from "react";
 import {clsx} from "@daesite/utils";
+import {useClickOutside} from "@daesite/hooks";
 
 type OverflowMenuProps = {
   children: ReactNode;
@@ -14,14 +17,25 @@ type OverflowMenuProps = {
    * presses the escape key
    */
   onClose: () => void;
+  /**
+   * Ref to the button that opens the menu
+   */
+  buttonRef?: RefObject<HTMLElement>;
 };
 
-const OverflowMenu = ({open, onClose, children}: OverflowMenuProps, ref: Ref<HTMLDivElement>,) => {
+const OverflowMenu = ({
+  open,
+  onClose,
+  children,
+  buttonRef,
+}: OverflowMenuProps) => {
+  const menuRef = useClickOutside<HTMLDivElement>(onClose, buttonRef);
+
   return (
-    <div ref={ref} className={clsx("popup-menu", open && "active")}>
+    <div ref={menuRef} className={clsx("popup-menu", open && "active")}>
       {children}
     </div>
-  )
+  );
 };
 
-export default forwardRef(OverflowMenu);
+export default OverflowMenu;
