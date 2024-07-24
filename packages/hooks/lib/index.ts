@@ -9,6 +9,7 @@ export * from "./useEscapeKeydown";
 export * from "./useId";
 export * from "./useOnline";
 export * from "./usePrevious";
+export * from "./useResizeObserver";
 export * from "./useSafeLayoutEffect";
 export * from "./useStateMachine";
 export * from "./useTabQuery";
