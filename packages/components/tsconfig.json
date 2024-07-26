@@ -8,7 +8,7 @@
       "@hooks/*": ["lib/hooks/*"],
       "@hooks": ["lib/hooks/index.ts"]
     },
-    "types": ["vitest/globals", "vite/client"]
+    "types": ["node", "vitest/globals", "vite/client"]
   },
   "extends": "../../tsconfig.base.json"
 }
