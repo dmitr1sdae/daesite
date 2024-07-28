@@ -13,6 +13,7 @@
     "@daesite/components": "workspace:^",
     "@daesite/hooks": "workspace:^",
     "@daesite/styles": "workspace:^",
+    "@daesite/utils": "workspace:^",
     "axios": "^1.7.2",
     "next": "14.2.5",
     "react": "^18.3.1",
@@ -20,7 +21,7 @@
     "sharp": "^0.33.4"
   },
   "devDependencies": {
-    "@redae/nextjs-combine-middleware": "^1.0.0",
+    "@redae/nextjs-combine-middleware": "^1.0.1",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
