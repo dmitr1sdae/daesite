@@ -98,7 +98,7 @@ export const arrayToHexString = (bytes: Uint8Array) => {
  * @param str - The string to convert
  * @returns A valid squence of utf8 bytes.
  */
-export function stringToUtf8Array(str: string): Uint8Array {
+export const stringToUtf8Array = (str: string): Uint8Array => {
   const encoder = new TextEncoder();
 
   return encoder.encode(str);
@@ -109,7 +109,7 @@ export function stringToUtf8Array(str: string): Uint8Array {
 * @param utf8 - A valid squence of utf8 bytes
 * @returns A native javascript string.
 */
-export function utf8ArrayToString(utf8: Uint8Array): string {
+export const utf8ArrayToString = (utf8: Uint8Array): string => {
   const decoder = new TextDecoder();
 
   return decoder.decode(utf8);
