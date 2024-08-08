@@ -12,4 +12,4 @@ const FullscreenBackground = ({src}: FullscreenBackgroundProps) => {
   );
 };
 
-export default FullscreenBackground;
+export {FullscreenBackground};

@@ -1,3 +1,2 @@
-import {lazy} from "react";
-
-export const Fullscreen = lazy(() => import("./Fullscreen"));
+export * from "./Fullscreen";
+export * from "./FullscreenBackground";

@@ -1,0 +1,15 @@
+@import "@daesite/styles/scss/lib";
+
+
+.power {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  width: min(60vmin, rem(930));
+  height: min(60vmin, rem(890));
+  object-fit: scale-down;
+  object-position: bottom right;
+  bottom: 0;
+  right: 0;
+  z-index: 666;
+}

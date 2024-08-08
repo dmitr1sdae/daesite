@@ -1,21 +1,24 @@
+import { clsx } from "@daesite/utils";
 import "./Fullscreen.scss";
 
-import {ReactNode} from "react";
+import {HTMLProps, ReactNode} from "react";
 
-import FullscreenBackground from "./FullscreenBackground";
-
-export interface FullscreenProps {
+export interface FullscreenProps extends HTMLProps<HTMLDivElement> {
   children?: ReactNode;
-  background?: string;
-};
+  background?: () => JSX.Element;
+}
 
-const Fullscreen = ({children, background}: FullscreenProps) => {
+const Fullscreen = ({
+  children,
+  className,
+  background: Background
+}: FullscreenProps) => {
   return (
-    <section className="fullscreen">
-      {background && <FullscreenBackground src={background} />}
+    <section className={clsx("fullscreen", className)}>
+      {Background && <Background />}
       <div className="fullscreen_body">{children}</div>
     </section>
   );
 };
 
-export default Fullscreen;
+export {Fullscreen};

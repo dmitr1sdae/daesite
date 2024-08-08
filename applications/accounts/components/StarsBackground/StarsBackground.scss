@@ -1,25 +1,8 @@
 @import "@daesite/styles/scss/lib";
 
 .stars-wrapper {
+  top: 0;
 	position: absolute;
 	pointer-events: none;
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
   z-index: -1000;
-}
-
-.fullscreen {
-  position: relative;
-	pointer-events: all;
-  min-height: 100vh;
-  width: 100%;
-
-  &_body {
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 0 rem(40);
-    max-width: rem(1280);
-    z-index: 1;
-  }
 }
