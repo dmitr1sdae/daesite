@@ -1,5 +1,15 @@
 @import "@daesite/styles/scss/lib";
 
+.content {
+  font-size: em(16);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  font-weight: var(--font-weight-black);
+}
 
 .power {
   position: absolute;
