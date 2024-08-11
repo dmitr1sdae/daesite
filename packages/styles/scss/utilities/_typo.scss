@@ -2,26 +2,13 @@
 
 $dummy-map: ();
 
-@each $name,
-  $size
-    in (
-      2xs: 9,
-      xs: 10,
-      sm: 12,
-      rg: $base-font-size,
-      lg: 16,
-      xl: 18,
-      2xl: 20,
-      3xl: 22,
-      4xl: 24
-    )
-{
+@each $name, $size in (2xs: 9, xs: 10, sm: 12, rg: $base-font-size, lg: 16, xl: 18, 2xl: 20, 3xl: 22, 4xl: 24) {
   $dummy-map: map.merge(
     $dummy-map,
     (
       text-#{$name}:
         (
-          font-size: #{em($size)},
+          font-size: #{em($size)}
         )
     )
   );
@@ -32,127 +19,131 @@ $dummy-map: ();
 @include responsive-classes(
   (
     text-left: (
-      text-align: start,
+      text-align: start
     ),
 
     text-center: (
-      text-align: center,
+      text-align: center
     ),
 
     text-right: (
-      text-align: end,
-    ),
+      text-align: end
+    )
   )
 );
 
 @each $align in (baseline, sub, super, text-top, text-bottom, middle, top, bottom) {
-	.align-#{$align} {
-		vertical-align: $align;
-	}
+  .align-#{$align} {
+    vertical-align: $align;
+  }
 }
 
 .text-ellipsis {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .text-ellipsis-two-lines,
 .text-ellipsis-four-lines {
-	/* stylelint-disable-next-line */
-	display: -webkit-box;
-	/* stylelint-disable-next-line */
-	-webkit-box-orient: vertical;
-	overflow: hidden;
+  /* stylelint-disable-next-line */
+  display: -webkit-box;
+  /* stylelint-disable-next-line */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .text-ellipsis-two-lines {
-	-webkit-line-clamp: 2;
+  -webkit-line-clamp: 2;
 }
 
 .text-ellipsis-four-lines {
-	-webkit-line-clamp: 4;
+  -webkit-line-clamp: 4;
 }
 
 .text-uppercase {
-	text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .text-capitalize {
-	text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 .text-capitalize-block {
-	text-transform: lowercase;
+  text-transform: lowercase;
 
-	&::first-letter {
-		text-transform: uppercase;
-	}
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.text-black {
+  font-weight: var(--font-weight-black);
 }
 
 .text-strong,
 .text-bold {
-	font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
 }
 
 .text-normal,
 .text-no-bold {
-	font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-normal);
 }
 
 .text-semibold {
-	font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-semibold);
 }
 
 .text-italic {
-	font-style: italic;
+  font-style: italic;
 }
 
 .text-no-italic {
-	font-style: normal;
+  font-style: normal;
 }
 
 .text-strike {
-	text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .text-pre {
-	white-space: pre;
+  white-space: pre;
 }
 
 .text-pre-wrap {
-	white-space: pre-wrap;
+  white-space: pre-wrap;
 }
 
 .text-no-wrap,
 .text-nowrap {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 .text-no-decoration {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .text-underline {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 .hover\:text-underline {
-	&:hover,
-	&:focus {
-		text-decoration: underline;
-	}
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 }
 
 // if this is empty, we add an non-breakable-space
 .text-keep-space:empty::before {
-	content: '\00a0';
+  content: "\00a0";
 }
 
 .user-select {
-	user-select: all;
+  user-select: all;
 }
 
 .user-select-none {
-	user-select: none;
+  user-select: none;
 }

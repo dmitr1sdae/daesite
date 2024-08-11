@@ -1,17 +1,17 @@
 import "./EpicTitle.scss";
 
-import {ReactNode} from "react";
+import {HTMLProps, ReactNode} from "react";
 
-export interface EpicTitleProps {
+export interface EpicTitleProps extends HTMLProps<HTMLDivElement> {
   children: ReactNode;
 }
 
-const EpicTitle = ({children}: EpicTitleProps) => {
+const EpicTitle = ({children, ...restProps}: EpicTitleProps) => {
   return (
-    <div>
+    <div {...restProps}>
       <h1 className="epic-title">{children}</h1>
     </div>
   );
 };
 
-export default EpicTitle;
+export {EpicTitle};

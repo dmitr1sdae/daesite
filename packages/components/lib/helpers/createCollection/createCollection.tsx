@@ -80,7 +80,7 @@ const createCollection = <ItemElement extends HTMLElement, ItemData = {}>(
   CollectionSlot.displayName = COLLECTION_SLOT_NAME;
 
   const ITEM_SLOT_NAME = name + "CollectionItemSlot";
-  const ITEM_DATA_ATTR = "data-radix-collection-item";
+  const ITEM_DATA_ATTR = "data-redae-collection-item";
 
   type CollectionItemSlotProps = ItemData & {
     children: ReactNode;

@@ -40,7 +40,7 @@ const Norn = NODES.reduce((primitive, node) => {
       const Comp: any = asChild ? Slot : node;
 
       if (typeof window !== "undefined") {
-        (window as any)[Symbol.for("radix-ui")] = true;
+        (window as any)[Symbol.for("redae-ui")] = true;
       }
 
       return <Comp {...primitiveProps} ref={forwardedRef} />;
