@@ -1,7 +1,7 @@
 import {clsx} from "@daesite/utils";
 import {forwardRef, SVGProps} from "react";
 
-export type IconSize =
+type IconSize =
   | 6
   | 8
   | 10
@@ -25,7 +25,7 @@ export type IconSize =
   | 100
   | 110;
 
-export type IconName =
+type IconName =
   | "apps"
   | "account"
   | "search"
@@ -38,7 +38,7 @@ export type IconName =
   | "email"
   | "caret-down";
 
-export interface IconProps extends Omit<SVGProps<SVGSVGElement>, "ref"> {
+interface IconProps extends Omit<SVGProps<SVGSVGElement>, "ref"> {
   /**
    * Determines which icon to render based on its name.
    */
@@ -112,4 +112,5 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(
   },
 );
 
-export default Icon;
+export {Icon};
+export type {IconProps, IconName, IconSize}

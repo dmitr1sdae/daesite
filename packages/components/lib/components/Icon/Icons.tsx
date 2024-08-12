@@ -1,6 +1,6 @@
 import svg from "@daesite/styles/assets/img/icons/sprite-icons.svg?raw";
 
-export const ICONS_ID = "__iconsRoot";
+const ICONS_ID = "__iconsRoot";
 
 const Icons = () => {
   return (
@@ -8,4 +8,4 @@ const Icons = () => {
   );
 };
 
-export default Icons;
+export {Icons};
