@@ -1,0 +1,29 @@
+/* to hide text with accessibility… a11y */
+.invisible,
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  block-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  inline-size: 1px;
+  inset-block-start: 0;
+}
+
+/* increase surface click/tap */
+.increase-click-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.no-pointer-events,
+.no-pointer-events-children * {
+  pointer-events: none;
+}
+
+.z-index-1 {
+  z-index: 1;
+}

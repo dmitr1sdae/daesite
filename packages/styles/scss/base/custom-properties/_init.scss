@@ -1,0 +1,33 @@
+@use "sass:math";
+
+/*
+ * Static variables that keep the same between each visual theme
+ */
+
+// Colors mapping
+:root,
+.ui-standard,
+.ui-prominent {
+  --danger-hover: var(--danger-major-1);
+  --danger-active: var(--danger-major-2);
+  --warning-hover: var(--warning-major-1);
+  --warning-active: var(--warning-major-2);
+  --success-hover: var(--success-major-1);
+  --success-active: var(--success-major-2);
+  --info-hover: var(--info-major-1);
+  --info-active: var(--info-major-2);
+  --norm-hover: var(--norm-major-1);
+  --norm-active: var(--norm-major-2);
+  --weak-hover: var(--weak-major-1);
+  --weak-active: var(--weak-major-2);
+}
+
+// Other mappings
+:root {
+  --1px: #{math.div(1rem, 16)}; // Assumed 16px browser base font size
+  --border-radius-sm: calc(0.5 * var(--border-radius) * var(--1px));
+  --border-radius-md: calc(var(--border-radius) * var(--1px));
+  --border-radius-lg: calc(1.5 * var(--border-radius) * var(--1px));
+  --border-radius-xl: calc(2 * var(--border-radius) * var(--1px));
+  --border-radius-full: 9999em;
+}

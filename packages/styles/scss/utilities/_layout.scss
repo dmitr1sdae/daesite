@@ -1,0 +1,62 @@
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.overflow-overlay {
+  overflow: auto; // fallback
+  overflow: overlay;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.resize-none {
+  resize: none;
+}
+
+.float-left {
+  float: inline-start;
+}
+
+.float-right {
+  float: inline-end;
+}
+
+.clear {
+  clear: both;
+}
+
+/*
+ * ratio container (for responsive iframes/videos/etc.)
+ */
+[class*="ratio-container-"] {
+  inline-size: 100%;
+  block-size: 0;
+  @extend .relative;
+}
+
+.ratio-container-square {
+  padding-block-start: 100%;
+}
+
+.ratio-container-16-9 {
+  padding-block-start: 56.25%;
+}
+
+.ratio-container-5-1 {
+  padding-block-start: 20%;
+}
+
+.inner-ratio-container {
+  position: absolute;
+  inset: 0;
+}

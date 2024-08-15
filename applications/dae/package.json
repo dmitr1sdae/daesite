@@ -4,27 +4,28 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite"
+    "build": "next build",
+    "dev": "concurrently \"json-server db.json\" \"next dev\"",
+    "lint": "next lint",
+    "start": "next start"
   },
   "dependencies": {
+    "@daesite/components": "workspace:^",
+    "@daesite/styles": "workspace:^",
     "axios": "^1.7.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router": "^6.22.3",
-    "react-router-dom": "^6.22.3",
-    "ttag": "^1.8.6",
+    "next": "14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.33.4",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
-    "@types/node": "^20.12.3",
-    "@types/react": "^18.2.74",
-    "@types/react-dom": "^18.2.23",
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.57.0",
-    "prettier": "^3.2.5",
-    "sass": "^1.72.0",
-    "terser": "^5.30.3",
-    "typescript": "^5.4.3",
-    "vite": "^5.2.8"
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "concurrently": "^8.2.2",
+    "json-server": "^1.0.0-beta.1",
+    "sass": "^1.77.8",
+    "typescript": "5.5.3"
   }
 }

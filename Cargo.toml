@@ -1,0 +1,30 @@
+[packages]
+name = "daesite"
+version = "0.1.0"
+authors = ["Dmitriy Chukhno <dmitr1sdadaya@protonmail.com>"]
+edition = "2021"
+license = "AGPL-3.0"
+
+[workspace]
+resolver = "2"
+members = [
+  "packages/*-rs",
+  "services/*",
+]
+
+[profile.release]
+opt-level = 3
+debug = false
+strip = false
+debug-assertions = false
+overflow-checks = false
+lto = false
+incremental = false
+codegen-units = 16
+rpath = false
+
+[profile.dev]
+opt-level = 0      # Minimal optimization, speeds up compilation
+lto = false        # Disables Link Time Optimization
+incremental = true # Enables incremental compilation
+codegen-units = 16 # Higher number can improve compile times but reduce runtime performance

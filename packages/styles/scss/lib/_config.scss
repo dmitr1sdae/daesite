@@ -1,0 +1,69 @@
+@use "sass:math";
+@use "im-to-em" as *;
+
+$base-font-size: 14 !default; // if "14" then 1em = 14px
+$base-line-height: math.div(20, $base-font-size) !default; // Design specs says 20px
+
+$title-sizes: (
+  h1: 36,
+  h2: 28,
+  h3: 20,
+  h4: 18,
+  h5: 17,
+  h6: 16
+) !default;
+
+// Use typo helpers on demand
+$use-other-typo-helpers: true !default;
+$use-other-line-height-helpers: true !default;
+
+// fonts
+/* stylelint-disable-next-line value-keyword-case */
+$font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+  monospace !default;
+
+// Breakpoints for include-media
+$breakpoints: im-to-em(
+  (
+    "xlarge": 1500px,
+    "large": 1100px,
+    "medium": 910px,
+    "small": 680px,
+    "xsmall": 450px
+  )
+) !default;
+
+// Media expressions for include-media
+$media-expressions: (
+  "all": "all",
+  "screen": "screen",
+  "mouse": "(hover: hover) and (pointer: fine)",
+  "touch": "(hover: hover) and (pointer: coarse), (hover: none)",
+  "landscape": "(orientation: landscape)",
+  "portrait": "(orientation: portrait)",
+  "reduced-motion": "(prefers-reduced-motion: reduce)"
+) !default;
+
+// Custom scrollbar everywhere
+$custom-scroll: true !default;
+
+// Custom selection everywhere
+$custom-selection: true !default;
+
+// hyphens
+$hyphenation: false !default;
+
+// basic premise: default user setting for font size is at 16 pixels in the browser
+// you should NEVER update this value, however… who can predict the future…
+$root-default-font-size: 16 !default;
+
+// others
+$use-reset-button: true !default;
+$use-vertical-align-img-iframe: true !default;
+
+// variables for global layouts, allowing you to use calc for components and adapt quickly if needed
+$header-height: 80 !default;
+$focus-ring-size: 0.1875rem; // 3px
+
+$label-width: 18em !default;
+$conversation-icon-size: 32 !default;

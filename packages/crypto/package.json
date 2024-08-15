@@ -1,0 +1,32 @@
+{
+  "name": "@daesite/crypto",
+  "version": "0.1.0",
+  "description": "dae crypto library",
+  "license": "MIT",
+  "author": "Dmitriy Chukhno <me@dmitr1sdae.com>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsc && vite build",
+    "lint": "eslint lib",
+    "lint:fix": "eslint lib --fix",
+    "pretty": "prettier --check $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o \\( -type f -name '*.js' -o -name '*.ts' -o -name '*.tsx' \\) -print)",
+    "pretty:fix": "prettier --write $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o \\( -type f -name '*.js' -o -name '*.ts' -o -name '*.tsx' \\) -print)"
+  },
+  "devDependencies": {
+    "eslint": "^9.6.0",
+    "prettier": "^3.3.2",
+    "typescript": "5.5.3",
+    "vite": "^5.3.3",
+    "vite-plugin-dts": "^3.9.1"
+  }
+}

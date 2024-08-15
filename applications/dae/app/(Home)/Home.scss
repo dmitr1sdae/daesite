@@ -1,0 +1,58 @@
+@import "@daesite/styles/scss/lib";
+
+.text {
+  position: sticky;
+  top: calc(50vh - rem(100));
+  display: flex;
+  flex-direction: column;
+  margin-bottom: rem(120);
+}
+
+.title {
+  font-size: em(64);
+  font-weight: var(--font-weight-black);
+}
+
+.subtitle {
+  font-size: em(32);
+  font-weight: 500;
+  max-width: rem(500);
+  min-height: rem(101);
+}
+
+.power {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  width: min(90vmin, rem(930));
+  height: min(90vmin, rem(890));
+  object-fit: scale-down;
+  object-position: bottom right;
+  bottom: 0;
+  right: 0;
+  z-index: 666;
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .text {
+    top: rem(160);
+    position: absolute;
+    margin-bottom: rem(80);
+  }
+}
+
+@media only screen and (min-width: 280px) and (max-width: 840px) and (min-height: 320px) and (max-height: 1890px) and (-webkit-min-device-pixel-ratio: 2) {
+  .text {
+    top: rem(120);
+    position: absolute;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .text {
+    padding-right: rem(40);
+    position: absolute;
+    font-size: em(11);
+    top: rem(120);
+  }
+}
