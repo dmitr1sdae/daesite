@@ -10,15 +10,20 @@
     "applications/*",
     "packages/*"
   ],
+  "scripts": {
+    "build": "lerna run build",
+    "pretty": "lerna run pretty --parallel",
+    "pretty:fix": "lerna run pretty:fix --parallel"
+  },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "husky": "^9.0.11",
-    "lerna": "^8.1.2",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.3"
+    "lerna": "^8.1.6",
+    "prettier": "^3.3.2",
+    "typescript": "5.5.3"
   },
-  "packageManager": "yarn@4.2.2",
+  "packageManager": "yarn@4.4.0",
   "engines": {
     "node": ">= v20.9.0"
   }

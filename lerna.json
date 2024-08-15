@@ -1,8 +1,5 @@
 {
-  "packages": [
-    "applications/*",
-    "packages/*"
-  ],
+  "packages": ["applications/*", "packages/*"],
   "npmClient": "yarn",
   "version": "independent"
 }

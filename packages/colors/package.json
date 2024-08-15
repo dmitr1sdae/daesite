@@ -1,0 +1,14 @@
+{
+  "name": "@daesite/colors",
+  "version": "0.1.0",
+  "description": "Package containing daesite design system colors",
+  "license": "ISC",
+  "author": "Dmitriy Chukhno <me@dmitr1sdae.com>",
+  "type": "module",
+  "files": [
+    "dist/**/*"
+  ],
+  "devDependencies": {
+    "typescript": "5.5.3"
+  }
+}

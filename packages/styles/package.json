@@ -1,0 +1,22 @@
+{
+  "name": "@daesite/styles",
+  "version": "0.1.0",
+  "description": "daesite's Design system",
+  "license": "ISC",
+  "author": "Dmitriy Chukhno <me@dmitr1sdae.com>",
+  "type": "module",
+  "files": [
+    "*"
+  ],
+  "scripts": {
+    "pretty": "prettier --check $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o -print)",
+    "pretty:fix": "prettier --write $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o -print)"
+  },
+  "dependencies": {
+    "inter-ui": "^4.0.2"
+  },
+  "devDependencies": {
+    "include-media": "^2.0.0",
+    "prettier": "^3.3.2"
+  }
+}

@@ -1,0 +1,14 @@
+@import "@daesite/styles/scss/lib";
+
+.stars-wrapper {
+  top: 0;
+  position: absolute;
+  pointer-events: none;
+  z-index: -1000;
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .stars-wrapper {
+    height: 100%;
+  }
+}

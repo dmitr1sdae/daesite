@@ -1,0 +1,88 @@
+@use "sass:math";
+@import "@daesite/styles/scss/lib";
+
+.avatar {
+  &-container {
+    --focus-outline: var(--norm-major-2);
+    overflow: hidden;
+
+    border: rem(1);
+    width: rem(64);
+    height: rem(64);
+    transition:
+      0.15s easing(ease-out-quint),
+      background-position 0s;
+
+    @supports selector(:focus-visible:has(a, b)) {
+      // had to do this because of Safari
+      outline: unset;
+    }
+
+    &,
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+      text-decoration: none;
+    }
+
+    @supports not selector(:focus-visible:has(a, b)) {
+      &:focus,
+      &:focus-within {
+        box-shadow: 0 0 0 #{$focus-ring-size} var(--focus-ring);
+      }
+    }
+
+    @supports selector(:focus-visible:has(a, b)) {
+      &:focus-visible,
+      &:has(*:focus-visible) {
+        box-shadow: 0 0 0 #{$focus-ring-size} var(--focus-ring);
+      }
+    }
+  }
+
+  &-container:has(.avatar-fallback) {
+    background-color: var(--avatar-color);
+  }
+
+  &-img {
+    width: rem(64);
+    height: rem(64);
+  }
+
+  &-fallback {
+    text-transform: uppercase;
+    color: var(--primary-contrast);
+    font-size: rem(32);
+  }
+}
+
+/*
+ * Modifiers
+ */
+.avatar-small {
+  width: rem(32);
+  height: rem(32);
+
+  & .avatar-fallback {
+    font-size: rem(16);
+  }
+}
+
+.avatar-large {
+  width: rem(128);
+  height: rem(128);
+
+  & .avatar-fallback {
+    font-size: rem(64);
+  }
+}
+
+.avatar-huge {
+  width: rem(296);
+  height: rem(296);
+
+  & .avatar-fallback {
+    font-size: rem(148);
+  }
+}

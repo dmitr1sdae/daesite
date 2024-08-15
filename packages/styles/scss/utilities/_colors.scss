@@ -1,0 +1,54 @@
+@each $color in (primary, danger, warning, success, info) {
+  .color-#{$color} {
+    color: var(--#{$color});
+
+    @at-root {
+      .hover\:color-#{$color} {
+        &:hover,
+        &:focus {
+          color: var(--#{$color});
+        }
+      }
+    }
+  }
+
+  .bg-#{$color} {
+    background-color: var(--#{$color});
+    color: var(--#{dash-join($color, "contrast")});
+
+    a,
+    .link,
+    .button-link,
+    [class*="button-ghost"],
+    [class*="button-underline"],
+    [class*="button-outline"] {
+      color: inherit;
+    }
+
+    [class*="button-outline"] {
+      --button-default-border-color: currentcolor;
+      --button-hover-border-color: currentcolor;
+      --button-active-border-color: currentcolor;
+
+      // Force same backgrounds as solid shape of same color
+      --button-default-background-color: var(--#{$color});
+      --button-hover-background-color: var(--#{dash-join($color, "major-1")});
+      --button-active-background-color: var(--#{dash-join($color, "major-2")});
+    }
+  }
+
+  .color-#{$color} {
+    color: var(--#{$color});
+  }
+
+  .hover\:color-#{$color} {
+    &:hover,
+    &:focus {
+      color: var(--#{$color});
+    }
+  }
+
+  .fill-#{$color} {
+    fill: var(--#{$color});
+  }
+}

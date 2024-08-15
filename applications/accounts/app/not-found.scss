@@ -1,0 +1,25 @@
+@import "@daesite/styles/scss/lib";
+
+.content {
+  font-size: em(16);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  font-weight: var(--font-weight-black);
+}
+
+.power {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  width: min(60vmin, rem(930));
+  height: min(60vmin, rem(890));
+  object-fit: scale-down;
+  object-position: bottom right;
+  bottom: 0;
+  right: 0;
+  z-index: 666;
+}

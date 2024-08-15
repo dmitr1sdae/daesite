@@ -1,0 +1,6 @@
+@if $custom-selection {
+  ::selection {
+    color: var(--selection-text-color);
+    background-color: rgb(from var(--selection-background-color) r g b/60%);
+  }
+}
