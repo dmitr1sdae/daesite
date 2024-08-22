@@ -16,12 +16,12 @@
     "pretty:fix": "lerna run pretty:fix --parallel"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.3.0",
+    "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "husky": "^9.0.11",
-    "lerna": "^8.1.6",
-    "prettier": "^3.3.2",
-    "typescript": "5.5.3"
+    "husky": "^9.1.5",
+    "lerna": "^8.1.8",
+    "prettier": "^3.3.3",
+    "typescript": "5.5.4"
   },
   "packageManager": "yarn@4.4.0",
   "engines": {
