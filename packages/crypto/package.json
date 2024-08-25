@@ -23,7 +23,7 @@
     "pretty:fix": "prettier --write $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o \\( -type f -name '*.js' -o -name '*.ts' -o -name '*.tsx' \\) -print)"
   },
   "devDependencies": {
-    "eslint": "^9.9.0",
+    "eslint": "^9.9.1",
     "prettier": "^3.3.3",
     "typescript": "5.5.4",
     "vite": "^5.4.2",

@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.3.4",
-    "eslint": "^9.9.0",
+    "eslint": "^9.9.1",
     "prettier": "^3.3.3",
     "tsup": "^8.2.4",
     "typescript": "5.5.4"

@@ -8235,6 +8235,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"my-app-356373@workspace:applications/my-app":
+  version: 0.0.0-use.local
+  resolution: "my-app-356373@workspace:applications/my-app"
+  dependencies:
+    "@reduxjs/toolkit": "npm:^2.2.7"
+    "@types/node": "npm:22.5.0"
+    "@types/react": "npm:18.3.4"
+    "@types/react-dom": "npm:^18.3.0"
+    next: "npm:^14.2.6"
+    react: "npm:^18.3.1"
+    react-dom: "npm:^18.3.1"
+    react-redux: "npm:^9.1.2"
+    typescript: "npm:^5.5.4"
+  languageName: unknown
+  linkType: soft
+
 "mz@npm:^2.7.0":
   version: 2.7.0
   resolution: "mz@npm:2.7.0"
