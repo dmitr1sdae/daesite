@@ -27,11 +27,7 @@ impl From<User> for UserDTO {
             avatar: user.avatar,
             modulus: user.modulus,
             email: user.email,
-            roles: user
-                .roles
-                .into_iter()
-                .map(|role| RoleDTO::from(role))
-                .collect(),
+            roles: user.roles.into_iter().map(RoleDTO::from).collect(),
             created_at: user.created_at,
             updated_at: user.updated_at,
         }
@@ -41,11 +37,7 @@ impl From<User> for UserDTO {
 impl From<ResultPaging<User>> for ResultPaging<UserDTO> {
     fn from(user: ResultPaging<User>) -> Self {
         ResultPaging {
-            items: user
-                .items
-                .into_iter()
-                .map(|user: User| UserDTO::from(user))
-                .collect(),
+            items: user.items.into_iter().map(UserDTO::from).collect(),
             code: user.code,
             next_page: user.next_page,
         }
@@ -98,11 +90,7 @@ impl From<UpdateUser> for UpdateUserDTO {
             username: user.username,
             avatar: user.avatar,
             email: user.email,
-            roles: user
-                .roles
-                .into_iter()
-                .map(|role| RoleDTO::from(role))
-                .collect(),
+            roles: user.roles.into_iter().map(RoleDTO::from).collect(),
         }
     }
 }

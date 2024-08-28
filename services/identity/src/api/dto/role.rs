@@ -23,7 +23,7 @@ impl From<Role> for RoleDTO {
             permissions: role
                 .permissions
                 .into_iter()
-                .map(|permission| PermissionDTO::from(permission))
+                .map(PermissionDTO::from)
                 .collect(),
             created_at: role.created_at,
             updated_at: role.updated_at,
@@ -34,11 +34,7 @@ impl From<Role> for RoleDTO {
 impl From<ResultPaging<Role>> for ResultPaging<RoleDTO> {
     fn from(modules: ResultPaging<Role>) -> Self {
         ResultPaging {
-            items: modules
-                .items
-                .into_iter()
-                .map(|role: Role| RoleDTO::from(role))
-                .collect(),
+            items: modules.items.into_iter().map(RoleDTO::from).collect(),
             code: modules.code,
             next_page: modules.next_page,
         }
@@ -60,7 +56,7 @@ impl From<CreateRole> for CreateRoleDTO {
             permissions: role
                 .permissions
                 .into_iter()
-                .map(|permission| PermissionDTO::from(permission))
+                .map(PermissionDTO::from)
                 .collect(),
         }
     }

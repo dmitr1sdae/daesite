@@ -23,11 +23,7 @@ impl From<Modulus> for ModulusDTO {
 impl From<ResultPaging<Modulus>> for ResultPaging<ModulusDTO> {
     fn from(modules: ResultPaging<Modulus>) -> Self {
         ResultPaging {
-            items: modules
-                .items
-                .into_iter()
-                .map(|modulus: Modulus| ModulusDTO::from(modulus))
-                .collect(),
+            items: modules.items.into_iter().map(ModulusDTO::from).collect(),
             code: modules.code,
             next_page: modules.next_page,
         }
