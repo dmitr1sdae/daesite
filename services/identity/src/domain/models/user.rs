@@ -28,15 +28,6 @@ pub struct CreateUser {
     pub modulus: ID,
 }
 
-impl From<CreateUser> for CheckUser {
-    fn from(user: CreateUser) -> Self {
-        CheckUser {
-            username: user.username,
-            email: user.email,
-        }
-    }
-}
-
 pub struct UpdateUser {
     pub username: Option<String>,
     pub avatar: Option<String>,

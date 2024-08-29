@@ -34,7 +34,7 @@ pub async fn connect() -> Session {
         .max_lifetime(Some(Duration::from_secs(60 * 60)))
         .connect(&url)
         .await
-        .map_err(|err| error!("Error connecting to Scylla: {}", err))
+        .map_err(|err| error!("Error connecting to Database: {}", err))
         .unwrap()
 }
 
