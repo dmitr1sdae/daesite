@@ -42,6 +42,8 @@ CREATE TABLE sessions (
     access_token VARCHAR(512) NOT NULL,
     refresh_token VARCHAR(512) NOT NULL,
     created_at BIGINT NOT NULL,
-    updated_at BIGINT NOT NULL,
+    expires_at BIGINT NOT NULL,
+    ip_address VARCHAR(45) NOT NULL,
+    user_agent TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );

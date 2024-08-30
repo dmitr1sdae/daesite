@@ -8,5 +8,7 @@ pub struct Session {
     pub access_token: String,
     pub refresh_token: String,
     pub created_at: i64,
-    pub updated_at: i64,
+    pub expires_at: i64,
+    pub ip_address: String,
+    pub user_agent: String,
 }

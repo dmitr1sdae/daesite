@@ -8,7 +8,9 @@ pub struct PostgresSession {
     pub access_token: String,
     pub refresh_token: String,
     pub created_at: i64,
-    pub updated_at: i64,
+    pub expires_at: i64,
+    pub ip_address: String,
+    pub user_agent: String,
 }
 
 impl From<PostgresSession> for Session {
@@ -19,7 +21,9 @@ impl From<PostgresSession> for Session {
             access_token: session.access_token,
             refresh_token: session.refresh_token,
             created_at: session.created_at,
-            updated_at: session.updated_at,
+            expires_at: session.expires_at,
+            ip_address: session.ip_address,
+            user_agent: session.user_agent,
         }
     }
 }

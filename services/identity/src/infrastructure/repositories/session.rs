@@ -19,7 +19,7 @@ impl SessionRepository for SessionPostgresRepository {
         let sessions = sqlx::query_as!(
             Session,
             r#"
-            SELECT id, user_id, access_token, refresh_token, created_at, updated_at
+            SELECT id, user_id, access_token, refresh_token, created_at, expires_at, ip_address, user_agent
             FROM sessions
             WHERE user_id = $1
             "#,
@@ -36,7 +36,7 @@ impl SessionRepository for SessionPostgresRepository {
         let session = sqlx::query_as!(
             Session,
             r#"
-            SELECT id, user_id, access_token, refresh_token, created_at, updated_at
+            SELECT id, user_id, access_token, refresh_token, created_at, expires_at, ip_address, user_agent
             FROM sessions
             WHERE id = $1
             "#,
