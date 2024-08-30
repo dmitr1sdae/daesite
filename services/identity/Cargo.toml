@@ -64,6 +64,7 @@ argon2 = { version = "0.5.3", features = ["std"] }
 bitflags = "2.4.0"
 hex = "0.4.3"
 totp-rs = { version = "5.0.2", features = ["gen_secret"] }
+rusty_paseto = "0.3.2"
 
 id = { path = "../../packages/id-rs" }
 
@@ -83,10 +84,7 @@ sqlx = { version = "0.7.4", features = [
   "json",
 ] }
 
-redis = { version = "0.26.1", features = ["tokio-comp"] }
-
 jemallocator = "0.5.4"
-rusty_paseto = "=0.3.2"
 
 [build-dependencies]
 tonic-build = "0.11.0"
