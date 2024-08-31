@@ -4,7 +4,7 @@ use crate::domain::models::session::Session;
 
 #[async_trait::async_trait]
 pub trait SessionRepository: Send + Sync {
-    async fn create(&self, user_id: ID) -> RepositoryResult<Session>;
+    async fn create(&self, user_id: ID, ip_address: String, user_agent: String) -> RepositoryResult<Session>;
     async fn list(&self, user_id: ID) -> RepositoryResult<Vec<Session>>;
     async fn get(&self, session_id: ID) -> RepositoryResult<Session>;
     async fn delete(&self, session_id: ID) -> RepositoryResult<()>;

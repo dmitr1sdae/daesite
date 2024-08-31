@@ -36,6 +36,16 @@ impl From<sqlx::Error> for PostgresRepositoryError {
     }
 }
 
+impl From<rusty_paseto::prelude::GenericBuilderError> for PostgresRepositoryError {
+    fn from(error: rusty_paseto::prelude::GenericBuilderError) -> Self {
+        PostgresRepositoryError(RepositoryError {
+            message: error.to_string(),
+            description: "Database error".to_string(),
+            code: 1,
+        })
+    }
+}
+
 #[derive(Debug)]
 pub struct S3StorageError(StorageError);
 

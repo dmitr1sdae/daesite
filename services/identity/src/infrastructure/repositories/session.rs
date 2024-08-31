@@ -1,3 +1,6 @@
+use chrono::Utc;
+use rusty_paseto::prelude::*;
+
 use crate::domain::models::id::ID;
 use crate::domain::models::session::Session;
 use crate::domain::repositories::repository::RepositoryResult;
@@ -6,13 +9,73 @@ use crate::infrastructure::connectors::postgres;
 use std::sync::Arc;
 
 pub struct SessionPostgresRepository {
+    id_generator: id::Generator,
     repository: Arc<postgres::Session>,
+    secret_key: Vec<u8>,
+}
+
+impl SessionPostgresRepository {
+    pub fn new(
+        id_generator: id::Generator,
+        repository: Arc<postgres::Session>,
+        secret_key: Vec<u8>,
+    ) -> Self {
+        Self {
+            id_generator,
+            repository,
+            secret_key,
+        }
+    }
+
+    fn generate_token(&self, session_id: ID, user_id: ID) -> RepositoryResult<String> {
+        let key = PasetoSymmetricKey::<V4, Local>::from(Key::from(self.secret_key.as_slice()));
+
+        let builder = PasetoBuilder::<V4, Local>::default()
+            .set_claim(CustomClaim::try_from(("uid", user_id.to_string())).unwrap())
+            .set_claim(CustomClaim::try_from(("sid", session_id.to_string())).unwrap())
+            .set_claim(ExpirationClaim::try_from("2019-01-01T00:00:00+00:00").unwrap())
+            .build(&key)
+            .unwrap();
+
+        Ok(builder)
+    }
 }
 
 #[async_trait::async_trait]
 impl SessionRepository for SessionPostgresRepository {
-    async fn create(&self, user_id: ID) -> RepositoryResult<Session> {
-        todo!()
+    async fn create(
+        &self,
+        user_id: ID,
+        ip_address: String,
+        user_agent: String,
+    ) -> RepositoryResult<Session> {
+        let session_id = self.id_generator.clone().generate();
+        let access_token = self.generate_token(session_id, user_id)?;
+        let refresh_token = self.generate_token(session_id, user_id)?;
+
+        let now = Utc::now().timestamp();
+
+        let session = sqlx::query_as!(
+            Session,
+            r#"
+            INSERT INTO sessions (id, user_id, access_token, refresh_token, created_at, expires_at, ip_address, user_agent)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+            RETURNING id, user_id, access_token, refresh_token, created_at, expires_at, ip_address, user_agent
+            "#,
+            session_id,
+            user_id,
+            access_token,
+            refresh_token,
+            now,
+            now,
+            ip_address,
+            user_agent
+        )
+        .fetch_one(self.repository.as_ref())
+        .await
+        .unwrap();
+
+        Ok(session)
     }
 
     async fn list(&self, user_id: ID) -> RepositoryResult<Vec<Session>> {
