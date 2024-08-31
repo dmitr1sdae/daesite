@@ -1,4 +1,4 @@
-use chrono::Utc;
+use chrono::{DateTime, Duration, Utc};
 use rusty_paseto::prelude::*;
 
 use crate::domain::models::id::ID;
@@ -27,13 +27,13 @@ impl SessionPostgresRepository {
         }
     }
 
-    fn generate_token(&self, session_id: ID, user_id: ID) -> RepositoryResult<String> {
+    fn generate_token(&self, session_id: ID, user_id: ID, exp: DateTime<Utc>) -> RepositoryResult<String> {
         let key = PasetoSymmetricKey::<V4, Local>::from(Key::from(self.secret_key.as_slice()));
 
         let builder = PasetoBuilder::<V4, Local>::default()
             .set_claim(CustomClaim::try_from(("uid", user_id.to_string())).unwrap())
             .set_claim(CustomClaim::try_from(("sid", session_id.to_string())).unwrap())
-            .set_claim(ExpirationClaim::try_from("2019-01-01T00:00:00+00:00").unwrap())
+            .set_claim(ExpirationClaim::try_from(exp.to_rfc3339()).unwrap())
             .build(&key)
             .unwrap();
 
@@ -50,10 +50,13 @@ impl SessionRepository for SessionPostgresRepository {
         user_agent: String,
     ) -> RepositoryResult<Session> {
         let session_id = self.id_generator.clone().generate();
-        let access_token = self.generate_token(session_id, user_id)?;
-        let refresh_token = self.generate_token(session_id, user_id)?;
 
-        let now = Utc::now().timestamp();
+        let date_now = Utc::now().timestamp();
+        let access_exp = Utc::now() + Duration::minutes(15);
+        let refresh_exp = Utc::now() + Duration::days(60);
+
+        let access_token = self.generate_token(session_id, user_id, access_exp)?;
+        let refresh_token = self.generate_token(session_id, user_id, refresh_exp)?;
 
         let session = sqlx::query_as!(
             Session,
@@ -66,8 +69,8 @@ impl SessionRepository for SessionPostgresRepository {
             user_id,
             access_token,
             refresh_token,
-            now,
-            now,
+            date_now,
+            refresh_exp.timestamp(),
             ip_address,
             user_agent
         )
