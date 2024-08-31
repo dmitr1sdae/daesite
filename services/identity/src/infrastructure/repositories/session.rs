@@ -51,9 +51,9 @@ impl SessionRepository for SessionPostgresRepository {
     ) -> RepositoryResult<Session> {
         let session_id = self.id_generator.clone().generate();
 
-        let date_now = Utc::now().timestamp();
-        let access_exp = Utc::now() + Duration::minutes(15);
-        let refresh_exp = Utc::now() + Duration::days(60);
+        let date_now = Utc::now();
+        let access_exp = date_now + Duration::minutes(15);
+        let refresh_exp = date_now + Duration::days(60);
 
         let access_token = self.generate_token(session_id, user_id, access_exp)?;
         let refresh_token = self.generate_token(session_id, user_id, refresh_exp)?;
@@ -69,7 +69,7 @@ impl SessionRepository for SessionPostgresRepository {
             user_id,
             access_token,
             refresh_token,
-            date_now,
+            date_now.timestamp(),
             refresh_exp.timestamp(),
             ip_address,
             user_agent
