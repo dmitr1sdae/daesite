@@ -10,14 +10,14 @@ use super::repository::{QueryParams, RepositoryResult, DEFAULT_NEXT_PAGE, DEFAUL
 
 #[derive(Clone, Debug, Serialize, Deserialize, Validate)]
 pub struct ModulusQueryParams {
-    pub next_page: Option<usize>,
+    pub next_page: Option<ID>,
     #[validate(range(min = 5, max = 50))]
     pub page_size: Option<usize>,
     pub query: Option<String>,
 }
 
 impl QueryParams for ModulusQueryParams {
-    fn next_page(&self) -> usize {
+    fn next_page(&self) -> ID {
         self.next_page.or(DEFAULT_NEXT_PAGE).unwrap_or_default()
     }
     fn page_size(&self) -> usize {

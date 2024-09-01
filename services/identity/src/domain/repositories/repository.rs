@@ -1,4 +1,4 @@
-use crate::domain::error::RepositoryError;
+use crate::domain::{error::RepositoryError, models::id::ID};
 use serde::{Deserialize, Serialize};
 
 pub type RepositoryResult<T> = Result<T, RepositoryError>;
@@ -10,22 +10,22 @@ pub struct ResultPaging<T> {
     pub next_page: Option<String>,
 }
 
-pub const DEFAULT_NEXT_PAGE: Option<usize> = None;
+pub const DEFAULT_NEXT_PAGE: Option<ID> = None;
 pub const DEFAULT_PAGE_SIZE: Option<usize> = Some(25);
 
 pub trait QueryParams: Send + Sync {
-    fn next_page(&self) -> usize;
+    fn next_page(&self) -> ID;
     fn page_size(&self) -> usize;
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct QueryParamsImpl {
-    pub next_page: Option<usize>,
+    pub next_page: Option<ID>,
     pub page_size: Option<usize>,
 }
 
 impl QueryParams for QueryParamsImpl {
-    fn next_page(&self) -> usize {
+    fn next_page(&self) -> ID {
         self.next_page.or(DEFAULT_NEXT_PAGE).unwrap_or_default()
     }
     fn page_size(&self) -> usize {
