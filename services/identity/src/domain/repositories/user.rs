@@ -26,7 +26,7 @@ impl QueryParams for UserQueryParams {
 #[async_trait::async_trait]
 pub trait UserRepository: Send + Sync {
     async fn check(&self, user: &CheckUser) -> RepositoryResult<bool>;
-    async fn create(&self, id: ID, new_user: &CreateUser) -> RepositoryResult<User>;
+    async fn create(&self, new_user: &CreateUser) -> RepositoryResult<User>;
     async fn list(&self, params: UserQueryParams) -> RepositoryResult<ResultPaging<User>>;
     async fn get_by_id(&self, user_id: ID) -> RepositoryResult<User>;
     async fn get_by_email(&self, user_email: String) -> RepositoryResult<User>;

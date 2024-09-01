@@ -10,6 +10,7 @@ use std::collections::HashMap;
 use std::sync::Arc;
 
 pub struct UserPostgresRepository {
+    id_generator: id::Generator,
     repository: Arc<postgres::Session>,
 }
 
@@ -28,14 +29,16 @@ impl UserRepository for UserPostgresRepository {
         Ok(exists)
     }
 
-    async fn create(&self, id: ID, new_user: &CreateUser) -> RepositoryResult<User> {
+    async fn create(&self, new_user: &CreateUser) -> RepositoryResult<User> {
+        let user_id = self.id_generator.clone().generate();
+
         let result = sqlx::query!(
             "
             INSERT INTO users (id, username, modulus, email, created_at, updated_at)
             VALUES ($1, $2, $3, $4, $5, $6)
             RETURNING id
             ",
-            id,
+            user_id,
             new_user.username,
             new_user.modulus,
             new_user.email,
