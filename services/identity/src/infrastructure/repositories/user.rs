@@ -46,34 +46,81 @@ impl UserRepository for UserPostgresRepository {
         .await
         .unwrap();
 
-        let user_id = result.id;
-
-        self.get_by_id(user_id).await
+        self.get_by_id(result.id).await
     }
 
     async fn list(&self, params: UserQueryParams) -> RepositoryResult<ResultPaging<User>> {
-        let offset = ((params.next_page() - 1) * params.page_size()) as i64;
-        let limit = (params.page_size()) as i64;
+        let limit = params.page_size() as i64;
+        let next_page = params.next_page();
 
-        // Query to fetch users with their roles
         let rows = sqlx::query!(
             "
             SELECT u.id as user_id, u.username, u.avatar, u.modulus, u.email, u.created_at, u.updated_at,
-                r.id as role_id, r.name as role_name
+                   r.id as role_id, r.name as role_name, r.created_at as role_created_at, r.updated_at as role_updated_at,
+                   p.id as permission_id, p.name as permission_name
             FROM users u
             LEFT JOIN user_roles ur ON u.id = ur.user_id
             LEFT JOIN roles r ON ur.role_id = r.id
+            LEFT JOIN role_permissions rp ON r.id = rp.role_id
+            LEFT JOIN permissions p ON rp.permission_id = p.id
+            WHERE ($1::bigint IS NULL OR u.id < $1)
             ORDER BY u.id DESC
-            LIMIT $1 OFFSET $2
+            LIMIT $2
             ",
-            limit,
-            offset
+            next_page,
+            limit
         )
         .fetch_all(self.repository.as_ref())
         .await
         .unwrap();
 
-        todo!()
+        let next_cursor = rows.last().map(|row| row.user_id);
+
+        let mut users_map: HashMap<ID, User> = HashMap::new();
+
+        for row in rows {
+            let user_id = row.user_id;
+            let user_entry = users_map.entry(user_id).or_insert_with(|| User {
+                id: user_id,
+                username: row.username,
+                avatar: row.avatar,
+                modulus: row.modulus,
+                email: row.email,
+                roles: Vec::new(),
+                created_at: row.created_at,
+                updated_at: row.updated_at,
+            });
+
+            let role_id = row.role_id;
+            let role_entry = user_entry.roles.iter_mut().find(|r| r.id == role_id);
+
+            if role_entry.is_none() {
+                user_entry.roles.push(Role {
+                    id: role_id,
+                    name: row.role_name,
+                    permissions: Vec::new(),
+                    created_at: row.role_created_at,
+                    updated_at: row.role_updated_at,
+                });
+            }
+
+            if let Some(role) = user_entry.roles.iter_mut().find(|r| r.id == role_id) {
+                role.permissions.push(Permission {
+                    id: row.permission_id,
+                    name: row.permission_name,
+                });
+            }
+        }
+
+        let users: Vec<User> = users_map.into_values().collect();
+
+        let result_paging = ResultPaging {
+            code: 0,
+            items: users,
+            next_page: next_cursor.map(|id| id.to_string()),
+        };
+
+        Ok(result_paging)
     }
 
     async fn get_by_id(&self, user_id: ID) -> RepositoryResult<User> {
