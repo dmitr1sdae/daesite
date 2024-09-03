@@ -22,8 +22,22 @@ pub struct ApiError(CommonError);
 impl ApiError {
     pub fn status_code(&self) -> StatusCode {
         match self.0.code {
+            // ### 1XX: common codes ###
+            // 102: common server error
             102 => StatusCode::INTERNAL_SERVER_ERROR,
+            // 104: object not exists
             104 => StatusCode::NOT_FOUND,
+
+            // ### 2XX:  ###
+            // 203: CAPTCHA needed
+            203 => StatusCode::UNAUTHORIZED,
+
+            // ### 5XX: internal errors codes ###
+            // 500: Request failed
+            500 => StatusCode::INTERNAL_SERVER_ERROR,
+            // 501: Parsing response failed
+            501 => StatusCode::INTERNAL_SERVER_ERROR,
+
             _ => StatusCode::BAD_REQUEST,
         }
     }
