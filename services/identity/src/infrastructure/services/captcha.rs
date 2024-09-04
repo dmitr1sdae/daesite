@@ -11,8 +11,6 @@ const CLOUDFLARE_TURNSTILE_VERIFY_URL: &str =
 #[derive(Deserialize)]
 struct TurnstileResponse {
     success: bool,
-    #[serde(rename = "error-codes")]
-    error_codes: Option<Vec<String>>,
 }
 
 pub struct CloudflareCaptchaService {
@@ -47,28 +45,21 @@ impl CaptchaService for CloudflareCaptchaService {
             .form(&form)
             .send()
             .await
-            .map_err(|_| {
-                Err::<(), CommonError>(CommonError {
-                    message: "Request failed".to_string(),
-                    description: "Failed to send request to Cloudflare Turnstile endpoint"
-                        .to_string(),
-                    code: 500,
-                })
-            })
-            .unwrap()
+            .map_err(|_| CommonError {
+                message: "Request failed".to_string(),
+                description: "Failed to send request to Cloudflare Turnstile endpoint".to_string(),
+                code: 500,
+            })?
             .json::<TurnstileResponse>()
             .await
-            .map_err(|_| {
-                Err::<(), CommonError>(CommonError {
-                    message: "Parsing response failed".to_string(),
-                    description: "Failed to parse response from Cloudflare Turnstile".to_string(),
-                    code: 501,
-                })
-            })
-            .unwrap();
+            .map_err(|_| CommonError {
+                message: "Parsing response failed".to_string(),
+                description: "Failed to parse response from Cloudflare Turnstile".to_string(),
+                code: 501,
+            })?;
 
         if !response.success {
-            Err::<(), CommonError>(CommonError {
+            return Err(CommonError {
                 message: "CAPTCHA verification failed".to_string(),
                 description: "The provided CAPTCHA token is invalid or has expired".to_string(),
                 code: 203,

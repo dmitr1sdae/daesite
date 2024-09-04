@@ -1,112 +1,100 @@
 use crate::domain::error::{RepositoryError, StorageError};
+use thiserror::Error;
 
-pub struct PostgresRepositoryError(RepositoryError);
+#[derive(Debug, Error)]
+pub enum PostgresRepositoryError {
+    #[error("Database error: {0}")]
+    DatabaseError(String),
+
+    #[error(transparent)]
+    SqlxError(#[from] sqlx::Error),
+
+    #[error(transparent)]
+    PasetoError(#[from] rusty_paseto::prelude::GenericBuilderError),
+
+    #[error(transparent)]
+    Other(#[from] RepositoryError),
+}
 
 impl PostgresRepositoryError {
-    pub fn new(message: &str, description: &str, code: u32) -> PostgresRepositoryError {
-        PostgresRepositoryError(RepositoryError {
-            message: message.to_string(),
-            description: description.to_string(),
-            code,
-        })
+    pub fn new(description: &str) -> PostgresRepositoryError {
+        PostgresRepositoryError::DatabaseError(description.to_string())
     }
 
     pub fn into_inner(self) -> RepositoryError {
-        self.0
+        match self {
+            PostgresRepositoryError::DatabaseError(description) => {
+                RepositoryError::DatabaseError(description)
+            }
+            PostgresRepositoryError::SqlxError(error) => {
+                RepositoryError::DatabaseError(error.to_string())
+            }
+            PostgresRepositoryError::PasetoError(error) => {
+                RepositoryError::DatabaseError(error.to_string())
+            }
+            PostgresRepositoryError::Other(error) => error,
+        }
     }
 }
 
-impl From<&str> for PostgresRepositoryError {
-    fn from(error: &str) -> Self {
-        PostgresRepositoryError(RepositoryError {
-            message: error.to_string(),
-            description: "Database error".to_string(),
-            code: 1,
-        })
-    }
-}
+#[derive(Debug, Error)]
+pub enum S3StorageError {
+    #[error("{message}: {description} (code: {code})")]
+    CustomError {
+        message: String,
+        description: String,
+        code: u32,
+    },
 
-impl From<sqlx::Error> for PostgresRepositoryError {
-    fn from(error: sqlx::Error) -> Self {
-        PostgresRepositoryError(RepositoryError {
-            message: error.to_string(),
-            description: "Database error".to_string(),
-            code: 1,
-        })
-    }
-}
+    #[error("Storage error: {0}")]
+    StorageError(String),
 
-impl From<rusty_paseto::prelude::GenericBuilderError> for PostgresRepositoryError {
-    fn from(error: rusty_paseto::prelude::GenericBuilderError) -> Self {
-        PostgresRepositoryError(RepositoryError {
-            message: error.to_string(),
-            description: "Database error".to_string(),
-            code: 1,
-        })
-    }
-}
+    #[error(transparent)]
+    S3Error(#[from] s3::error::S3Error),
 
-#[derive(Debug)]
-pub struct S3StorageError(StorageError);
+    #[error(transparent)]
+    ParseError(#[from] std::num::ParseIntError),
+
+    #[error(transparent)]
+    Other(#[from] StorageError),
+}
 
 impl S3StorageError {
-    pub fn new(message: &str, description: &str, code: u32) -> S3StorageError {
-        S3StorageError(StorageError {
+    pub fn new(message: &str, description: &str, code: u32) -> Self {
+        S3StorageError::CustomError {
             message: message.to_string(),
             description: description.to_string(),
             code,
-        })
+        }
     }
 
     pub fn into_inner(self) -> StorageError {
-        self.0
-    }
-}
-
-impl From<&str> for S3StorageError {
-    fn from(error: &str) -> Self {
-        S3StorageError(StorageError {
-            message: error.to_string(),
-            description: "Storage error".to_string(),
-            code: 1,
-        })
-    }
-}
-
-impl From<s3::error::S3Error> for S3StorageError {
-    fn from(error: s3::error::S3Error) -> Self {
-        S3StorageError(StorageError {
-            message: error.to_string(),
-            description: "Storage error".to_string(),
-            code: 1,
-        })
-    }
-}
-
-impl From<std::num::ParseIntError> for S3StorageError {
-    fn from(error: std::num::ParseIntError) -> Self {
-        S3StorageError(StorageError {
-            message: error.to_string(),
-            description: "Storage error".to_string(),
-            code: 1,
-        })
-    }
-}
-
-pub struct DecodeError(RepositoryError);
-
-impl DecodeError {
-    pub fn into_inner(self) -> RepositoryError {
-        self.0
-    }
-}
-
-impl From<base64_url::base64::DecodeError> for DecodeError {
-    fn from(error: base64_url::base64::DecodeError) -> Self {
-        DecodeError(RepositoryError {
-            message: error.to_string(),
-            description: "base64 parsing error".to_string(),
-            code: 1,
-        })
+        match self {
+            S3StorageError::CustomError {
+                message,
+                description,
+                code,
+            } => StorageError {
+                message,
+                description,
+                code,
+            },
+            S3StorageError::StorageError(message) => StorageError {
+                message,
+                description: "Storage error".to_string(),
+                code: 1,
+            },
+            S3StorageError::S3Error(error) => StorageError {
+                message: error.to_string(),
+                description: "S3 Error".to_string(),
+                code: 2,
+            },
+            S3StorageError::ParseError(error) => StorageError {
+                message: error.to_string(),
+                description: "Parse Error".to_string(),
+                code: 3,
+            },
+            S3StorageError::Other(error) => error,
+        }
     }
 }

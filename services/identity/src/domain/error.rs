@@ -2,6 +2,7 @@ use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
 use axum::Json;
 use serde::Serialize;
+use thiserror::Error;
 
 #[derive(Debug, Serialize, Clone)]
 pub struct CommonError {
@@ -69,30 +70,50 @@ impl IntoResponse for ApiError {
     }
 }
 
-#[derive(Debug)]
-pub struct RepositoryError {
-    pub message: String,
-    pub description: String,
-    pub code: u32,
+#[derive(Debug, Error)]
+pub enum RepositoryError {
+    #[error("Missing claim: {0}")]
+    MissingClaim(String),
+
+    #[error("Invalid token: {0}")]
+    InvalidToken(String),
+
+    #[error("Database error: {0}")]
+    DatabaseError(String),
+
+    #[error("Unknown error occurred")]
+    Unknown,
 }
 
 impl From<RepositoryError> for CommonError {
     fn from(error: RepositoryError) -> Self {
-        CommonError {
-            message: error.message,
-            description: error.description,
-            code: error.code,
+        match error {
+            RepositoryError::MissingClaim(claim) => CommonError {
+                message: format!("Missing claim: {}", claim),
+                description: "A required claim is missing".to_string(),
+                code: 1001,
+            },
+            RepositoryError::InvalidToken(details) => CommonError {
+                message: "Invalid token".to_string(),
+                description: details,
+                code: 2002,
+            },
+            RepositoryError::DatabaseError(details) => CommonError {
+                message: "Database error".to_string(),
+                description: details,
+                code: 2001,
+            },
+            RepositoryError::Unknown => CommonError {
+                message: "Unknown error".to_string(),
+                description: "An unknown error occurred".to_string(),
+                code: 9999,
+            },
         }
     }
 }
 
-impl std::fmt::Display for RepositoryError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.message)
-    }
-}
-
-#[derive(Debug)]
+#[derive(Debug, Error)]
+#[error("{message}")]
 pub struct StorageError {
     pub message: String,
     pub description: String,
@@ -106,11 +127,5 @@ impl From<StorageError> for CommonError {
             description: error.description,
             code: error.code,
         }
-    }
-}
-
-impl std::fmt::Display for StorageError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.message)
     }
 }
