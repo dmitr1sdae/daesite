@@ -81,6 +81,9 @@ pub enum RepositoryError {
     #[error("Database error: {0}")]
     DatabaseError(String),
 
+    #[error("Image parsing error: {0}")]
+    ImageError(String),
+
     #[error("Unknown error occurred")]
     Unknown,
 }
@@ -100,6 +103,11 @@ impl From<RepositoryError> for CommonError {
             },
             RepositoryError::DatabaseError(details) => CommonError {
                 message: "Database error".to_string(),
+                description: details,
+                code: 2001,
+            },
+            RepositoryError::ImageError(details) => CommonError {
+                message: "Image parsing error".to_string(),
                 description: details,
                 code: 2001,
             },

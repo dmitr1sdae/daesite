@@ -1,10 +1,10 @@
 use std::env;
 
-pub type Bucket = s3::Bucket;
+pub type Session = s3::Bucket;
 pub type Region = s3::Region;
 pub type Credentials = s3::creds::Credentials;
 
-pub async fn connect() -> Bucket {
+pub async fn connect() -> Session {
     let bucket_name = env::var("S3_BUCKET_NAME")
         .map_err(|_| "S3_BUCKET_NAME must be set")
         .unwrap();
@@ -21,7 +21,7 @@ pub async fn connect() -> Bucket {
         .map_err(|_| "S3_SECRET must be set")
         .unwrap();
 
-    Bucket::new(
+    Session::new(
         bucket_name.as_str(),
         if bucket_region.as_str() == "r2" {
             Region::R2 { account_id: url }

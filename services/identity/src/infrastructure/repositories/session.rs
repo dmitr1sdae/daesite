@@ -27,7 +27,12 @@ impl SessionPostgresRepository {
         }
     }
 
-    fn generate_token(&self, session_id: ID, user_id: ID, exp: DateTime<Utc>) -> RepositoryResult<String> {
+    fn generate_token(
+        &self,
+        session_id: ID,
+        user_id: ID,
+        exp: DateTime<Utc>,
+    ) -> RepositoryResult<String> {
         let key = PasetoSymmetricKey::<V4, Local>::from(Key::from(self.secret_key.as_slice()));
 
         let builder = PasetoBuilder::<V4, Local>::default()

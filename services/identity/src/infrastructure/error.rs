@@ -13,6 +13,9 @@ pub enum PostgresRepositoryError {
     PasetoError(#[from] rusty_paseto::prelude::GenericBuilderError),
 
     #[error(transparent)]
+    ImageError(#[from] image::ImageError),
+
+    #[error(transparent)]
     Other(#[from] RepositoryError),
 }
 
@@ -31,6 +34,9 @@ impl PostgresRepositoryError {
             }
             PostgresRepositoryError::PasetoError(error) => {
                 RepositoryError::DatabaseError(error.to_string())
+            }
+            PostgresRepositoryError::ImageError(error) => {
+                RepositoryError::ImageError(error.to_string())
             }
             PostgresRepositoryError::Other(error) => error,
         }

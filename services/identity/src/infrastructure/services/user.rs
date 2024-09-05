@@ -1,10 +1,10 @@
-use std::sync::Arc;
 use crate::domain::error::CommonError;
 use crate::domain::models::id::ID;
 use crate::domain::models::user::{CreateUser, UpdateUser, User};
 use crate::domain::repositories::repository::ResultPaging;
 use crate::domain::repositories::user::{UserQueryParams, UserRepository};
 use crate::domain::services::user::UserService;
+use std::sync::Arc;
 
 #[derive(Clone)]
 pub struct UserServiceImpl {
@@ -13,10 +13,7 @@ pub struct UserServiceImpl {
 }
 
 impl UserServiceImpl {
-    pub fn new(
-        id_generator: id::Generator,
-        user_repository: Arc<dyn UserRepository>,
-    ) -> Self {
+    pub fn new(id_generator: id::Generator, user_repository: Arc<dyn UserRepository>) -> Self {
         UserServiceImpl {
             id_generator,
             user_repository,
