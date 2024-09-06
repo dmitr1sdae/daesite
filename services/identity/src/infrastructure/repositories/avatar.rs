@@ -1,4 +1,5 @@
 use crate::domain::models::avatar::Avatar;
+use crate::domain::models::id::ID;
 use crate::domain::repositories::avatar::AvatarRepository;
 use crate::domain::repositories::repository::RepositoryResult;
 use crate::infrastructure::connectors::s3;
@@ -85,5 +86,31 @@ impl AvatarRepository for S3AvatarRepository {
             .map_err(|e| InfrastructureRepositoryError::S3(e).into_inner())?;
 
         Ok(processed_avatar)
+    }
+    async fn delete_avatar(&self, user_id: ID, avatar_id: ID) -> RepositoryResult<()> {
+        self.repository
+            .delete_object(format!("{}/{}", user_id, avatar_id))
+            .await
+            .map_err(|e| InfrastructureRepositoryError::S3(e).into_inner())?;
+
+        Ok(())
+    }
+    async fn delete_all(&self, user_id: ID) -> RepositoryResult<()> {
+        let objects_to_delete = self
+            .repository
+            .list(format!("{}/", user_id), None)
+            .await
+            .map_err(|e| InfrastructureRepositoryError::S3(e).into_inner())?;
+
+            for result in objects_to_delete {
+                for object in result.contents {
+                    self.repository
+                        .delete_object(object.key.clone())
+                        .await
+                        .map_err(|e| InfrastructureRepositoryError::S3(e).into_inner())?;
+                }
+            }
+
+        Ok(())
     }
 }
