@@ -27,5 +27,6 @@ pub trait ModulusRepository: Send + Sync {
     async fn create(&self, id: ID, new_modulus: &CreateModulus) -> RepositoryResult<Modulus>;
     async fn list(&self, params: ModulusQueryParams) -> RepositoryResult<ResultPaging<Modulus>>;
     async fn get(&self, modulus_id: ID) -> RepositoryResult<Modulus>;
+    async fn get_random(&self) -> RepositoryResult<Option<Modulus>>;
     async fn delete(&self, modulus_id: ID) -> RepositoryResult<()>;
 }

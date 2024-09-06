@@ -96,6 +96,23 @@ impl ModulusRepository for ModulusPostgresRepository {
         Ok(result)
     }
 
+    async fn get_random(&self) -> RepositoryResult<Option<Modulus>> {
+        let result = sqlx::query_as!(
+            Modulus,
+            r#"
+            SELECT id, modulus
+            FROM modulus
+            ORDER BY RANDOM()
+            LIMIT 1
+            "#
+        )
+        .fetch_optional(self.repository.as_ref())
+        .await
+        .map_err(|e| InfrastructureRepositoryError::Query(e).into_inner())?;
+
+        Ok(result)
+    }
+
     async fn delete(&self, modulus_id: ID) -> RepositoryResult<()> {
         sqlx::query!(
             r#"
