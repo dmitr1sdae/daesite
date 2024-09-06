@@ -72,68 +72,50 @@ impl IntoResponse for ApiError {
 
 #[derive(Debug, Error)]
 pub enum RepositoryError {
-    #[error("Missing claim: {0}")]
-    MissingClaim(String),
-
-    #[error("Invalid token: {0}")]
-    InvalidToken(String),
-
     #[error("Database error: {0}")]
-    DatabaseError(String),
+    Database(String),
 
-    #[error("Image parsing error: {0}")]
-    ImageError(String),
+    #[error("Failed error to access storage: {0}")]
+    Storage(String),
 
-    #[error("Unknown error occurred")]
-    Unknown,
+    #[error("Failed to process image: {0}")]
+    ImageProcessing(String),
+
+    #[error("Invalid token: {1}")]
+    InvalidToken(u32, String),
+
+    #[error("Unexpected error occurred")]
+    Unexpected,
 }
 
 impl From<RepositoryError> for CommonError {
     fn from(error: RepositoryError) -> Self {
         match error {
-            RepositoryError::MissingClaim(claim) => CommonError {
-                message: format!("Missing claim: {}", claim),
-                description: "A required claim is missing".to_string(),
-                code: 1001,
-            },
-            RepositoryError::InvalidToken(details) => CommonError {
-                message: "Invalid token".to_string(),
-                description: details,
-                code: 2002,
-            },
-            RepositoryError::DatabaseError(details) => CommonError {
+            RepositoryError::Database(details) => CommonError {
                 message: "Database error".to_string(),
                 description: details,
                 code: 2001,
             },
-            RepositoryError::ImageError(details) => CommonError {
-                message: "Image parsing error".to_string(),
+            RepositoryError::Storage(details) => CommonError {
+                message: "Storage error".to_string(),
                 description: details,
-                code: 2001,
+                code: 2000,
             },
-            RepositoryError::Unknown => CommonError {
-                message: "Unknown error".to_string(),
-                description: "An unknown error occurred".to_string(),
-                code: 9999,
+            RepositoryError::ImageProcessing(details) => CommonError {
+                message: "Image processing error".to_string(),
+                description: details,
+                code: 2007,
             },
-        }
-    }
-}
-
-#[derive(Debug, Error)]
-#[error("{message}")]
-pub struct StorageError {
-    pub message: String,
-    pub description: String,
-    pub code: u32,
-}
-
-impl From<StorageError> for CommonError {
-    fn from(error: StorageError) -> Self {
-        CommonError {
-            message: error.message,
-            description: error.description,
-            code: error.code,
+            RepositoryError::InvalidToken(code, details) => CommonError {
+                message: "Token error".to_string(),
+                description: details,
+                code,
+            },
+            _ => CommonError {
+                message: "Unexpected error".to_string(),
+                description: "An unexpected error occurred".to_string(),
+                code: 3000,
+            },
         }
     }
 }
