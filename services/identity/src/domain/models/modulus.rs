@@ -1,6 +1,5 @@
-use serde::Serialize;
-
 use crate::domain::models::id::ID;
+use serde::Serialize;
 
 #[derive(Debug, Serialize)]
 pub struct Modulus {

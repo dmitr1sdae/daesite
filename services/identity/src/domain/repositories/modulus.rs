@@ -1,19 +1,16 @@
-use serde::{Deserialize, Serialize};
-use validator::Validate;
-
+use super::repository::ResultPaging;
+use super::repository::{QueryParams, RepositoryResult, DEFAULT_NEXT_PAGE, DEFAULT_PAGE_SIZE};
 use crate::domain::models::id::ID;
 use crate::domain::models::modulus::CreateModulus;
 use crate::domain::models::modulus::Modulus;
-
-use super::repository::ResultPaging;
-use super::repository::{QueryParams, RepositoryResult, DEFAULT_NEXT_PAGE, DEFAULT_PAGE_SIZE};
+use serde::{Deserialize, Serialize};
+use validator::Validate;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Validate)]
 pub struct ModulusQueryParams {
     pub next_page: Option<ID>,
     #[validate(range(min = 5, max = 50))]
     pub page_size: Option<usize>,
-    pub query: Option<String>,
 }
 
 impl QueryParams for ModulusQueryParams {
