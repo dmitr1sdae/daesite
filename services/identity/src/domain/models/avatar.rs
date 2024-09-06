@@ -1,4 +1,4 @@
 pub struct Avatar {
-    pub filename: Option<String>,
+    pub filename: String,
     pub content: Vec<u8>,
 }

@@ -1,11 +1,10 @@
+use crate::infrastructure::error::InfrastructureRepositoryError;
 use sqlx::migrate::MigrateDatabase;
 use sqlx::postgres::PgPoolOptions;
 use sqlx::{Connection, PgConnection, PgPool, Postgres};
 use std::env;
 use std::time::Duration;
 use tracing::{error, info};
-
-use crate::infrastructure::error::PostgresRepositoryError;
 
 pub type Session = PgPool;
 
@@ -38,7 +37,7 @@ pub async fn connect() -> Session {
         .unwrap()
 }
 
-pub async fn migrate() -> Result<(), PostgresRepositoryError> {
+pub async fn migrate() -> Result<(), InfrastructureRepositoryError> {
     let url = env::var("DATABASE_URL")
         .map_err(|_| "DATABASE_URL must be set")
         .unwrap();

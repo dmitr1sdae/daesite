@@ -1,4 +1,5 @@
-use crate::domain::{error::RepositoryError, models::id::ID};
+use crate::domain::error::RepositoryError;
+use crate::domain::models::id::ID;
 use serde::{Deserialize, Serialize};
 
 pub type RepositoryResult<T> = Result<T, RepositoryError>;

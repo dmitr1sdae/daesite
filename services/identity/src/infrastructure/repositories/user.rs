@@ -5,6 +5,7 @@ use crate::domain::models::user::{CheckUser, CreateUser, UpdateUser, User};
 use crate::domain::repositories::repository::{QueryParams, RepositoryResult, ResultPaging};
 use crate::domain::repositories::user::{UserQueryParams, UserRepository};
 use crate::infrastructure::connectors::postgres;
+use crate::infrastructure::error::InfrastructureRepositoryError;
 use chrono::Utc;
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -24,7 +25,7 @@ impl UserRepository for UserPostgresRepository {
         )
         .fetch_one(self.repository.as_ref())
         .await
-        .unwrap();
+        .map_err(|e| InfrastructureRepositoryError::Query(e).into_inner())?;
 
         Ok(exists)
     }
@@ -47,7 +48,7 @@ impl UserRepository for UserPostgresRepository {
         )
         .fetch_one(self.repository.as_ref())
         .await
-        .unwrap();
+        .map_err(|e| InfrastructureRepositoryError::Query(e).into_inner())?;
 
         self.get_by_id(result.id).await
     }
@@ -75,7 +76,7 @@ impl UserRepository for UserPostgresRepository {
         )
         .fetch_all(self.repository.as_ref())
         .await
-        .unwrap();
+        .map_err(|e| InfrastructureRepositoryError::Query(e).into_inner())?;
 
         let next_cursor = rows.last().map(|row| row.user_id);
 
@@ -143,7 +144,7 @@ impl UserRepository for UserPostgresRepository {
         )
         .fetch_all(self.repository.as_ref())
         .await
-        .unwrap();
+        .map_err(|e| InfrastructureRepositoryError::Query(e).into_inner())?;
 
         let mut user = User {
             id: user_id,
@@ -214,7 +215,7 @@ impl UserRepository for UserPostgresRepository {
         )
         .fetch_all(self.repository.as_ref())
         .await
-        .unwrap();
+        .map_err(|e| InfrastructureRepositoryError::Query(e).into_inner())?;
 
         let mut user = User {
             id: 0,
@@ -285,7 +286,7 @@ impl UserRepository for UserPostgresRepository {
         )
         .fetch_all(self.repository.as_ref())
         .await
-        .unwrap();
+        .map_err(|e| InfrastructureRepositoryError::Query(e).into_inner())?;
 
         let mut user = User {
             id: 0,
@@ -356,7 +357,7 @@ impl UserRepository for UserPostgresRepository {
         )
         .execute(self.repository.as_ref())
         .await
-        .unwrap();
+        .map_err(|e| InfrastructureRepositoryError::Query(e).into_inner())?;
 
         self.get_by_id(user_id).await
     }
@@ -372,7 +373,7 @@ impl UserRepository for UserPostgresRepository {
         )
         .execute(self.repository.as_ref())
         .await
-        .unwrap();
+        .map_err(|e| InfrastructureRepositoryError::Query(e).into_inner())?;
 
         // Remove the user
         sqlx::query!(
