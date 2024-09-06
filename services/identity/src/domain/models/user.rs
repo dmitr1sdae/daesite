@@ -10,6 +10,8 @@ pub struct User {
     pub avatar: Option<ID>,
     pub modulus: ID,
     pub email: String,
+    pub salt: String,
+    pub verifier: String,
     pub roles: Vec<Role>,
     pub created_at: i64,
     pub updated_at: i64,
@@ -26,6 +28,8 @@ pub struct CreateUser {
     pub username: String,
     pub email: String,
     pub modulus: ID,
+    pub salt: String,
+    pub verifier: String,
 }
 
 pub struct UpdateUser {

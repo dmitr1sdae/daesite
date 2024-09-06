@@ -102,14 +102,14 @@ impl AvatarRepository for S3AvatarRepository {
             .await
             .map_err(|e| InfrastructureRepositoryError::S3(e).into_inner())?;
 
-            for result in objects_to_delete {
-                for object in result.contents {
-                    self.repository
-                        .delete_object(object.key.clone())
-                        .await
-                        .map_err(|e| InfrastructureRepositoryError::S3(e).into_inner())?;
-                }
+        for result in objects_to_delete {
+            for object in result.contents {
+                self.repository
+                    .delete_object(object.key.clone())
+                    .await
+                    .map_err(|e| InfrastructureRepositoryError::S3(e).into_inner())?;
             }
+        }
 
         Ok(())
     }

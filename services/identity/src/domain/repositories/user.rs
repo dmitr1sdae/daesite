@@ -1,11 +1,9 @@
-use serde::{Deserialize, Serialize};
-use validator::Validate;
-
-use crate::domain::models::id::ID;
-use crate::domain::models::user::{CheckUser, CreateUser, UpdateUser, User};
-
 use super::repository::ResultPaging;
 use super::repository::{QueryParams, RepositoryResult, DEFAULT_NEXT_PAGE, DEFAULT_PAGE_SIZE};
+use crate::domain::models::id::ID;
+use crate::domain::models::user::{CheckUser, CreateUser, UpdateUser, User};
+use serde::{Deserialize, Serialize};
+use validator::Validate;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Validate)]
 pub struct UserQueryParams {

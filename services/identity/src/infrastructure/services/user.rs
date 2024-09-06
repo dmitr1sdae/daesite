@@ -28,6 +28,8 @@ impl UserService for UserServiceImpl {
             username: user.username.clone(),
             email: user.email.clone(),
             modulus: user.modulus,
+            salt: user.salt.clone(),
+            verifier: user.verifier.clone(),
         };
 
         let created_user = self.user_repository.create(&new_user).await?;

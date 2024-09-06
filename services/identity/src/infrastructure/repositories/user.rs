@@ -59,7 +59,7 @@ impl UserRepository for UserPostgresRepository {
 
         let rows = sqlx::query!(
             "
-            SELECT u.id as user_id, u.username, u.avatar, u.modulus, u.email, u.created_at, u.updated_at,
+            SELECT u.id as user_id, u.username, u.avatar, u.modulus, u.email, u.salt, u.verifier, u.created_at, u.updated_at,
                    r.id as role_id, r.name as role_name, r.created_at as role_created_at, r.updated_at as role_updated_at,
                    p.id as permission_id, p.name as permission_name
             FROM users u
@@ -90,6 +90,8 @@ impl UserRepository for UserPostgresRepository {
                 avatar: row.avatar,
                 modulus: row.modulus,
                 email: row.email,
+                salt: row.salt,
+                verifier: row.verifier,
                 roles: Vec::new(),
                 created_at: row.created_at,
                 updated_at: row.updated_at,
@@ -152,6 +154,8 @@ impl UserRepository for UserPostgresRepository {
             avatar: None,
             modulus: 0,
             email: String::new(),
+            salt: String::new(),
+            verifier: String::new(),
             roles: Vec::new(),
             created_at: 0,
             updated_at: 0,
@@ -223,6 +227,8 @@ impl UserRepository for UserPostgresRepository {
             avatar: None,
             modulus: 0,
             email: user_email,
+            salt: String::new(),
+            verifier: String::new(),
             roles: Vec::new(),
             created_at: 0,
             updated_at: 0,
@@ -294,6 +300,8 @@ impl UserRepository for UserPostgresRepository {
             avatar: None,
             modulus: 0,
             email: String::new(),
+            salt: String::new(),
+            verifier: String::new(),
             roles: Vec::new(),
             created_at: 0,
             updated_at: 0,
