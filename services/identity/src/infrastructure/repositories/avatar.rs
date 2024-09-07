@@ -15,7 +15,9 @@ pub struct S3AvatarRepository {
 
 impl S3AvatarRepository {
     pub fn new(repository: Arc<s3::Session>) -> Self {
-        let mask_img = Arc::new(image::open("mask_image.webp").expect("Failed to open image file"));
+        let mask_img_slice = include_bytes!("../../../static/circle_image.webp");
+        let reader = image::ImageReader::new(Cursor::new(mask_img_slice));
+        let mask_img = Arc::new(reader.decode().expect("Failed to load file"));
 
         Self {
             repository,
@@ -67,6 +69,7 @@ impl S3AvatarRepository {
                 result_image.put_pixel(x, y, blended_pixel);
             }
         }
+
         Ok(())
     }
 }
