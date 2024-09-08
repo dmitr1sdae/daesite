@@ -81,7 +81,7 @@ impl AvatarRepository for S3AvatarRepository {
 
         self.repository
             .put_object_with_content_type(
-                processed_avatar.filename.clone().as_str(),
+                processed_avatar.filename.as_str(),
                 &processed_avatar.content,
                 "image/png",
             )
