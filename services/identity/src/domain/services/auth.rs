@@ -1,4 +1,5 @@
 use crate::domain::error::CommonError;
+use crate::domain::models::challenge::Challenge;
 use crate::domain::models::id::ID;
 use crate::domain::models::modulus::Modulus;
 use crate::domain::models::session::Session;
@@ -14,7 +15,7 @@ pub trait AuthService: Sync + Send {
     // GET /api/v1/auth/modulus?email=me@dmitr1sdae.com
     async fn get_modulus_by_email(&self, email: String) -> Result<Modulus, CommonError>;
     // POST /api/v1/auth/challenge
-    async fn generate_session(&self, username: String) -> Result<(), CommonError>;
+    async fn generate_session(&self, username: String) -> Result<Challenge, CommonError>;
     // POST /api/v1/auth/proof
     async fn verify(&self, client_verifier: String, proof: String) -> Result<Session, CommonError>;
     // POST /api/v1/auth/signup

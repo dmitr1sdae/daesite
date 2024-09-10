@@ -63,6 +63,7 @@ hmac = "0.12.1"
 argon2 = { version = "0.5.3", features = ["std"] }
 bitflags = "2.4.0"
 hex = "0.4.3"
+num-bigint = { version = "0.4.6", features = ["rand"] }
 totp-rs = { version = "5.0.2", features = ["gen_secret"] }
 reqwest = { version = "0.12.7", features = ["json"] }
 rusty_paseto = "0.3.2"

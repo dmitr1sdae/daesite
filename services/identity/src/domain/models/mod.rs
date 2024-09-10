@@ -1,4 +1,5 @@
 pub mod avatar;
+pub mod challenge;
 pub mod id;
 pub mod modulus;
 pub mod permission;

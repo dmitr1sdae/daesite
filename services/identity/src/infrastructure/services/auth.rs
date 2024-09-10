@@ -1,4 +1,5 @@
 use crate::domain::error::{CommonError, RepositoryError};
+use crate::domain::models::challenge::Challenge;
 use crate::domain::models::id::ID;
 use crate::domain::models::modulus::Modulus;
 use crate::domain::models::session::Session;
@@ -60,17 +61,24 @@ impl AuthServiceImpl {
 
     fn hash_argon2(&self, session_key: Vec<u8>) -> Result<Vec<u8>, CommonError> {
         let salt = SaltString::generate(&mut OsRng);
-
         let argon2 = Argon2::default();
 
-        let hasher = argon2
-            .hash_password(&session_key, &salt)
-            .unwrap()
-            .hash
-            .unwrap();
-        let hash = hasher.as_bytes();
+        let hashed_password =
+            argon2
+                .hash_password(&session_key, &salt)
+                .map_err(|err| CommonError {
+                    message: "Argon2 hashing failed".to_string(),
+                    description: err.to_string(),
+                    code: 5002,
+                })?;
 
-        Ok(hash.to_vec())
+        let hash = hashed_password.hash.ok_or_else(|| CommonError {
+            message: "Missing hash".to_string(),
+            description: "Argon2 output does not contain a hash".to_string(),
+            code: 5003,
+        })?;
+
+        Ok(hash.as_bytes().to_vec())
     }
 }
 
@@ -102,29 +110,48 @@ impl AuthService for AuthServiceImpl {
             .await
     }
 
-    async fn generate_session(&self, username: String) -> Result<(), CommonError> {
+    async fn generate_session(&self, username: String) -> Result<Challenge, CommonError> {
         let user = self.user_repository.get_by_username(username).await?;
         let modulus = self.modulus_repository.get(user.modulus).await?;
 
         let mut rng = ChaCha20Rng::from_entropy();
         let mut b_bytes = [0u8; 32];
         rng.fill_bytes(&mut b_bytes);
-        let b = BigUint::from_bytes_be(&b_bytes);
+        let ephemeral = BigUint::from_bytes_be(&b_bytes);
 
-        let N = BigUint::parse_bytes(modulus.modulus.as_bytes(), 16).unwrap(); // Large prime number, usually 2048-bit
-        let g = BigUint::from(2u32); // Generator g, often 2
+        let parsed_modulus =
+            BigUint::parse_bytes(modulus.modulus.as_bytes(), 16).ok_or_else(|| CommonError {
+                message: "BigUint parse error".to_string(),
+                description: "Failed to parse the modulus".to_string(),
+                code: 5000,
+            })?;
+        let generator = BigUint::from(2u32);
 
-        let hash = self
-            .hash_argon2([&N.to_bytes_be()[..], &g.to_bytes_be()[..]].concat())
-            .unwrap();
+        let hash = self.hash_argon2(
+            [
+                &parsed_modulus.to_bytes_be()[..],
+                &generator.to_bytes_be()[..],
+            ]
+            .concat(),
+        )?;
         let k = BigUint::from_bytes_be(hash.as_ref());
 
-        let v = BigUint::parse_bytes(&user.verifier.as_bytes(), 16).unwrap(); // Convert verifier to BigUint
-        let kv = &k * &v; // kv
-        let g_b = g.modpow(&b, &N); // g^b % N
-        let B = (kv + g_b) % &N; // B = kv + g^b % N
+        let verifier =
+            BigUint::parse_bytes(user.verifier.as_bytes(), 16).ok_or_else(|| CommonError {
+                message: "BigUint parse error".to_string(),
+                description: "Failed to parse the verifier".to_string(),
+                code: 5000,
+            })?;
 
-        Ok(())
+        let kv = &k * &verifier;
+        let g_b = generator.modpow(&ephemeral, &parsed_modulus);
+        let pub_ephemeral = ((kv + g_b) % &parsed_modulus).to_str_radix(16);
+
+        Ok(Challenge {
+            modulus: modulus.modulus,
+            salt: user.salt,
+            ephemeral: pub_ephemeral,
+        })
     }
 
     async fn verify(&self, client_verifier: String, proof: String) -> Result<Session, CommonError> {
