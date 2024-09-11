@@ -155,6 +155,65 @@ impl AuthService for AuthServiceImpl {
     }
 
     async fn verify(&self, client_verifier: String, proof: String) -> Result<Session, CommonError> {
+        // Parse modulus
+        let parsed_modulus = BigUint::parse_bytes(session.modulus.as_bytes(), 16).ok_or_else(|| CommonError {
+            message: "BigUint parse error".to_string(),
+            description: "Failed to parse the modulus".to_string(),
+            code: 5000,
+        })?;
+
+        // Parse the ephemeral
+        let client_ephemeral = BigUint::parse_bytes(client_verifier.as_bytes(), 16).ok_or_else(|| CommonError {
+            message: "BigUint parse error".to_string(),
+            description: "Failed to parse the client ephemeral".to_string(),
+            code: 5000,
+        })?;
+
+        // Calculate the hash of modulus and generator
+        let generator = BigUint::from(2u32);
+        let hash = self.hash_argon2(
+            [
+                &parsed_modulus.to_bytes_be()[..],
+                &generator.to_bytes_be()[..],
+            ].concat(),
+        )?;
+        let k = BigUint::from_bytes_be(hash.as_ref());
+
+        // Calculate the server's expected session key
+        let verifier = BigUint::parse_bytes(session.verifier.as_bytes(), 16).ok_or_else(|| CommonError {
+            message: "BigUint parse error".to_string(),
+            description: "Failed to parse the verifier".to_string(),
+            code: 5000,
+        })?;
+        let server_ephemeral = BigUint::parse_bytes(session.ephemeral.as_bytes(), 16).ok_or_else(|| CommonError {
+            message: "BigUint parse error".to_string(),
+            description: "Failed to parse the server ephemeral".to_string(),
+            code: 5000,
+        })?;
+
+        // Calculate the shared session key (S = (A * v^u) ^ b mod N)
+        let u = BigUint::parse_bytes(proof.as_bytes(), 16).ok_or_else(|| CommonError {
+            message: "BigUint parse error".to_string(),
+            description: "Failed to parse proof".to_string(),
+            code: 5001,
+        })?;
+
+        let kv = &k * &verifier;
+        let shared_secret = (client_ephemeral * verifier.modpow(&u, &parsed_modulus))
+            .modpow(&server_ephemeral, &parsed_modulus);
+
+        // Hash the shared session key to derive the server's proof
+        let hashed_shared_key = self.hash_argon2(shared_secret.to_bytes_be())?;
+
+        // Compare the hashed session key with the client's proof
+        if hashed_shared_key != proof.as_bytes() {
+            return Err(CommonError {
+                message: "Invalid proof".to_string(),
+                description: "The provided proof does not match the server's calculations".to_string(),
+                code: 403,
+            });
+        }
+
         todo!();
     }
 
