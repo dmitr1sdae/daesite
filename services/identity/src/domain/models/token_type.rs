@@ -2,4 +2,5 @@
 pub enum TokenType {
     MFA,
     Verify,
+    Unknown,
 }

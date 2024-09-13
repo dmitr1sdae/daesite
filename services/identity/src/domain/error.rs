@@ -84,6 +84,9 @@ pub enum RepositoryError {
     #[error("Invalid token: {1}")]
     InvalidToken(u32, String),
 
+    #[error("Token has expired")]
+    TokenExpired,
+
     #[error("Unexpected error occurred")]
     Unexpected,
 }
