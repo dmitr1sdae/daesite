@@ -1,0 +1,17 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            UPDATE users\n            SET\n                username = COALESCE($2, username),\n                email = COALESCE($3, email),\n                updated_at = $4\n            WHERE id = $1\n            ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Int8",
+        "Varchar",
+        "Varchar",
+        "Int8"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "5ca9f4e4aed01d528234c451679da1f988db08eabba8748c3ea95da35f1bdc2f"
+}
