@@ -1,10 +1,9 @@
 "use client";
 
 import "./Header.scss";
-import {HTMLAttributes, useRef, useState} from "react";
+import {HTMLAttributes, useState} from "react";
 import {
   Avatar,
-  OverflowMenu,
   Menu,
   Button,
   Icon,
@@ -15,7 +14,6 @@ import {
 export interface HeaderProps extends HTMLAttributes<HTMLElement> {}
 
 const Header = ({...restProps}: HeaderProps) => {
-  const menuButtonRef = useRef(null);
   const [menus, setMenus] = useState({
     menu: false,
     popup: false,
@@ -76,27 +74,6 @@ const Header = ({...restProps}: HeaderProps) => {
       <nav className="flex flex-auto justify-space-between items-center mx-auto px-10 navbar">
         <Logo application="accounts" to="/@me" />
         <div className="flex items-center gap-5 items">
-          <div className="flex gap-4">
-            <Button shape="ghost" className="icon-button">
-              <Icon size={20} name="search" />
-            </Button>
-            <Button shape="ghost" className="icon-button">
-              <Icon size={20} name="settings" />
-            </Button>
-            <Button
-              ref={menuButtonRef}
-              shape="ghost"
-              className="icon-button"
-              onClick={() =>
-                setMenus((menues) => ({
-                  menu: false,
-                  popup: !menues.popup,
-                }))
-              }
-            >
-              <Icon size={20} name="apps" />
-            </Button>
-          </div>
           <Avatar
             src="https://avatars.githubusercontent.com/u/169852179"
             fallback="dmitr1sdae"
@@ -106,27 +83,10 @@ const Header = ({...restProps}: HeaderProps) => {
               setMenus((menues) => ({menu: !menues.menu, popup: false}))
             }
           />
-          <OverflowMenu
-            buttonRef={menuButtonRef}
-            open={menus.popup}
-            onClose={() =>
-              setMenus((menues) => ({
-                menu: menues.menu,
-                popup: false,
-              }))
-            }
-          >
-            <Avatar
-              as="div"
-              src="https://avatars.githubusercontent.com/u/169852179"
-              fallback="dmitr1sdae"
-            />
-            dadaya
-          </OverflowMenu>
         </div>
       </nav>
     </header>
   );
 };
 
-export default Header;
+export {Header};
