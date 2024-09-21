@@ -5,5 +5,6 @@ export * from "./Icon";
 export * from "./Link";
 export * from "./Logo";
 export * from "./Menu";
+export * from "./NavigationMenu";
 export * from "./Portal";
 export * from "./Tabs";
