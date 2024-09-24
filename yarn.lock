@@ -3306,7 +3306,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:22.5.0, @types/node@npm:^22.5.0":
+"@types/node@npm:^22.5.0":
   version: 22.5.0
   resolution: "@types/node@npm:22.5.0"
   dependencies:
@@ -3348,7 +3348,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.3.4, @types/react@npm:^18.3.4":
+"@types/react@npm:^18.3.4":
   version: 18.3.4
   resolution: "@types/react@npm:18.3.4"
   dependencies:
@@ -8234,22 +8234,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"my-app-356373@workspace:applications/my-app":
-  version: 0.0.0-use.local
-  resolution: "my-app-356373@workspace:applications/my-app"
-  dependencies:
-    "@reduxjs/toolkit": "npm:^2.2.7"
-    "@types/node": "npm:22.5.0"
-    "@types/react": "npm:18.3.4"
-    "@types/react-dom": "npm:^18.3.0"
-    next: "npm:^14.2.6"
-    react: "npm:^18.3.1"
-    react-dom: "npm:^18.3.1"
-    react-redux: "npm:^9.1.2"
-    typescript: "npm:^5.5.4"
-  languageName: unknown
-  linkType: soft
-
 "mz@npm:^2.7.0":
   version: 2.7.0
   resolution: "mz@npm:2.7.0"
@@ -8291,7 +8275,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:14.2.6, next@npm:^14.2.6":
+"next@npm:14.2.6":
   version: 14.2.6
   resolution: "next@npm:14.2.6"
   dependencies:
@@ -11218,7 +11202,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.5.4, typescript@npm:^5.5.4":
+"typescript@npm:5.5.4":
   version: 5.5.4
   resolution: "typescript@npm:5.5.4"
   bin:
@@ -11248,7 +11232,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.5.4#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>":
   version: 5.5.4
   resolution: "typescript@patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"
   bin:
