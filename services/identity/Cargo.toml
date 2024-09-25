@@ -1,7 +1,7 @@
 [package]
 name = "identity"
 description = "Identity and Access Management service"
-authors = ["Dmitriy Chukhno <dmitr1sdadaya@protonmail.com>"]
+authors = ["Dmitriy Chukhno <me@dmitr1sdae.com>"]
 version = "0.1.0"
 edition = "2021"
 license = "AGPL-3.0"
