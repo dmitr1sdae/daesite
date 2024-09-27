@@ -1,0 +1,63 @@
+{
+  "name": "@daesite/eslint-config-daelint",
+  "version": "1.0.0",
+  "description": "Modern eslint config for a more civilized age",
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "javascript",
+    "typescript",
+    "styleguide"
+  ],
+  "license": "GPL-3.0",
+  "author": "Dmitriy Chukhno <me@dmitr1sdae.com>",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "node esbuild.config.js",
+    "lint": "eslint lib",
+    "lint:fix": "eslint lib --fix",
+    "pretty": "prettier --check $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o \\( -type f -name '*.js' -o -name '*.ts' -o -name '*.tsx' \\) -print)",
+    "pretty:fix": "prettier --write $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o \\( -type f -name '*.js' -o -name '*.ts' -o -name '*.tsx' \\) -print)",
+    "publish": "yarn npm publish --tolerate-republish"
+  },
+  "dependencies": {
+    "@stylistic/eslint-plugin": "^2.8.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "eslint": "^9.11.1",
+    "eslint-define-config": "^2.1.0",
+    "eslint-plugin-i": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "eslint-plugin-monorepo-cop": "^1.0.2",
+    "eslint-plugin-no-only-tests": "^3.3.0",
+    "eslint-plugin-perfectionist": "^3.7.0",
+    "eslint-plugin-promise": "^7.1.0",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-unicorn": "^55.0.0",
+    "local-pkg": "^0.5.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.7.0"
+  },
+  "devDependencies": {
+    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint",
+    "@eslint-types/typescript-eslint": "^7.5.0",
+    "@eslint-types/unicorn": "^52.0.0",
+    "@eslint/js": "^9.11.1",
+    "@types/eslint": "^9.6.1",
+    "@types/eslint-plugin-jsx-a11y": "^6",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^22.7.3",
+    "esbuild": "^0.24.0",
+    "tsup": "^8.3.0"
+  }
+}

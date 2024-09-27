@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["lib/*"]
+    },
+    "types": ["node"]
+  },
+  "extends": "../../tsconfig.base.json"
+}
