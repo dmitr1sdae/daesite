@@ -2,16 +2,19 @@
 
 import "./Avatar.scss";
 
-import {ElementType, forwardRef, Ref} from "react";
-import {PolymorphicPropsWithRef} from "@daesite/react-polymorphic-types";
 import {useColor} from "@daesite/hooks";
-import AvatarImage from "./AvatarImage";
-import AvatarProvider from "./AvatarProvider";
-import AvatarFallback from "./AvatarFallback";
+import {clsx} from "@daesite/utils";
+import {
+  Avatar as NornsAvatar,
+  AvatarFallback,
+  AvatarImage,
+  AvatarProps as NornAvatarProps,
+} from "@norns-ui/avatar";
+import {CSSProperties, forwardRef, Ref} from "react";
 
 export type AvatarSize = "small" | "medium" | "large" | "huge";
 
-export interface AvatarOwnProps {
+export interface AvatarProps extends NornAvatarProps {
   /**
    * User avatar path
    */
@@ -30,48 +33,54 @@ export interface AvatarOwnProps {
   "data-testid"?: string;
 }
 
-export type AvatarProps<E extends ElementType> = PolymorphicPropsWithRef<
-  AvatarOwnProps,
-  E
->;
+const Avatar = forwardRef(
+  (
+    {
+      src,
+      fallback,
+      size = "medium",
+      "data-testid": dataTestId,
+      ...restProps
+    }: AvatarProps,
+    ref: Ref<HTMLSpanElement>,
+  ) => {
+    const color = useColor(fallback);
 
-const defaultElement = "div";
+    return (
+      <NornsAvatar
+        {...restProps}
+        style={
+          {
+            "--avatar-color": color,
+          } as CSSProperties
+        }
+        className={clsx(
+          "avatar-container",
+          "rounded-full",
+          size !== "medium" && `avatar-${size}`,
+        )}
+        ref={ref}
+        data-testid={dataTestId && `${dataTestId}-provider`}
+      >
+        <AvatarImage
+          alt={fallback}
+          src={src}
+          className={clsx(
+            "avatar-img",
+            "rounded-full",
+            size !== "medium" && `avatar-${size}`,
+          )}
+          data-testid={dataTestId && `${dataTestId}-image`}
+        />
+        <AvatarFallback
+          className={clsx("avatar-fallback", "rounded-full")}
+          data-testid={dataTestId && `${dataTestId}-fallback`}
+        >
+          {fallback?.charAt(0)}
+        </AvatarFallback>
+      </NornsAvatar>
+    );
+  },
+);
 
-const Avatar = <E extends ElementType = typeof defaultElement>(
-  {
-    src,
-    fallback,
-    size = "medium",
-    as,
-    "data-testid": dataTestId,
-    ...restProps
-  }: AvatarProps<E>,
-  ref: Ref<Element>,
-) => {
-  const color = useColor(fallback);
-
-  return (
-    <AvatarProvider
-      {...restProps}
-      style={{
-        "--avatar-color": color,
-      }}
-      size={size}
-      ref={ref}
-      as={as}
-      data-testid={dataTestId && `${dataTestId}-provider`}
-    >
-      <AvatarImage
-        alt={fallback}
-        size={size}
-        src={src}
-        data-testid={dataTestId && `${dataTestId}-image`}
-      />
-      <AvatarFallback data-testid={dataTestId && `${dataTestId}-fallback`}>
-        {fallback?.charAt(0)}
-      </AvatarFallback>
-    </AvatarProvider>
-  );
-};
-
-export default forwardRef(Avatar);
+export {Avatar};

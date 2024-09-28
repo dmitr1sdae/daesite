@@ -5,6 +5,9 @@
   &-container {
     --focus-outline: var(--norm-major-2);
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border: rem(1);
     width: rem(64);
