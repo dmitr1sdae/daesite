@@ -12,16 +12,18 @@
   ],
   "scripts": {
     "build": "lerna run build",
+    "lint": "lerna run lint --parallel",
+    "lint:fix": "lerna run lint:fix --parallel",
     "pretty": "lerna run pretty --parallel",
     "pretty:fix": "lerna run pretty:fix --parallel"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "husky": "^9.1.5",
+    "husky": "^9.1.6",
     "lerna": "^8.1.8",
     "prettier": "^3.3.3",
-    "typescript": "5.5.4"
+    "typescript": "5.6.2"
   },
   "packageManager": "yarn@4.5.0",
   "engines": {

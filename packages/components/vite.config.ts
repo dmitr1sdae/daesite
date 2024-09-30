@@ -1,11 +1,12 @@
 import {resolve} from "node:path";
+
+import {redaePluginLibAssets} from "@redae/vite-plugin-lib-assets";
 import react from "@vitejs/plugin-react-swc";
-import {defineConfig} from "vite";
-import dts from "vite-plugin-dts";
-import preserveDirectives from "rollup-plugin-preserve-directives";
 import fs from "fs";
 import path from "path";
-import {redaePluginLibAssets} from "@redae/vite-plugin-lib-assets";
+import preserveDirectives from "rollup-plugin-preserve-directives";
+import {defineConfig} from "vite";
+import dts from "vite-plugin-dts";
 
 export default defineConfig({
   plugins: [
@@ -24,7 +25,7 @@ export default defineConfig({
     {
       name: "plugin-inline-assets",
       enforce: "pre",
-      async transform(code: string, id: string) {
+      async transform(code: string) {
         if (!code.includes("?raw")) {
           return;
         }
