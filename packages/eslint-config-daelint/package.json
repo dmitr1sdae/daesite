@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "@stylistic/eslint-plugin": "^2.8.0",
-    "@typescript-eslint/parser": "^8.7.0",
     "eslint": "^9.11.1",
     "eslint-define-config": "^2.1.0",
     "eslint-plugin-i": "^2.29.1",
@@ -39,9 +38,11 @@
     "eslint-plugin-monorepo-cop": "^1.0.2",
     "eslint-plugin-no-only-tests": "^3.3.0",
     "eslint-plugin-perfectionist": "^3.7.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-promise": "^7.1.0",
     "eslint-plugin-react": "^7.37.0",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unicorn": "^55.0.0",
     "local-pkg": "^0.5.0",
     "prettier": "^3.3.3",
@@ -50,8 +51,6 @@
   },
   "devDependencies": {
     "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint",
-    "@eslint-types/typescript-eslint": "^7.5.0",
-    "@eslint-types/unicorn": "^52.0.0",
     "@eslint/js": "^9.11.1",
     "@types/eslint": "^9.6.1",
     "@types/eslint-plugin-jsx-a11y": "^6",
