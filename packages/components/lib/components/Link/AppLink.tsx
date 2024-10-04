@@ -1,5 +1,5 @@
-import {AnchorHTMLAttributes, forwardRef, Ref} from "react";
 import {default as NextLink} from "next/link";
+import {AnchorHTMLAttributes, forwardRef, Ref} from "react";
 
 type AppLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "color"> & {
   /**

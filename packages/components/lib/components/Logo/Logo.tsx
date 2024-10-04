@@ -1,10 +1,11 @@
 import "./Logo.scss";
 
 import logo from "@daesite/styles/assets/img/brand/dmitr1sdae.webp?url";
-import {forwardRef, Ref} from "react";
-import {AppLink} from "~/components/Link";
-import {Button} from "~/components/Button";
 import Image from "next/image";
+import {forwardRef, Ref} from "react";
+
+import {Button} from "~/components/Button";
+import {AppLink} from "~/components/Link";
 
 export interface LogoProps {
   to?: string;
