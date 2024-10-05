@@ -3,7 +3,6 @@ export * from "./clsx";
 export * from "./composeEventHandlers";
 export * from "./composeRefs";
 export * from "./debounce";
-export * from "./getTabbableCandidates";
 export * from "./isTruthy";
 export * from "./mergeUint8Arrays";
 export * from "./noop";

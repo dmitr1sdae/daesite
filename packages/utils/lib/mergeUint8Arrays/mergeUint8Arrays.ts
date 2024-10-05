@@ -6,6 +6,6 @@ const mergeUint8Arrays = (arrays: Uint8Array[]) => {
     return position + arr.length;
   }, 0);
   return chunksAll;
-}
+};
 
 export default mergeUint8Arrays;

@@ -727,6 +727,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@daesite/utils@workspace:packages/utils"
   dependencies:
+    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint"
     "@types/lodash": "npm:^4.17.9"
     eslint: "npm:^9.11.1"
     lodash: "npm:^4.17.21"
