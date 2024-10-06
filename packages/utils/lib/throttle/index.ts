@@ -1,1 +1,1 @@
-export {default as throttle} from "./throttle";
+export * from "./throttle";

@@ -8,4 +8,4 @@ const mergeUint8Arrays = (arrays: Uint8Array[]) => {
   return chunksAll;
 };
 
-export default mergeUint8Arrays;
+export {mergeUint8Arrays};

@@ -1,4 +1,4 @@
-import isTruthy from "./isTruthy";
+import {isTruthy} from "./isTruthy";
 
 describe("isTruthy()", () => {
   it('tells whether a value is JavaScript "truthy" or not', () => {

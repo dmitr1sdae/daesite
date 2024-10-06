@@ -1,1 +1,1 @@
-export {default as isTruthy} from "./isTruthy";
+export * from "./isTruthy";

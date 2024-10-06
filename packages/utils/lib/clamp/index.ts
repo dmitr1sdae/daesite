@@ -1,1 +1,1 @@
-export {default as clamp} from "./clamp";
+export * from "./clamp";

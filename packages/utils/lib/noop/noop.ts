@@ -2,4 +2,4 @@ const noop = () => {
   return undefined;
 };
 
-export default noop;
+export {noop};

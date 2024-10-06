@@ -15,4 +15,4 @@ const composeEventHandlers = <E>(
   };
 };
 
-export default composeEventHandlers;
+export {composeEventHandlers};

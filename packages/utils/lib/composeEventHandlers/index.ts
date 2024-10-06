@@ -1,1 +1,1 @@
-export {default as composeEventHandlers} from "./composeEventHandlers";
+export * from "./composeEventHandlers";

@@ -1,4 +1,4 @@
-import clamp from "./clamp";
+import {clamp} from "./clamp";
 
 describe("clamp()", () => {
   it("returns the exact value passed in if it already lies between min & max", () => {

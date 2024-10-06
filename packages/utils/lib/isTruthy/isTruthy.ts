@@ -4,4 +4,4 @@ const isTruthy = <T>(
   return !!t;
 };
 
-export default isTruthy;
+export {isTruthy};

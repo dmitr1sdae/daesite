@@ -1,4 +1,4 @@
-import mergeUint8Arrays from "./mergeUint8Arrays";
+import {mergeUint8Arrays} from "./mergeUint8Arrays";
 
 describe("mergeUint8Arrays()", () => {
   it("returns empty array if arrays is empty", () => {

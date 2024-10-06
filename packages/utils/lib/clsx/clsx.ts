@@ -11,4 +11,4 @@ function clsx(...args: any): any {
     .join(" ");
 }
 
-export default clsx;
+export {clsx};
