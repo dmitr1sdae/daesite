@@ -113,4 +113,4 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(
 );
 
 export {Icon};
-export type {IconProps, IconName, IconSize}
+export type {IconName, IconProps, IconSize};
