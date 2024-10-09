@@ -147,7 +147,7 @@ export const getParsedThemeSetting = (
           getValidatedFeatures(parsedTheme.Features) ??
           defaultThemeSetting.Features,
       };
-    } catch (e: any) {}
+    } catch {}
   }
   return defaultThemeSetting;
 };

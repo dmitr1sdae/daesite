@@ -123,7 +123,7 @@ export const doesNotSupportEarlyAccessVersion = () =>
 export const getHasWebAuthnSupport = () => {
   try {
     return !!navigator?.credentials?.create;
-  } catch (e) {
+  } catch {
     return false;
   }
 };

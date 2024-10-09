@@ -698,6 +698,7 @@ __metadata:
   resolution: "@daesite/shared@workspace:packages/shared"
   dependencies:
     "@daesite/crypto": "workspace:packages/crypto"
+    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint"
     "@daesite/utils": "workspace:packages/utils"
     "@types/lodash": "npm:^4.17.9"
     "@types/node": "npm:^22.7.3"
