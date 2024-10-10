@@ -1,6 +1,6 @@
 "use client";
 
-import {useEffect, useRef, RefObject} from "react";
+import {RefObject, useEffect, useRef} from "react";
 
 type ClickOutsideHandler = (event: MouseEvent | TouchEvent) => void;
 

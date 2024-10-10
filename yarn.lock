@@ -639,6 +639,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@daesite/hooks@workspace:packages/hooks"
   dependencies:
+    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint"
     "@daesite/utils": "workspace:^"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:^6.5.0"

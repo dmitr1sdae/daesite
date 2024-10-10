@@ -1,7 +1,7 @@
 "use client";
 
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
-import {useState, useCallback} from "react";
+import {useCallback, useState} from "react";
 
 const useTabQuery = (quetyName: string, tabs: any[]) => {
   const router = useRouter();
@@ -19,7 +19,7 @@ const useTabQuery = (quetyName: string, tabs: any[]) => {
     (id: number) => {
       const params = new URLSearchParams();
       params.set(quetyName, tabs[id].title.toLowerCase());
-      router.push(pathname + "?" + params.toString())
+      router.push(pathname + "?" + params.toString());
       setIndex(id);
     },
     [tabs],

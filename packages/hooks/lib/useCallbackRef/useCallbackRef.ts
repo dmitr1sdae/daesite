@@ -1,6 +1,6 @@
 "use client";
 
-import {useRef, useEffect, useMemo} from "react";
+import {useEffect, useMemo, useRef} from "react";
 
 /**
  * A custom hook that converts a callback to a ref to avoid triggering re-renders when passed as a
@@ -16,10 +16,7 @@ const useCallbackRef = <T extends (...args: any[]) => any>(
   });
 
   // https://github.com/facebook/react/issues/19240
-  return useMemo(
-    () => ((...args) => callbackRef.current?.(...args)) as T,
-    [],
-  );
-}
+  return useMemo(() => ((...args) => callbackRef.current?.(...args)) as T, []);
+};
 
 export {useCallbackRef};
