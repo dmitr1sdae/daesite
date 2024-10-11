@@ -5,18 +5,20 @@ const ifDefined = <T, R>(cb: (input: T) => R) => {
       : undefined;
   };
 };
-export const encodeUtf8 = ifDefined((input: string) =>
-  encodeURIComponent(input),
-);
-export const decodeUtf8 = ifDefined((input: string) =>
-  decodeURIComponent(input),
-);
-export const encodeBase64 = ifDefined((input: string) => btoa(input).trim());
-export const decodeBase64 = ifDefined((input: string) => atob(input.trim()));
-export const encodeUtf8Base64 = ifDefined((input: string) =>
+
+const encodeUtf8 = ifDefined((input: string) => encodeURIComponent(input));
+
+const decodeUtf8 = ifDefined((input: string) => decodeURIComponent(input));
+
+const encodeBase64 = ifDefined((input: string) => btoa(input).trim());
+
+const decodeBase64 = ifDefined((input: string) => atob(input.trim()));
+
+const encodeUtf8Base64 = ifDefined((input: string) =>
   encodeBase64(encodeUtf8(input)),
 );
-export const decodeUtf8Base64 = ifDefined((input: string) =>
+
+const decodeUtf8Base64 = ifDefined((input: string) =>
   decodeUtf8(decodeBase64(input)),
 );
 
@@ -29,7 +31,7 @@ const isString = (data: any): data is string | String => {
  * @param str String to convert
  * @returns An array of 8-bit integers
  */
-export const binaryStringToArray = (str: string) => {
+const binaryStringToArray = (str: string) => {
   if (!isString(str)) {
     throw new Error(
       "binaryStringToArray: Data must be in the form of a string",
@@ -48,7 +50,7 @@ export const binaryStringToArray = (str: string) => {
  * @param bytes data to encode
  * @return string-encoded bytes
  */
-export const arrayToBinaryString = (bytes: Uint8Array) => {
+const arrayToBinaryString = (bytes: Uint8Array) => {
   const result = [];
   const bs = 1 << 14;
   const j = bytes.length;
@@ -70,7 +72,7 @@ export const arrayToBinaryString = (bytes: Uint8Array) => {
  * @param hex  A hex string to convert
  * @returns An array of 8-bit integers
  */
-export const hexStringToArray = (hex: string) => {
+const hexStringToArray = (hex: string) => {
   const result = new Uint8Array(hex.length >> 1);
   for (let k = 0; k < result.length; k++) {
     const i = k << 1;
@@ -84,7 +86,7 @@ export const hexStringToArray = (hex: string) => {
  * @param bytes Array of 8-bit integers to convert
  * @returns Hexadecimal representation of the array
  */
-export const arrayToHexString = (bytes: Uint8Array) => {
+const arrayToHexString = (bytes: Uint8Array) => {
   const res = [];
   for (let c = 0; c < bytes.length; c++) {
     const hex = bytes[c].toString(16);
@@ -98,19 +100,34 @@ export const arrayToHexString = (bytes: Uint8Array) => {
  * @param str - The string to convert
  * @returns A valid squence of utf8 bytes.
  */
-export const stringToUtf8Array = (str: string): Uint8Array => {
+const stringToUtf8Array = (str: string): Uint8Array => {
   const encoder = new TextEncoder();
 
   return encoder.encode(str);
-}
+};
 
 /**
-* Convert a Uint8Array of utf8 bytes to a native javascript string
-* @param utf8 - A valid squence of utf8 bytes
-* @returns A native javascript string.
-*/
-export const utf8ArrayToString = (utf8: Uint8Array): string => {
+ * Convert a Uint8Array of utf8 bytes to a native javascript string
+ * @param utf8 - A valid squence of utf8 bytes
+ * @returns A native javascript string.
+ */
+const utf8ArrayToString = (utf8: Uint8Array): string => {
   const decoder = new TextDecoder();
 
   return decoder.decode(utf8);
-}
+};
+
+export {
+  arrayToBinaryString,
+  arrayToHexString,
+  binaryStringToArray,
+  decodeBase64,
+  decodeUtf8,
+  decodeUtf8Base64,
+  encodeBase64,
+  encodeUtf8,
+  encodeUtf8Base64,
+  hexStringToArray,
+  stringToUtf8Array,
+  utf8ArrayToString,
+};
