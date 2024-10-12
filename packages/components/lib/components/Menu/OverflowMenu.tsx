@@ -2,9 +2,9 @@
 
 import "./OverflowMenu.scss";
 
-import {ReactNode, RefObject} from "react";
-import {clsx} from "@daesite/utils";
 import {useClickOutside} from "@daesite/hooks";
+import {clsx} from "@daesite/utils";
+import {ReactNode, RefObject} from "react";
 
 type OverflowMenuProps = {
   children: ReactNode;

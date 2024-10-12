@@ -1,7 +1,8 @@
-import {PublicUser} from "@daesite/shared";
 import "../Profile.scss";
-import axios from "axios";
+
 import {Avatar} from "@daesite/components";
+import {PublicUser} from "@daesite/shared";
+import axios from "axios";
 import {notFound} from "next/navigation";
 
 interface ProfileProps {
@@ -39,7 +40,7 @@ const getUserData = async (username: string) => {
   }
 };
 
-export default async ({params, searchParams}: ProfileProps) => {
+export default function ({params, searchParams}: ProfileProps) {
   const user = await getUserData(params.username);
 
   if (!user) {
@@ -52,4 +53,4 @@ export default async ({params, searchParams}: ProfileProps) => {
       <Avatar size="huge" src={user.avatar} fallback={user.username} />
     </div>
   );
-};
+}

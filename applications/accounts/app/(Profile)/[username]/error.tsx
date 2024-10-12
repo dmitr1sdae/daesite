@@ -27,6 +27,6 @@ const Error = ({
       </button>
     </div>
   );
-}
+};
 
 export default Error;

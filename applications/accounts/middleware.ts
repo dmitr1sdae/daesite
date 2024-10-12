@@ -1,1 +1,1 @@
-export {middleware, config} from "./middlewares";
+export {config, middleware} from "./middlewares";

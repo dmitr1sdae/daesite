@@ -1,11 +1,13 @@
 "use client";
 
-import {clsx} from "@daesite/utils";
 import "./Menu.scss";
+
+import {clsx} from "@daesite/utils";
+import {ReactNode} from "react";
+
 import {Button} from "~/components/Button";
 import {Icon} from "~/components/Icon";
 import {Portal} from "~/components/Portal";
-import {ReactNode} from "react";
 
 type MenuProps = {
   children: ReactNode;
@@ -23,7 +25,7 @@ type MenuProps = {
 const Menu = ({children, open, onClose}: MenuProps) => {
   return (
     <Portal>
-      <div className={clsx("menu", open && "active")} onClick={() => onClose()}>
+      <div className={clsx("menu", open && "active")} onClick={onClose}>
         <div
           className={clsx("menu-body", open && "active")}
           onClick={(e) => e.stopPropagation()}

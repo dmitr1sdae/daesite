@@ -1,5 +1,5 @@
-import {NextRequest, NextResponse} from "next/server";
 import {defineMiddleware} from "@redae/nextjs-combine-middleware";
+import {NextRequest, NextResponse} from "next/server";
 
 export const auth = defineMiddleware({
   matcher: ["/@me", "/", "/signin", "/signup"],

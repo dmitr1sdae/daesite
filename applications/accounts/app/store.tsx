@@ -1,9 +1,10 @@
 "use client";
 
-import { ReactNode, useEffect, useRef } from "react";
-import { AppStore, makeStore } from "~/store";
 import {setupListeners} from "@reduxjs/toolkit/query";
+import {ReactNode, useEffect, useRef} from "react";
 import {Provider} from "react-redux";
+
+import {AppStore, makeStore} from "~/store";
 
 interface StoreProviderProps {
   children: ReactNode;
@@ -29,4 +30,4 @@ const StoreProvider = ({children}: StoreProviderProps) => {
   return <Provider store={storeRef.current}>{children}</Provider>;
 };
 
-export {StoreProvider}
+export {StoreProvider};

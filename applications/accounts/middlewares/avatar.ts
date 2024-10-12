@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-import { defineMiddleware } from "@redae/nextjs-combine-middleware";
+import {PublicUser} from "@daesite/shared";
+import {defineMiddleware} from "@redae/nextjs-combine-middleware";
 import axios from "axios";
-import { PublicUser } from "@daesite/shared";
+import {NextRequest, NextResponse} from "next/server";
 
 export const avatar = defineMiddleware({
   matcher: ["/**.png"],
@@ -19,7 +19,9 @@ export const avatar = defineMiddleware({
     }
 
     try {
-      const res = await axios.get<PublicUser>(`${apiBaseUrl}/users/${username}`);
+      const res = await axios.get<PublicUser>(
+        `${apiBaseUrl}/users/${username}`,
+      );
 
       if (res.status === 200 && res.data.avatar) {
         return NextResponse.redirect(res.data.avatar, 302);

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "next build",
     "dev": "concurrently \"json-server db.json\" \"next dev\"",
-    "lint": "next lint",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "start": "next start"
   },
   "dependencies": {
@@ -23,11 +24,13 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
+    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint",
     "@redae/nextjs-combine-middleware": "^1.0.1",
     "@types/node": "^22.7.3",
     "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
     "concurrently": "^9.0.1",
+    "eslint": "^9.12.0",
     "file-loader": "^6.2.0",
     "json-server": "^1.0.0-beta.3",
     "sass": "^1.79.3",

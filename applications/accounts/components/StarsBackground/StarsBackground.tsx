@@ -1,7 +1,8 @@
 "use client";
 
-import stars from "@daesite/styles/assets/video/fullscreen/stars.webm";
 import "./StarsBackground.scss";
+
+import stars from "@daesite/styles/assets/video/fullscreen/stars.webm";
 
 const StarsBackground = () => {
   return (

@@ -1,6 +1,8 @@
 import "./global.scss";
+
 import {Icons} from "@daesite/components";
 import {ReactNode} from "react";
+
 import {StoreProvider} from "./store";
 
 interface RootLayoutProps {

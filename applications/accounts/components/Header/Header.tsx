@@ -1,15 +1,9 @@
 "use client";
 
 import "./Header.scss";
+
+import {AppLink, Avatar, Button, Icon, Logo, Menu} from "@daesite/components";
 import {HTMLAttributes, useState} from "react";
-import {
-  Avatar,
-  Menu,
-  Button,
-  Icon,
-  Logo,
-  AppLink,
-} from "@daesite/components";
 
 export interface HeaderProps extends HTMLAttributes<HTMLElement> {}
 
@@ -30,6 +24,7 @@ const Header = ({...restProps}: HeaderProps) => {
             src="https://avatars.githubusercontent.com/u/169852179"
             fallback="dmitr1sdae"
             size="large"
+            as="h1"
           />
           <h2 className="text-normal">Heyo, Dmitriy!</h2>
         </div>

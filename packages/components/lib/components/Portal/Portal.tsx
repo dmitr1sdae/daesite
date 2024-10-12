@@ -1,8 +1,8 @@
 "use client";
 
+import type {ReactPortal} from "react";
 import {ReactNode, useEffect, useState} from "react";
 import {createPortal} from "react-dom";
-import type {ReactPortal} from "react";
 
 interface PortalProps {
   children: ReactNode;

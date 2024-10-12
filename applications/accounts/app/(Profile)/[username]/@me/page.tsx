@@ -1,7 +1,8 @@
-import axios from "axios";
 import "../Profile.scss";
-import {User} from "@daesite/shared";
+
 import {Avatar} from "@daesite/components";
+import {User} from "@daesite/shared";
+import axios from "axios";
 
 export const generateMetadata = async () => {
   const user = await getUserData();

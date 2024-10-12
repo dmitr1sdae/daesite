@@ -1,11 +1,13 @@
-import {Metadata} from "next/types";
-import Image from "next/image";
-import power from "@daesite/styles/assets/img/brand/power-looks-at-the-sky.webp";
-import {StarsBackground} from "~/components/StarsBackground";
-import {Header} from "~/components/Header";
-import {Fullscreen} from "~/containers/Fullscreen";
-import {AppLink} from "@daesite/components";
 import "./not-found.scss";
+
+import {AppLink} from "@daesite/components";
+import power from "@daesite/styles/assets/img/brand/power-looks-at-the-sky.webp";
+import Image from "next/image";
+import {Metadata} from "next/types";
+
+import {Header} from "~/components/Header";
+import {StarsBackground} from "~/components/StarsBackground";
+import {Fullscreen} from "~/containers/Fullscreen";
 
 export const metadata: Metadata = {
   title: "404 - Lost Among the Stars",

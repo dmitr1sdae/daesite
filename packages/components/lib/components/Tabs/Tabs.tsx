@@ -2,9 +2,8 @@
 
 import "./Tabs.scss";
 
+import {clamp, clsx, debounce, equivalentReducer} from "@daesite/utils";
 import {CSSProperties, ReactNode, useEffect, useRef, useState} from "react";
-import {equivalentReducer} from "@daesite/hooks";
-import {clamp, clsx, debounce} from "@daesite/utils";
 
 const toKey = (index: number, prefix = "") => `${prefix}${index}`;
 
@@ -33,7 +32,7 @@ export interface TabsProps {
   contentClassName?: string;
 }
 
-export const Tabs = ({
+const Tabs = ({
   value: unsafeValue,
   onChange,
   tabs,
@@ -97,7 +96,7 @@ export const Tabs = ({
   ]);
 
   if (tabs?.length === 1) {
-    return <>{content}</>;
+    return content;
   }
 
   if (!tabs?.length) {
@@ -192,4 +191,4 @@ export const Tabs = ({
   );
 };
 
-export default Tabs;
+export {Tabs};
