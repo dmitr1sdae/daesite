@@ -9,10 +9,19 @@ interface ProfileProps {
   params: {
     username: string;
   };
-  searchParams: {
-    [key: string]: string | undefined;
-  };
 }
+
+const getUserData = async (username: string) => {
+  try {
+    const res = await axios.get(`http://127.0.0.1:3000/users/${username}`);
+    return res.data as PublicUser;
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response?.status === 404) {
+      return undefined;
+    }
+    throw error;
+  }
+};
 
 export const generateMetadata = async ({params}: ProfileProps) => {
   const user = await getUserData(params.username);
@@ -28,19 +37,7 @@ export const generateMetadata = async ({params}: ProfileProps) => {
   };
 };
 
-const getUserData = async (username: string) => {
-  try {
-    const res = await axios.get(`http://127.0.0.1:3000/users/${username}`);
-    return res.data as PublicUser;
-  } catch (error) {
-    if (axios.isAxiosError(error) && error.response?.status === 404) {
-      return undefined;
-    }
-    throw error;
-  }
-};
-
-export default function ({params, searchParams}: ProfileProps) {
+const ProfilePage = async ({params}: ProfileProps) => {
   const user = await getUserData(params.username);
 
   if (!user) {
@@ -53,4 +50,6 @@ export default function ({params, searchParams}: ProfileProps) {
       <Avatar size="huge" src={user.avatar} fallback={user.username} />
     </div>
   );
-}
+};
+
+export default ProfilePage;

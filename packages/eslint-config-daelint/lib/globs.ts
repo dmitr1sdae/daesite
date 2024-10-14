@@ -5,6 +5,7 @@ export const GLOB_EXCLUDE = [
   "**/dist",
   "**/yarn.lock",
   "**/coverage",
+  "**/.next",
   "**/.idea",
   "**/.cache",
   "**/license*",
