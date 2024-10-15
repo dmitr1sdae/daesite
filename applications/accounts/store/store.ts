@@ -1,5 +1,6 @@
 import type {Action, ThunkAction} from "@reduxjs/toolkit";
 import {combineSlices, configureStore} from "@reduxjs/toolkit";
+
 import {userSlice} from "./features/user";
 
 // `combineSlices` automatically combines the reducers using
@@ -35,4 +36,4 @@ type AppThunk<ThunkReturnType = void> = ThunkAction<
 >;
 
 export {makeStore};
-export type {RootState, AppStore, AppDispatch, AppThunk};
+export type {AppDispatch, AppStore, AppThunk, RootState};

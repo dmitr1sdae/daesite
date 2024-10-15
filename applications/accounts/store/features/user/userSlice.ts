@@ -2,12 +2,8 @@ import {createAppSlice} from "~/store";
 
 const userSlice = createAppSlice({
   name: "user",
-  initialState: {
-
-  },
-  reducers: (create) => ({
-
-  })
+  initialState: {},
+  reducers: (create) => ({}),
 });
 
 export {userSlice};
