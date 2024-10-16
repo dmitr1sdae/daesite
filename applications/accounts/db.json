@@ -3,22 +3,26 @@
     {
       "id": "@me",
       "username": "dmitr1sdae",
-      "avatar": "https://avatars.githubusercontent.com/u/169852179"
+      "avatar": "https://cdn.dmitr1sdae.com/666/104967919103905792",
+      "banner": "https://cdn.dmitr1sdae.com/666/104967919103905793"
     },
     {
       "id": "dmitr1sdae",
       "username": "dmitr1sdae",
-      "avatar": "https://cdn.dmitr1sdae.com/avatars/207785569846448128"
+      "avatar": "https://cdn.dmitr1sdae.com/666/104967919103905792",
+      "banner": "https://cdn.dmitr1sdae.com/666/104967919103905793"
     },
     {
       "id": "plazyplay",
       "username": "PlazyPlay",
-      "avatar": "https://avatars.githubusercontent.com/u/144049702"
+      "avatar": "https://avatars.githubusercontent.com/u/144049702",
+      "banner": null
     },
     {
       "id": "test_no_avatar",
       "username": "test_no_avatar",
-      "avatar": null
+      "avatar": null,
+      "banner": null
     }
   ]
 }
