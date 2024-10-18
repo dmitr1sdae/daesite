@@ -4,6 +4,8 @@ import {Avatar} from "@daesite/components";
 import {User} from "@daesite/shared";
 import axios from "axios";
 
+import {EpicTitle} from "~/components/EpicTitle";
+
 export const generateMetadata = async () => {
   const user = await getUserData();
 
@@ -26,7 +28,7 @@ const MyProfilePage = async () => {
 
   return (
     <div className="profile-page page">
-      <h1>{user.username}</h1>
+      <EpicTitle>{user.username}</EpicTitle>
       <Avatar size="huge" src={user.avatar} fallback={user.username} />
     </div>
   );
