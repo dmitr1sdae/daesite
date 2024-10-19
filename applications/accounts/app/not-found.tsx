@@ -1,7 +1,7 @@
 import "./not-found.scss";
 
+import power from "@daesite/assets/img/brand/looks-at-the-sky.webp";
 import {AppLink} from "@daesite/components";
-import power from "@daesite/styles/assets/img/brand/power-looks-at-the-sky.webp";
 import Image from "next/image";
 import {Metadata} from "next/types";
 

@@ -491,8 +491,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@daesite/accounts@workspace:applications/accounts"
   dependencies:
+    "@daesite/assets": "workspace:^"
     "@daesite/components": "workspace:^"
-    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint"
+    "@daesite/eslint-config-daelint": "workspace:^"
     "@daesite/hooks": "workspace:^"
     "@daesite/styles": "workspace:^"
     "@daesite/utils": "workspace:^"
@@ -518,6 +519,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@daesite/assets@workspace:^, @daesite/assets@workspace:packages/assets":
+  version: 0.0.0-use.local
+  resolution: "@daesite/assets@workspace:packages/assets"
+  languageName: unknown
+  linkType: soft
+
 "@daesite/colors@workspace:packages/colors":
   version: 0.0.0-use.local
   resolution: "@daesite/colors@workspace:packages/colors"
@@ -530,8 +537,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@daesite/components@workspace:packages/components"
   dependencies:
-    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint"
-    "@daesite/react-polymorphic-types": "workspace:packages/react-polymorphic-types"
+    "@daesite/eslint-config-daelint": "workspace:^"
+    "@daesite/react-polymorphic-types": "workspace:^"
     "@daesite/shared": "workspace:^"
     "@daesite/styles": "workspace:^"
     "@daesite/utils": "workspace:^"
@@ -570,11 +577,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@daesite/crypto@workspace:packages/crypto":
+"@daesite/crypto@workspace:^, @daesite/crypto@workspace:packages/crypto":
   version: 0.0.0-use.local
   resolution: "@daesite/crypto@workspace:packages/crypto"
   dependencies:
-    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint"
+    "@daesite/eslint-config-daelint": "workspace:^"
     eslint: "npm:^9.11.1"
     prettier: "npm:^3.3.3"
     typescript: "npm:5.6.2"
@@ -587,6 +594,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@daesite/dae@workspace:applications/dae"
   dependencies:
+    "@daesite/assets": "workspace:^"
     "@daesite/components": "workspace:^"
     "@daesite/styles": "workspace:^"
     "@types/node": "npm:^22.7.3"
@@ -605,11 +613,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@daesite/eslint-config-daelint@workspace:packages/eslint-config-daelint":
+"@daesite/eslint-config-daelint@workspace:^, @daesite/eslint-config-daelint@workspace:packages/eslint-config-daelint":
   version: 0.0.0-use.local
   resolution: "@daesite/eslint-config-daelint@workspace:packages/eslint-config-daelint"
   dependencies:
-    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint"
+    "@daesite/eslint-config-daelint": "workspace:^"
     "@eslint/js": "npm:^9.11.1"
     "@stylistic/eslint-plugin": "npm:^2.8.0"
     "@types/eslint": "npm:^9.6.1"
@@ -642,7 +650,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@daesite/hooks@workspace:packages/hooks"
   dependencies:
-    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint"
+    "@daesite/eslint-config-daelint": "workspace:^"
     "@daesite/utils": "workspace:^"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:^6.5.0"
@@ -682,7 +690,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@daesite/react-polymorphic-types@workspace:packages/react-polymorphic-types":
+"@daesite/react-polymorphic-types@workspace:^, @daesite/react-polymorphic-types@workspace:packages/react-polymorphic-types":
   version: 0.0.0-use.local
   resolution: "@daesite/react-polymorphic-types@workspace:packages/react-polymorphic-types"
   dependencies:
@@ -701,9 +709,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@daesite/shared@workspace:packages/shared"
   dependencies:
-    "@daesite/crypto": "workspace:packages/crypto"
-    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint"
-    "@daesite/utils": "workspace:packages/utils"
+    "@daesite/crypto": "workspace:^"
+    "@daesite/eslint-config-daelint": "workspace:^"
+    "@daesite/utils": "workspace:^"
     "@types/lodash": "npm:^4.17.9"
     "@types/node": "npm:^22.7.3"
     "@types/ua-parser-js": "npm:^0.7.39"
@@ -732,7 +740,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@daesite/utils@workspace:packages/utils"
   dependencies:
-    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint"
+    "@daesite/eslint-config-daelint": "workspace:^"
     "@types/lodash": "npm:^4.17.9"
     eslint: "npm:^9.11.1"
     lodash: "npm:^4.17.21"

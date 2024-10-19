@@ -11,6 +11,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@daesite/assets": "workspace:^",
     "@daesite/components": "workspace:^",
     "@daesite/hooks": "workspace:^",
     "@daesite/styles": "workspace:^",
@@ -24,7 +25,7 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint",
+    "@daesite/eslint-config-daelint": "workspace:^",
     "@redae/nextjs-combine-middleware": "^1.0.1",
     "@types/node": "^22.7.3",
     "@types/react": "^18.3.9",

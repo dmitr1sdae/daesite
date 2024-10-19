@@ -22,14 +22,14 @@
     "pretty:fix": "prettier --write $(find . -type d \\( -name 'node_modules' -o -name 'dist' \\) -prune -o \\( -type f -name '*.js' -o -name '*.ts' -o -name '*.tsx' \\) -print)"
   },
   "dependencies": {
-    "@daesite/crypto": "workspace:packages/crypto",
-    "@daesite/utils": "workspace:packages/utils",
+    "@daesite/crypto": "workspace:^",
+    "@daesite/utils": "workspace:^",
     "jsbi": "^4.3.0",
     "lodash": "^4.17.21",
     "ua-parser-js": "^1.0.39"
   },
   "devDependencies": {
-    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint",
+    "@daesite/eslint-config-daelint": "workspace:^",
     "@types/lodash": "^4.17.9",
     "@types/node": "^22.7.3",
     "@types/ua-parser-js": "^0.7.39",

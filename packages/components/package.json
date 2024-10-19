@@ -25,6 +25,7 @@
     "pretty:fix": "prettier --write $(find . -type d \\( -name 'node_modules' -o -name 'dist' -o -name '.vitest' -o -name 'coverage' \\) -prune -o -print)"
   },
   "dependencies": {
+    "@daesite/assets": "workspace:^",
     "@daesite/shared": "workspace:^",
     "@daesite/styles": "workspace:^",
     "@daesite/utils": "workspace:^",
@@ -35,8 +36,8 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@daesite/eslint-config-daelint": "workspace:packages/eslint-config-daelint",
-    "@daesite/react-polymorphic-types": "workspace:packages/react-polymorphic-types",
+    "@daesite/eslint-config-daelint": "workspace:^",
+    "@daesite/react-polymorphic-types": "workspace:^",
     "@redae/vite-plugin-lib-assets": "^1.0.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.5.0",

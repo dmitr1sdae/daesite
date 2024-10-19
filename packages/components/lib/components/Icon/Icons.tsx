@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import svg from "@daesite/styles/assets/img/icons/sprite-icons.svg?raw";
+import svg from "@daesite/assets/img/icons/sprite-icons.svg?raw";
 
 const ICONS_ID = "__iconsRoot";
 

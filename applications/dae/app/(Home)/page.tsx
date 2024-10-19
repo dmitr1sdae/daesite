@@ -1,7 +1,7 @@
 import "./Home.scss";
 import {Fullscreen} from "@containers/Fullscreen";
-import background from "@daesite/styles/assets/img/brand/background.png";
-import power from "@daesite/styles/assets/img/brand/power.webp";
+import background from "@daesite/assets/img/brand/background.png";
+import power from "@daesite/assets/img/brand/sassy-pose.webp";
 import {Typewriter} from "@components/Typewriter";
 import axios from "axios";
 import {Tag} from "helpers/typeStringSequence";

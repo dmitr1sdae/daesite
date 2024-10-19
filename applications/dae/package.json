@@ -10,6 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@daesite/assets": "workspace:^",
     "@daesite/components": "workspace:^",
     "@daesite/styles": "workspace:^",
     "axios": "^1.7.7",
