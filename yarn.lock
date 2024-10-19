@@ -537,6 +537,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@daesite/components@workspace:packages/components"
   dependencies:
+    "@daesite/assets": "workspace:^"
     "@daesite/eslint-config-daelint": "workspace:^"
     "@daesite/react-polymorphic-types": "workspace:^"
     "@daesite/shared": "workspace:^"

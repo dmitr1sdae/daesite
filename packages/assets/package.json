@@ -1,0 +1,11 @@
+{
+  "name": "@daesite/assets",
+  "version": "0.1.0",
+  "description": "daesite's static assets",
+  "license": "ISC",
+  "author": "Dmitriy Chukhno <me@dmitr1sdae.com>",
+  "type": "module",
+  "files": [
+    "*"
+  ]
+}
