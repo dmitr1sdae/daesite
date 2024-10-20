@@ -63,4 +63,5 @@ debug
 target
 
 ### Configs ###
+certs
 .env

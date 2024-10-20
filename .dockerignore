@@ -7,3 +7,7 @@ dist
 build
 release
 target
+
+### Configs ###
+certs
+.env
