@@ -7,26 +7,24 @@ import {
   NavigationMenuContent,
   NavigationMenuIndicator,
   NavigationMenuItem,
-  NavigationMenuLink,
+  NavigationMenuLink as NornsNavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@norns-ui/navigation-menu";
-import {Icon} from "~/components/Icon";
+
 import {ListItem} from "./ListItem";
+import {NavigationMenuLink} from "./NavigationMenuLink";
 
 const NavigationMenu = () => {
   return (
     <NornsNavigationMenu className="NavigationMenuRoot">
       <NavigationMenuList className="NavigationMenuList">
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="NavigationMenuTrigger">
-            About <Icon className="CaretDown" name="caret-down" size={14} />
-          </NavigationMenuTrigger>
+          <NavigationMenuLink icon="caret-down">About</NavigationMenuLink>
           <NavigationMenuContent className="NavigationMenuContent">
             <ul className="List one">
               <li style={{gridRow: "span 3"}}>
-                <NavigationMenuLink asChild>
+                <NornsNavigationMenuLink asChild>
                   <a className="Callout" href="/">
                     <svg
                       aria-hidden
@@ -35,16 +33,16 @@ const NavigationMenu = () => {
                       viewBox="0 0 25 25"
                       fill="white"
                     >
-                      <path d="M12 25C7.58173 25 4 21.4183 4 17C4 12.5817 7.58173 9 12 9V25Z"></path>
-                      <path d="M12 0H4V8H12V0Z"></path>
-                      <path d="M17 8C19.2091 8 21 6.20914 21 4C21 1.79086 19.2091 0 17 0C14.7909 0 13 1.79086 13 4C13 6.20914 14.7909 8 17 8Z"></path>
+                      <path d="M12 25C7.58173 25 4 21.4183 4 17C4 12.5817 7.58173 9 12 9V25Z" />
+                      <path d="M12 0H4V8H12V0Z" />
+                      <path d="M17 8C19.2091 8 21 6.20914 21 4C21 1.79086 19.2091 0 17 0C14.7909 0 13 1.79086 13 4C13 6.20914 14.7909 8 17 8Z" />
                     </svg>
                     <div className="CalloutHeading">Primitives</div>
                     <p className="CalloutText">
                       Unstyled, accessible components for React.
                     </p>
                   </a>
-                </NavigationMenuLink>
+                </NornsNavigationMenuLink>
               </li>
 
               <ListItem href="https://stitches.dev/" title="Stitches">
@@ -61,9 +59,7 @@ const NavigationMenu = () => {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="NavigationMenuTrigger">
-            Apps <Icon className="CaretDown" name="caret-down" size={14} />
-          </NavigationMenuTrigger>
+          <NavigationMenuLink icon="caret-down">Apps</NavigationMenuLink>
           <NavigationMenuContent className="NavigationMenuContent">
             <ul className="List two">
               <ListItem
@@ -93,12 +89,12 @@ const NavigationMenu = () => {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuLink
+          <NornsNavigationMenuLink
             className="NavigationMenuLink"
             href="https://github.com/dmitr1sdae"
           >
             Github
-          </NavigationMenuLink>
+          </NornsNavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuIndicator className="NavigationMenuIndicator">
