@@ -1006,6 +1006,37 @@ dependencies = [
 ]
 
 [[package]]
+name = "gateway"
+version = "0.1.0"
+dependencies = [
+ "argon2",
+ "async-trait",
+ "base64-url",
+ "bitflags 2.6.0",
+ "bytes",
+ "chrono",
+ "futures",
+ "hex",
+ "hmac",
+ "id",
+ "jemallocator",
+ "rand",
+ "rand_chacha",
+ "regex",
+ "rust-s3",
+ "serde",
+ "serde_json",
+ "sha2",
+ "sqlx",
+ "thiserror",
+ "tokio",
+ "tokio-stream",
+ "tonic-build",
+ "totp-rs",
+ "validator",
+]
+
+[[package]]
 name = "generic-array"
 version = "0.14.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"

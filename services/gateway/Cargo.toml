@@ -1,0 +1,56 @@
+[package]
+name = "gateway"
+description = "WebSocket Gateway service"
+authors = ["Dmitriy Chukhno <dmitr1sdadaya@protonmail.com>"]
+version = "0.1.0"
+edition = "2021"
+license = "AGPL-3.0"
+
+[[bin]]
+path = "src/main.rs"
+name = "gateway"
+
+[dependencies]
+tokio = { version = "1.35.1", features = ["full"] }
+tokio-stream = "0.1.14"
+
+futures = "0.3.30"
+async-trait = "0.1.75"
+
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+chrono = { version = "0.4.26", features = ["serde"] }
+
+rand = "0.8.5"
+rand_chacha = "0.3.1"
+bytes = "1.4.0"
+base64-url = "3.0.0"
+sha2 = "0.10.8"
+hmac = "0.12.1"
+argon2 = { version = "0.5.0", features = ["std"] }
+bitflags = "2.4.0"
+hex = "0.4.3"
+totp-rs = { version = "5.0.2", features = ["gen_secret"] }
+
+id = { path = "../../packages/id-rs" }
+
+validator = { version = "0.18.0", features = ["derive"] }
+thiserror = "1.0.56"
+regex = "1.8.4"
+
+rust-s3 = "0.34.0"
+
+sqlx = { version = "0.7.4", features = [
+  "runtime-tokio-rustls",
+  "postgres",
+  "chrono",
+  "macros",
+  "migrate",
+  "rust_decimal",
+  "json",
+] }
+
+jemallocator = "0.5.4"
+
+[build-dependencies]
+tonic-build = "0.11.0"
